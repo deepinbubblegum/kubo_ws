@@ -51,7 +51,12 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
 add_message_files(
   DIRECTORY msg
-  FILES SensorEncoder.msg SensorEncoderStamped.msg
+  FILES SensorEncoder.msg 
+  SensorEncoderStamped.msg
+  SensorPLC.msg
+  SensorPLCStamped.msg
+  SteeringControl.msg
+  SteeringControlStamped.msg
 )
 
 ## Generate services in the 'srv' folder
