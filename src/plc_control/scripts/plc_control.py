@@ -39,6 +39,9 @@ class PLC:
         
         # call connect network plc
         self.connect_network()
+
+        # create topic plc data
+        self.sub_control_plc = rospy.Subscriber('plc_control', SensorPLCStamped, self.callback_control_plc)
         
     def connect_network(self):
         try:
@@ -57,21 +60,48 @@ class PLC:
         self.plc_ip = rospy.get_param(self.node_name + '/plc_ip', '10.1.100.140')
         self.plc_port = rospy.get_param(self.node_name + '/plc_port', 2000)
         self.buffer_size = rospy.get_param(self.node_name + '/buffer_size', 1024)
-        self.frame_id = rospy.get_param(self.node_name + '/frame_id', 'plc')
         self.frequency = rospy.get_param(self.node_name + '/frequency', 50)
 
-    def update(self):
+    def send(self, package):
         if self.socket_connected:
             try:
-                self.s.send(bytearray(self.ctl_custom_package))
+                self.s.send(bytearray(package))
             except:
                 self.socket_connected = False
-                print("try re-connection...")
-                self.connect_network()
         else:
             print("try re-connection...")
-            time.sleep(0.5)
             self.connect_network()
+
+    def steering(self, msg_data, time_stamp):
+        if (rospy.Time.now().secs - time_stamp.secs) > 2:
+            if msg_data == -1:
+                self.ctl_custom_package[2] &= 0b11110011
+                self.ctl_custom_package[2] |= 0b00001000
+            elif msg_data == 1:
+                self.ctl_custom_package[2] &= 0b11110011
+                self.ctl_custom_package[2] |= 0b00000100
+            else:
+                self.ctl_custom_package[2] &= 0b11110011
+        else:
+            self.ctl_custom_package[2] &= 0b11110011
+
+    def callback_control_plc(self, control_msg):
+        self.ctl_custom_package[0] = control_msg.PLC.UpDown
+        self.steering(control_msg.PLC.WheelAngleLR, control_msg.header.stamp)
+        self.ctl_custom_package[4] = control_msg.PLC.StackLED0
+        self.ctl_custom_package[6] = control_msg.PLC.StackLED1
+        self.ctl_custom_package[8] = control_msg.PLC.StackLED2
+        self.ctl_custom_package[10] = control_msg.PLC.StackLED3
+        self.ctl_custom_package[12] = control_msg.PLC.StackLED4
+        self.ctl_custom_package[14] = control_msg.PLC.StackLED5
+        self.ctl_custom_package[16] = control_msg.PLC.PercentBrake
+        self.ctl_custom_package[18] = control_msg.PLC.PercentBrake
+        self.ctl_custom_package[20] = control_msg.PLC.Parking
+        self.ctl_custom_package[22] = control_msg.PLC.Mode
+        self.ctl_custom_package[24] = control_msg.PLC.Pallet
+
+    def update(self):
+        self.send(self.ctl_custom_package)
 
     def run(self):
         rate = rospy.Rate(self.frequency)

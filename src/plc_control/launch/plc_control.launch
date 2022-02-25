@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="plc_ip" default="10.1.100.140"/>
+    <arg name="plc_port" default="2000"/>
+    <arg name="buffer_size" default="1024"/>
+    <arg name="frequency" default="50"/>
+
+    <node pkg="plc_control" type="plc_control.py" name="plc_control_node" respawn="true" respawn_delay="5" output="screen">
+        <param name="plc_ip" value="$(arg plc_ip)"/>
+        <param name="plc_port" value="$(arg plc_port)"/>
+        <param name="buffer_size" value="$(arg buffer_size)"/>
+        <param name="frequency" value="$(arg frequency)"/>
+    </node>
+</launch>
