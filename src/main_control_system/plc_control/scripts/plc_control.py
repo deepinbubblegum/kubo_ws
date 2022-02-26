@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import rospy
 import socket
-from sensor_custom_msgs.msg import SensorPLC, SensorPLCStamped
+from sensor_custom_msgs.msg import SensorPLCStamped
 
 class PLC:
     def __init__(self):
@@ -41,7 +41,7 @@ class PLC:
         self.connect_network()
 
         # create topic plc data
-        self.sub_control_plc = rospy.Subscriber('plc_control', SensorPLCStamped, self.callback_control_plc)
+        self.sub_control_plc = rospy.Subscriber('plc_control', SensorPLCStamped, self.callback_control_plc, queue_size=1)
         
     def connect_network(self):
         try:

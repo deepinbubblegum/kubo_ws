@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="frame_id" default="central_control"/>
+    <node pkg="central_control_system" type="central_control_system.py" name="central_control_system_node" respawn="true" respawn_delay="5" output="screen">
+        <param name="frame_id" value="$(arg frame_id)"/>
+    </node>
+</launch>
