@@ -41,7 +41,6 @@ class central_control_system:
 
     # get ros params
     def get_ros_params(self):
-        self.frequency = rospy.get_param(self.node_name + '/frequency', 50)
         self.frame_id = rospy.get_param(self.node_name + '/frame_id', 'central_control')
 
     # update rate pub to plc node
@@ -53,10 +52,7 @@ class central_control_system:
     
     # fun main
     def run(self):
-        rate = rospy.Rate(self.frequency)
-        while not rospy.is_shutdown():
-            self.update()
-            rate.sleep()
+        rospy.spin()
 
 if __name__ == '__main__':
     central_control = central_control_system()
