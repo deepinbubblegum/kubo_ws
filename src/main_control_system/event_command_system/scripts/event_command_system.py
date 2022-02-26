@@ -14,7 +14,26 @@ class event_command_system:
         # Get ros params
         self.get_ros_params()
 
+        # initial variable
+
+
         # create topic
+        self.create_ros_topic()
+
+    def init_variable(self):
+        self.PowerOn = False
+        self.PowerOff = False
+        self.BatteryCharging = False
+        self.ParkingOn = False
+        self.ParkingOff = False
+        self.UpPallet = False
+        self.DownPallet = False
+        self.PalletForward = False
+        self.PalletBackward = False
+        self.PalletCloseDoor = False
+        self.PalletOpenDoor = False
+
+    def create_ros_topic(self):
         self.sub_PowerOn_topic = rospy.Subscriber(
             self.PowerOn_topic,
             Bool,
@@ -81,7 +100,14 @@ class event_command_system:
             self.callback_PalletOpenDoor_topic,
             queue_size=1)
 
+        # create topic publisher
+        self.pub_event_cmd = rospy.Publisher(
+            self.pub_event_cmd_topic,
+            EventControl,
+            queue_size=1)
+
     def get_ros_params(self):
+        self.pub_event_cmd_topic = rospy.get_param(self.node_name + '/PowerOn_topic', 'power_on')
         self.PowerOn_topic = rospy.get_param(self.node_name + '/PowerOn_topic', 'power_on')
         self.PowerOff_topic = rospy.get_param(self.node_name + '/PowerOff_topic', 'power_off')
         self.BatteryCharging_topic = rospy.get_param(self.node_name + '/BatteryCharging_topic', 'battery_charging')
@@ -96,43 +122,50 @@ class event_command_system:
 
     # callback funtion
     def callback_PowerOn_topic(self, msg):
-        pass
+        self.PowerOn = msg.data
+        self.update()
 
     def callback_PowerOff_topic(self, msg):
-        pass
+        self.PowerOff = msg.data
+        self.update()
 
     def callback_BatteryCharging_topic(self, msg):
-        pass
+        self.BatteryCharging = msg.data
+        self.update()
 
     def callback_ParkingOn_topic(self, msg):
-        pass
+        self.ParkingOn = msg.data
+        self.update()
 
     def callback_ParkingOff_topic(self, msg):
-        pass
+        self.ParkingOff  = msg.data
+        self.update()
 
     def callback_UpPallet_topic(self, msg):
-        pass
+        self.UpPallet = msg.data
 
     def callback_DownPallet_topic(self, msg):
-        pass
+        self.DownPallet = msg.data
+        self.update()
 
     def callback_PalletForward_topic(self, msg):
-        pass
+        self.PalletForward = msg.data
 
     def callback_PalletBackward_topic(self, msg):
-        pass
+        self.PalletBackward = msg.data
+        self.update()
 
     def callback_PalletCloseDoor_topic(self, msg):
-        pass
+        self.PalletCloseDoor = msg.data
 
     def callback_PalletOpenDoor_topic(self, msg):
-        pass
-    
+        self.PalletOpenDoor = msg.data
+
     # end callback funtion
 
     def update(self):
-        pass
-
+        msg = EventControl()
+        self.pub_event_cmd.publish(msg)
 
     def run(self):
         rospy.spin()
