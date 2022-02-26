@@ -14,6 +14,73 @@ class event_command_system:
         # Get ros params
         self.get_ros_params()
 
+        # create topic
+        self.sub_PowerOn_topic = rospy.Subscriber(
+            self.PowerOn_topic,
+            Bool,
+            self.callback_PowerOn_topic,
+            queue_size=1)
+
+        self.sub_PowerOff_topic = rospy.Subscriber(
+            self.PowerOff_topic,
+            Bool,
+            self.callback_PowerOff_topic,
+            queue_size=1)
+
+        self.sub_BatteryCharging_topic = rospy.Subscriber(
+            self.BatteryCharging_topic,
+            Bool,
+            self.callback_BatteryCharging_topic,
+            queue_size=1)
+
+        self.sub_ParkingOn_topic = rospy.Subscriber(
+            self.ParkingOn_topic,
+            Bool,
+            self.callback_ParkingOn_topic,
+            queue_size=1)
+
+        self.sub_ParkingOff_topic = rospy.Subscriber(
+            self.ParkingOff_topic,
+            Bool,
+            self.callback_ParkingOff_topic,
+            queue_size=1)
+
+        self.sub_UpPallet_topic = rospy.Subscriber(
+            self.UpPallet_topic,
+            Bool,
+            self.callback_UpPallet_topic,
+            queue_size=1)
+            
+        self.sub_DownPallet_topic = rospy.Subscriber(
+            self.DownPallet_topic,
+            Bool,
+            self.callback_DownPallet_topic,
+            queue_size=1)
+
+        self.sub_PalletForward_topic = rospy.Subscriber(
+            self.PalletForward_topic,
+            Bool,
+            self.callback_PalletForward_topic,
+            queue_size=1)
+
+        self.sub_PalletBackward_topic = rospy.Subscriber(
+            self.PalletBackward_topic,
+            Bool,
+            self.callback_PalletBackward_topic,
+            queue_size=1)
+
+        self.sub_PalletCloseDoor_topic = rospy.Subscriber(
+            self.PalletCloseDoor_topic,
+            Bool,
+            self.callback_PalletCloseDoor_topic,
+            queue_size=1)
+
+        self.sub_PalletOpenDoor_topic = rospy.Subscriber(
+            self.PalletOpenDoor_topic,
+            Bool,
+            self.callback_PalletOpenDoor_topic,
+            queue_size=1)
+
     def get_ros_params(self):
         self.PowerOn_topic = rospy.get_param(self.node_name + '/PowerOn_topic', 'power_on')
         self.PowerOff_topic = rospy.get_param(self.node_name + '/PowerOff_topic', 'power_off')
@@ -27,8 +94,45 @@ class event_command_system:
         self.PalletCloseDoor_topic = rospy.get_param(self.node_name + '/PalletCloseDoor_topic', 'pallet_close_door')
         self.PalletOpenDoor_topic = rospy.get_param(self.node_name + '/PalletOpenDoor_topic', 'pallet_open_door')
 
+    # callback funtion
+    def callback_PowerOn_topic(self, msg):
+        pass
+
+    def callback_PowerOff_topic(self, msg):
+        pass
+
+    def callback_BatteryCharging_topic(self, msg):
+        pass
+
+    def callback_ParkingOn_topic(self, msg):
+        pass
+
+    def callback_ParkingOff_topic(self, msg):
+        pass
+
+    def callback_UpPallet_topic(self, msg):
+        pass
+
+    def callback_DownPallet_topic(self, msg):
+        pass
+
+    def callback_PalletForward_topic(self, msg):
+        pass
+
+    def callback_PalletBackward_topic(self, msg):
+        pass
+
+    def callback_PalletCloseDoor_topic(self, msg):
+        pass
+
+    def callback_PalletOpenDoor_topic(self, msg):
+        pass
+    
+    # end callback funtion
+
     def update(self):
         pass
+
 
     def run(self):
         rospy.spin()
