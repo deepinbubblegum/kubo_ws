@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="PowerOn_topic" default="power_on"/>
+    <arg name="PowerOff_topic" default="power_off"/>
+    <arg name="BatteryCharging_topic" default="battery_charging"/>
+    <arg name="ParkingOn_topic" default="parking_on"/>
+    <arg name="ParkingOff_topic" default="parking_off"/>
+    <arg name="UpPallet_topic" default="up_pallet"/>
+    <arg name="DownPallet_topic" default="down_pallet"/>
+    <arg name="PalletForward_topic" default="pallet_forward"/>
+    <arg name="PalletBackward_topic" default="pallet_backward"/>
+    <arg name="PalletCloseDoor_topic" default="pallet_close_door"/>
+    <arg name="PalletOpenDoor_topic" default="pallet_open_door"/>
+    <node pkg="event_command_system" type="event_command_system.py" name="event_command_system_node" respawn="true" respawn_delay="5" output="screen">
+        <param name="PowerOn_topic" value="$(arg PowerOn_topic)"/>
+        <param name="PowerOff_topic" value="$(arg PowerOff_topic)"/>
+        <param name="BatteryCharging_topic" value="$(arg BatteryCharging_topic)"/>
+        <param name="ParkingOn_topic" value="$(arg ParkingOn_topic)"/>
+        <param name="ParkingOff_topic" value="$(arg ParkingOff_topic)"/>
+        <param name="UpPallet_topic" value="$(arg UpPallet_topic)"/>
+        <param name="DownPallet_topic" value="$(arg DownPallet_topic)"/>
+        <param name="PalletForward_topic" value="$(arg PalletForward_topic)"/>
+        <param name="PalletBackward_topic" value="$(arg PalletBackward_topic)"/>
+        <param name="PalletCloseDoor_topic" value="$(arg PalletCloseDoor_topic)"/>
+        <param name="PalletOpenDoor_topic" value="$(arg PalletOpenDoor_topic)"/>
+    </node>
+</launch>
