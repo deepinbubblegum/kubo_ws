@@ -36,6 +36,7 @@ class central_control_system:
     # callback funtion
     def steering_control_callback(self, steer_control_msg):
         self.steer_control = steer_control_msg.steer.SteerCMD
+        self.update()
 
     # end callback funtion
 
