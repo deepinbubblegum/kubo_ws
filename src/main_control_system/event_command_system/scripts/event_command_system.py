@@ -165,6 +165,7 @@ class event_command_system:
 
     def update(self):
         msg = EventControl()
+        # ส่วน event process (ยังไม่เสร็จ)
         self.pub_event_cmd.publish(msg)
 
     def run(self):
