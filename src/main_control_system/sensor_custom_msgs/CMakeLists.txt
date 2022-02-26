@@ -57,6 +57,7 @@ add_message_files(
   SensorPLCStamped.msg
   SteeringControl.msg
   SteeringControlStamped.msg
+  EventControl.msg
 )
 
 ## Generate services in the 'srv' folder
