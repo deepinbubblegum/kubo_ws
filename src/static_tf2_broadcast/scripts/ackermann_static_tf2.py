@@ -28,7 +28,7 @@ class ackermann_static_tf2:
         base_link_to_base_footprint.child_frame_id = "base_link"
         base_link_to_base_footprint.transform.translation.x = 0.0
         base_link_to_base_footprint.transform.translation.y = 0.0
-        base_link_to_base_footprint.transform.translation.z = 0.0
+        base_link_to_base_footprint.transform.translation.z = 0.71
         base_link_to_base_footprint.transform.rotation.w = 1.0
         base_link_to_base_footprint.transform.rotation.x = 0.0
         base_link_to_base_footprint.transform.rotation.y = 0.0
