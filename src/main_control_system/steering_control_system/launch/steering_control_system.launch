@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="frame_id" default="steer_control_sys"/>
+    <arg name="offset" default="0.00872664626"/>
+    <node pkg="steering_control_system" type="steering_control_system.py" name="steering_control_system_node" respawn="true" respawn_delay="5" output="screen">
+        <param name="frame_id" value="$(arg frame_id)"/>
+        <param name="offset" value="$(arg offset)"/>
+    </node>
+</launch>
