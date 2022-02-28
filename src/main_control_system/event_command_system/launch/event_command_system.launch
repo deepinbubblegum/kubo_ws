@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <launch>
+    <arg name="event_cmd_pub" default="event_cmd"/>
     <arg name="PowerOn_topic" default="power_on"/>
     <arg name="PowerOff_topic" default="power_off"/>
     <arg name="BatteryCharging_topic" default="battery_charging"/>
@@ -12,6 +13,7 @@
     <arg name="PalletCloseDoor_topic" default="pallet_close_door"/>
     <arg name="PalletOpenDoor_topic" default="pallet_open_door"/>
     <node pkg="event_command_system" type="event_command_system.py" name="event_command_system_node" respawn="true" respawn_delay="5" output="screen">
+        <param name="event_cmd_pub" value="$(arg event_cmd_pub)"/>
         <param name="PowerOn_topic" value="$(arg PowerOn_topic)"/>
         <param name="PowerOff_topic" value="$(arg PowerOff_topic)"/>
         <param name="BatteryCharging_topic" value="$(arg BatteryCharging_topic)"/>
