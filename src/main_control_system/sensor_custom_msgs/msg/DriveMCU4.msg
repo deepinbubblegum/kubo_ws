@@ -1,0 +1,4 @@
+float32 MotorPeakPower
+float32 MotorPeakSpeed
+float32 MotorPeakTorque
+string MotorFailure

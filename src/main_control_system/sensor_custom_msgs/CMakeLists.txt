@@ -58,6 +58,14 @@ add_message_files(
   SteeringControl.msg
   SteeringControlStamped.msg
   EventControl.msg
+  DriveMCU1.msg
+  DriveMCU1Stamped.msg
+  DriveMCU2.msg
+  DriveMCU2Stamped.msg
+  DriveMCU3.msg
+  DriveMCU3Stamped.msg
+  DriveMCU4.msg
+  DriveMCU4Stamped.msg
 )
 
 ## Generate services in the 'srv' folder
