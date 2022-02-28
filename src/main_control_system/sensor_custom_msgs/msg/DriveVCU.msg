@@ -1,0 +1,8 @@
+int32 BYTE1_TorqueLow
+int32 BYTE2_TorqueHigh
+int32 BYTE3_DCVoltageLimitLow
+int32 BYTE4_DCVoltageLimitHigh
+int32 BYTE5_DCCurrentLimitLow
+int32 BYTE6_DCCurrentLimitHigh
+int32 BYTE7_DriveWorkingMode
+int32 BYTE8_VCULife

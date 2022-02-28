@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import rospy
 import can
-from sensor_custom_msgs.msg import DriveMCU1Stamped, DriveMCU2Stamped, DriveMCU3Stamped, DriveMCU4Stamped
+from sensor_custom_msgs.msg import DriveMCU1Stamped, DriveMCU2Stamped, DriveMCU3Stamped, DriveMCU4Stamped, DriveVCUStamped
 
 class drive_control:
     def __init__(self):
@@ -51,6 +51,13 @@ class drive_control:
                 DriveMCU4Stamped,
                 queue_size=1
             )
+
+        self.sub_vcu_topic = rospy.Subscriber(
+            'VCU',
+            DriveVCUStamped,
+            self.callback_vcu,
+            queue_size=1
+        )
 
     def init_variable(self):
         self.VCU1_ID = 0x0C19F0A7
@@ -228,6 +235,27 @@ class drive_control:
                 self.MCU3_Process_Status(rx_msg)
             elif MCU_Message_ID == format(self.MCU4_ID, "#X") and self.MCU4_Topic:
                 self.MCU4_Process_Status(rx_msg)
+
+    def callback_vcu(self, vcu_msg):
+        TorqueLow = vcu_msg.VCU.BYTE1_TorqueLow
+        TorqueHigh = vcu_msg.VCU.BYTE2_TorqueHigh
+        VoltageLimitLow = vcu_msg.VCU.BYTE3_DCVoltageLimitLow
+        VoltageLimitHigh = vcu_msg.VCU.BYTE4_DCVoltageLimitHigh
+        CurrentLimitLow = vcu_msg.VCU.BYTE5_DCCurrentLimitLow
+        CurrentLimitHigh = vcu_msg.VCU.BYTE6_DCCurrentLimitHigh
+        DriveWorkingMode = vcu_msg.VCU.BYTE7_DriveWorkingMode
+        VCULife = vcu_msg.VCU.BYTE8_VCULife
+        tx_msg = can.Message(
+            arbitration_id=self.VCU1_ID,
+            data=[
+                TorqueLow, TorqueHigh,
+                VoltageLimitLow, VoltageLimitHigh,
+                CurrentLimitLow, CurrentLimitHigh,
+                DriveWorkingMode, VCULife
+            ],
+            is_extended_id=True
+        )
+        self.bus.send(tx_msg)
 
     def update(self):
         self.canbus_receive()

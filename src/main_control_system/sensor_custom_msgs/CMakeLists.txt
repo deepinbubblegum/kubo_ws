@@ -66,6 +66,8 @@ add_message_files(
   DriveMCU3Stamped.msg
   DriveMCU4.msg
   DriveMCU4Stamped.msg
+  DriveVCU.msg
+  DriveVCUStamped.msg
 )
 
 ## Generate services in the 'srv' folder
