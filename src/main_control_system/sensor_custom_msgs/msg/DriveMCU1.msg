@@ -1,9 +1,9 @@
 float32 Torque #N⋅m
 float32 Speed #RPM
-float32 DC_Input_Current #A
+float32 DCInputCurrent #A
 # status (1 valid, 0 invalid) 
 int32 Ready
-int32 Allow_for_power_down
+int32 AllowForPowerDown
 int32 Mode #(0 Torque mode, 1 Speed mode)
 int32 Forward
 int32 Reverse
