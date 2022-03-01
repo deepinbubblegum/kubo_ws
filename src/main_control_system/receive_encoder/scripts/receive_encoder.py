@@ -46,6 +46,7 @@ class recive_encoder:
             msg_enc.header.frame_id = self.frame_id
             msg_enc.header.stamp = rospy.Time.now()
             msg_enc.sensor.ticker = detEncode
+            self.pub_enc_msg.publish(msg_enc)
         except:
           rospy.loginfo('someting wrong receiver distanc.')
 
