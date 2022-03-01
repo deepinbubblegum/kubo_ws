@@ -2,8 +2,11 @@
 <launch>
     <arg name="recv_topic" default="recv_enc_topic"/>
     <arg name="frame_id" default="recv_encoder"/>
-    <node pkg="recive_encoder" exec="recive_encoder.py" name="recive_encoder_node" respawn="true" respawn_delay="5" output="screen">
+    <arg name="frequency" default="100"/>
+    
+    <node pkg="receive_encoder" exec="receive_encoder.py" name="receive_encoder_node" respawn="true" respawn_delay="5" output="screen">
         <param name="recv_topic" value="$(arg recv_topic)"/>
         <param name="frame_id" value="$(arg frame_id)"/>
+        <param name="frequency" value="$(arg frequency)"/>
     </node>
 </launch>
