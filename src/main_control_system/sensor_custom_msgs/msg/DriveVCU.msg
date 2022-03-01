@@ -1,5 +1,5 @@
-int32 Torque
-int32 DCVoltageLimit
-int32 DCCurrentLimit
-int32 DriveWorkingMode
-int32 VCULife
+int32 Torque #N⋅m
+int32 DCVoltageLimit #V
+int32 DCCurrentLimit #A
+int32 DriveWorkingMode #Refer to table below in document
+int32 VCULife #0-255

@@ -90,6 +90,10 @@ class drive_control:
         self.MCU4_ST_MOTOR_PEAK_TORQUE_OFFSET = 0
         self.MCU4_ST_MOTOR_PEAK_TORQUE_SCALE = 1 #NM/bit
 
+        self.driveTorque_Offset = -32000
+        self.dc_limitVoltage_Offset = -10000
+        self.dc_limitCurrent_Offset = -10000
+
     def init_canbus(self):
         self.canbus = can.interface.Bus(
             bustype = self.bustype, 
@@ -236,15 +240,38 @@ class drive_control:
             elif MCU_Message_ID == format(self.MCU4_ID, "#X") and self.MCU4_Topic:
                 self.MCU4_Process_Status(rx_msg)
 
+    def _1Word_extract_2Byte(self, Word):
+        byte_HIGH = Word >> 8 # is mean slide bit righ 8 position
+        byte_LOW = Word & 255 # is mean Word & 0b11111111
+        return byte_LOW, byte_HIGH
+        
+    def cmd_scale_offset(self, Offset, Value):
+        return round((Value - (Offset)))
+
     def callback_vcu(self, vcu_msg):
-        TorqueLow = vcu_msg.VCU.BYTE1_TorqueLow
-        TorqueHigh = vcu_msg.VCU.BYTE2_TorqueHigh
-        VoltageLimitLow = vcu_msg.VCU.BYTE3_DCVoltageLimitLow
-        VoltageLimitHigh = vcu_msg.VCU.BYTE4_DCVoltageLimitHigh
-        CurrentLimitLow = vcu_msg.VCU.BYTE5_DCCurrentLimitLow
-        CurrentLimitHigh = vcu_msg.VCU.BYTE6_DCCurrentLimitHigh
-        DriveWorkingMode = vcu_msg.VCU.BYTE7_DriveWorkingMode
-        VCULife = vcu_msg.VCU.BYTE8_VCULife
+        TorqueLow, TorqueHigh = self._1Word_extract_2Byte(
+            self.cmd_scale_offset(
+                self.driveTorque_Offset,
+                vcu_msg.drive.Torque
+            )
+        )
+
+        VoltageLimitLow, VoltageLimitHigh = self._1Word_extract_2Byte(
+            self.cmd_scale_offset(
+                self.dc_limitVoltage_Offset,
+                vcu_msg.drive.DCVoltageLimit
+            )
+        )
+
+        CurrentLimitLow, CurrentLimitHigh = self._1Word_extract_2Byte(
+            self.cmd_scale_offset(
+                self.dc_limitCurrent_Offset,
+                vcu_msg.drive.DCCurrentLimit
+            )
+        )
+
+        DriveWorkingMode = vcu_msg.drive.DriveWorkingMode
+        VCULife = vcu_msg.drive.VCULife
         tx_msg = can.Message(
             arbitration_id=self.VCU1_ID,
             data=[
