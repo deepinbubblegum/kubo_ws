@@ -68,6 +68,8 @@ add_message_files(
   DriveMCU4Stamped.msg
   DriveVCU.msg
   DriveVCUStamped.msg
+  SensorEncoderDistan.msg
+  SensorEncoderDistanStemped.msg
 )
 
 ## Generate services in the 'srv' folder
