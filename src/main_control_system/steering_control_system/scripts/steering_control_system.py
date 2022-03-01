@@ -82,4 +82,4 @@ if __name__ == '__main__':
     try:
       steer_control.run()
     except rospy.ROSInterruptException:
-      print('exit steering_control_system node ')
+      rospy.loginfo('exit steering_control_system node ')

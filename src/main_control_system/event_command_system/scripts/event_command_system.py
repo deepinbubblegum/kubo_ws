@@ -14,9 +14,6 @@ class event_command_system:
         # Get ros params
         self.get_ros_params()
 
-        # initial variable
-
-
         # create topic
         self.create_ros_topic()
 

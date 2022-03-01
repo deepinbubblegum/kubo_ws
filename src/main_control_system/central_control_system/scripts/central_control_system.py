@@ -70,6 +70,10 @@ class central_control_system:
         msg = SensorPLCStamped()
         msg.header.stamp = rospy.Time.now()
         msg.header.frame_id = self.frame_id
+        msg.PLC.Mode
+        msg.PLC.Parking
+        msg.PLC.UpDown
+        msg.PLC.Pallet
         msg.PLC.WheelAngleLR = self.steer_control
     
     # fun main
