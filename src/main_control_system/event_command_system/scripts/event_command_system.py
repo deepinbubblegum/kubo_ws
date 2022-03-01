@@ -14,9 +14,6 @@ class event_command_system:
         # Get ros params
         self.get_ros_params()
 
-        # initial variable
-
-
         # create topic
         self.create_ros_topic()
 
@@ -107,7 +104,7 @@ class event_command_system:
             queue_size=1)
 
     def get_ros_params(self):
-        self.pub_event_cmd_topic = rospy.get_param(self.node_name + '/PowerOn_topic', 'power_on')
+        self.pub_event_cmd_topic = rospy.get_param(self.node_name + '/event_cmd_pub', 'event_cmd')
         self.PowerOn_topic = rospy.get_param(self.node_name + '/PowerOn_topic', 'power_on')
         self.PowerOff_topic = rospy.get_param(self.node_name + '/PowerOff_topic', 'power_off')
         self.BatteryCharging_topic = rospy.get_param(self.node_name + '/BatteryCharging_topic', 'battery_charging')
@@ -143,6 +140,7 @@ class event_command_system:
 
     def callback_UpPallet_topic(self, msg):
         self.UpPallet = msg.data
+        self.update()
 
     def callback_DownPallet_topic(self, msg):
         self.DownPallet = msg.data
@@ -150,6 +148,7 @@ class event_command_system:
 
     def callback_PalletForward_topic(self, msg):
         self.PalletForward = msg.data
+        self.update()
 
     def callback_PalletBackward_topic(self, msg):
         self.PalletBackward = msg.data
@@ -157,15 +156,63 @@ class event_command_system:
 
     def callback_PalletCloseDoor_topic(self, msg):
         self.PalletCloseDoor = msg.data
+        self.update()
 
     def callback_PalletOpenDoor_topic(self, msg):
         self.PalletOpenDoor = msg.data
+        self.update()
 
     # end callback funtion
+    def mode_event(self):
+        mode = 0x00
+        if self.PowerOn == False and self.BatteryCharging == False:
+            mode = 0x00 # (power off)
+        elif self.PowerOn == True and self.BatteryCharging == False:
+            mode = 0x01 # (power on)
+        else:
+            self.PowerOn = False 
+            mode = 0x02 # (BatteryCharging)
+        return mode
+
+    def parking_event(self):
+        parking = 0x00
+        if self.ParkingOn == True and self.ParkingOff == False:
+            parking = 0x00 # (ParkBrakeOn)
+        else:
+            parking = 0x01 # (ParkBrakeOff)
+        return parking
+
+    def updown_event(self):
+        updown = 0x00
+        if self.UpPallet == True and self.DownPallet == False:
+            updown = 0x1E # (Up)
+        elif self.UpPallet == False and self.DownPallet == True:
+            updown = 0x01 # (Down)
+        else:
+            updown = 0x00 # (Stop)
+        return updown
+
+    def pallet_event(self):
+        pallet = 0x00
+        if self.PalletForward == True and self.PalletBackward == False and self.PalletCloseDoor == False and self.PalletOpenDoor == False:
+            pallet = 0x01 # (PalletForward)
+        elif self.PalletForward == False and self.PalletBackward == True and self.PalletCloseDoor == False and self.PalletOpenDoor == False:
+            pallet = 0x02 # (PalletBackward)
+        elif self.PalletForward == False and self.PalletBackward == False and self.PalletCloseDoor == True and self.PalletOpenDoor == False:
+            pallet = 0x03 # (CloseDoor)
+        elif self.PalletForward == False and self.PalletBackward == False and self.PalletCloseDoor == False and self.PalletOpenDoor == True:
+            pallet = 0x04 # (CloseDoor)
+        return pallet
 
     def update(self):
         msg = EventControl()
-        # ส่วน event process (ยังไม่เสร็จ)
+        # event process funtions
+        msg.Mode = self.mode_event() # 0x00(power off), 0x01(power on), 0x02(BatteryCharging)
+        msg.Parking = self.parking_event() # 0x00(ParkBrakeOn), 0x01(ParkBrakeOff)
+        msg.UpDown = self.updown_event() # 0x1E(Up), 0x01(Down) 0x00(Stop)
+        msg.Pallet = self.pallet_event()# 0x00(Stop), 0x01(PalletForward), 
+                                        # 0x02(PalletBackward), 0x03(CloseDoor), 
+                                        # 0x04(OpenDoor)
         self.pub_event_cmd.publish(msg)
 
     def run(self):
