@@ -70,6 +70,8 @@ add_message_files(
   DriveVCUStamped.msg
   SensorEncoderDistan.msg
   SensorEncoderDistanStemped.msg
+  VelocityCMD.msg
+  VelocityCMDStamped.msg
 )
 
 ## Generate services in the 'srv' folder
