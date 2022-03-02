@@ -26,7 +26,7 @@ class steering_control_system:
             queue_size=1)
 
         self.sub_acker_cmd = rospy.Subscriber(
-            'ackermann_cmd_topic', 
+            'ackermann_cmd', 
             AckermannDriveStamped, 
             self.acker_callback, 
             queue_size=1)
