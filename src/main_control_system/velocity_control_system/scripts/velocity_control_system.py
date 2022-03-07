@@ -65,6 +65,7 @@ class velocity_control_system:
             velocity_msg.velocity.torque = torque
             velocity_msg.velocity.brake = brake
             self.last_time = self.current_time
+        self.pub_velocity_control.publish(velocity_msg) # publish topic
 
     def callback_odometry_velocity(self, odom_msg):
         self.pv_speed = odom_msg.twist.twist.linear.x
