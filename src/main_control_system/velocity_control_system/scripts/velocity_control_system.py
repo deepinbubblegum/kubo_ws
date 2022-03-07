@@ -55,7 +55,6 @@ class velocity_control_system:
         self.current_time = rospy.Time.now()
         if self.frist_loop:
             self.last_time = self.current_time
-            # self.last_setpoint_time = self.current_setpoint_time # setpoint time use for check timeout
             self.frist_loop = False
         else:
             dt = (self.current_time - self.last_time).to_sec()
