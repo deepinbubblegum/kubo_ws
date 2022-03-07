@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="twist_cmd_topic" default="cmd_vel"/>
+    <arg name="twist_cmd_topic" default="twist_mux/cmd_vel"/>
     <arg name="ackermann_cmd_topic" default="ackermann_cmd"/>
     <arg name="wheelbase" default="1.0"/>
     <arg name="frame_id" default="odom"/>
