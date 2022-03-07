@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find static_tf2_broadcast)/launch/diff_static.launch"/>
+</launch>
