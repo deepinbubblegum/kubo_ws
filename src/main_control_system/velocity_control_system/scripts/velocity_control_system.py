@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import rospy
-from sensor_custom_msgs.msg import VelocityCMDStamped
+from sensor_custom_msgs.msg import VelocityCMDStamped, DriveMCU1Stamped
 from nav_msgs.msg import Odometry
 from ackermann_msgs.msg import AckermannDriveStamped
 
@@ -26,6 +26,13 @@ class velocity_control_system:
             'ackermann_cmd',
             AckermannDriveStamped,
             self.callback_ackermann_vel,
+            queue_size=1
+        )
+
+        self.sub_mcu_1 = rospy.Subscriber(
+            'MCU1_Topic',
+            DriveMCU1Stamped,
+            self.callback_mcu_1,
             queue_size=1
         )
 
@@ -57,6 +64,8 @@ class velocity_control_system:
             self.last_time = self.current_time
             self.frist_loop = False
         else:
+            if self.drive_ready_state is False: # mcu 1 topic is not ready
+                self.sp_speed = 0.0
             dt = (self.current_time - self.last_time).to_sec()
             torque, brake = self.PID_Controller(self.sp_speed, dt)
             velocity_msg = VelocityCMDStamped()
@@ -79,9 +88,15 @@ class velocity_control_system:
         self.current_setpoint_time = rospy.Time.now()
         self.last_setpoint_time = self.current_setpoint_time
 
+    def callback_mcu_1(self, mcu_msg):
+        self.drive_ready_state = bool(mcu_msg.MCU1.Ready)
+
     def initial_variable(self):
         self.sp_speed = 0.0
         self.pv_speed = 0.0
+
+        # drive mcu status
+        self.drive_ready_state = False
 
         # timeout variable init
         self.last_setpoint_time = rospy.Time.now()
