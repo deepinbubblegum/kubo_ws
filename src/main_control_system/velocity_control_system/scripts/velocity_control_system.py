@@ -39,7 +39,7 @@ class velocity_control_system:
         self.Kp = rospy.get_param(self.node_name + '/Kp', 1) # P = Kp * e(t) ใช้สำหรับยกกราฟขึ้นแบบรวดเร็ว (ถ้าใส่เยอะไปจะ overshoot)
         self.Ki = rospy.get_param(self.node_name + '/Ki', 1) # I = Ki * ∫(0->t) (e)dt การรวม error ใช้เพื่อปรับเข้าจุด setpoint
         self.Kd = rospy.get_param(self.node_name + '/Kd', 1) # D = Kd * de(t) / dt ใช้ลดอัดตราเร็งของ feedback เมื่อเข้าใกล้จุด setpoint (ลด overshoot)
-        self.brake_ 
+        self.frequency = rospy.get_param(self.node_name + '/frequency', 50)
 
     def PID_Controller(self, setpoint, dt):
         error = setpoint - self.pv_speed
@@ -55,6 +55,7 @@ class velocity_control_system:
         self.current_time = rospy.Time.now()
         if self.frist_loop:
             self.last_time = self.current_time
+            # self.last_setpoint_time = self.current_setpoint_time # setpoint time use for check timeout
             self.frist_loop = False
         else:
             dt = (self.current_time - self.last_time).to_sec()
@@ -66,6 +67,9 @@ class velocity_control_system:
             velocity_msg.velocity.brake = brake
             self.last_time = self.current_time
         self.pub_velocity_control.publish(velocity_msg) # publish topic
+        setpoint_time_distanc = (self.current_setpoint_time - self.last_setpoint_time).to_sec()
+        if setpoint_time_distanc >= 2.5:
+            self.sp_speed = 0.0
 
     def callback_odometry_velocity(self, odom_msg):
         self.pv_speed = odom_msg.twist.twist.linear.x
@@ -73,11 +77,17 @@ class velocity_control_system:
 
     def callback_ackermann_vel(self, ackermann_msg):
         self.sp_speed = ackermann_msg.drive.speed
+        self.current_setpoint_time = rospy.Time.now()
+        self.last_setpoint_time = self.current_setpoint_time
 
     def initial_variable(self):
         self.sp_speed = 0.0
         self.pv_speed = 0.0
 
+        # timeout variable init
+        self.last_setpoint_time = rospy.Time.now()
+        self.current_setpoint_time = rospy.Time.now()
+         
         # pid init variable
         self.previous_error = 0.0
         self.integral = 0.0
