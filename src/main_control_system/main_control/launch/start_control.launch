@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- central_control_system -->
+    <include file="$(find central_control_system)/launch/central_control_system.launch"/>
+
+    <!-- command_drive_control -->
+    <include file="$(find command_drive_control)/launch/command_drive_control.launch"/>
+
+    <!-- drive_control -->
+    <include file="$(find drive_control)/launch/drive_control.launch"/>
+
+    <!-- event_command_system -->
+    <include file="$(find event_command_system)/launch/event_command_system.launch"/>
+
+    <!-- led_state_control -->
+    <include file="$(find led_state_control)/launch/led_state_control.launch"/>
+
+    <!-- odometry_steering -->
+    <include file="$(find odometry_steering)/launch/odometry_steering.launch"/>
+
+    <!-- plc_control -->
+    <include file="$(find plc_control)/launch/plc_control.launch"/>
+
+    <!-- receive_encoder -->
+    <include file="$(find receive_encoder)/launch/receive_encoder.launch"/>
+
+    <!-- smooth_vel -->
+    <include file="$(find smooth_vel)/launch/smooth_vel.launch"/>
+
+    <!-- steering_control_system -->
+    <include file="$(find steering_control_system)/launch/steering_control_system.launch"/>
+
+    <!-- twist_converter -->
+    <include file="$(find twist_converter)/launch/twist_converter_ackermann.launch"/>
+
+    <!-- twist_mux -->
+    <include file="$(find twist_mux)/launch/twist_mux.launch"/>
+
+    <!-- velocity_control_system -->
+    <include file="$(find velocity_control_system)/launch/velocity_control_system.launch"/>
+
+</launch>
