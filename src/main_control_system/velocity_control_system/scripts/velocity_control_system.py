@@ -36,9 +36,9 @@ class velocity_control_system:
         )
 
     def get_ros_params(self):
-        self.Kp = rospy.get_param(self.node_name + '/Kp', 1) # P = Kp * e(t) ใช้สำหรับยกกราฟขึ้นแบบรวดเร็ว (ถ้าใส่เยอะไปจะ overshoot)
-        self.Ki = rospy.get_param(self.node_name + '/Ki', 1) # I = Ki * ∫(0->t) (e)dt การรวม error ใช้เพื่อปรับเข้าจุด setpoint
-        self.Kd = rospy.get_param(self.node_name + '/Kd', 1) # D = Kd * de(t) / dt ใช้ลดอัดตราเร็งของ feedback เมื่อเข้าใกล้จุด setpoint (ลด overshoot)
+        self.Kp = rospy.get_param(self.node_name + '/Kp', 1.0) # P = Kp * e(t) ใช้สำหรับยกกราฟขึ้นแบบรวดเร็ว (ถ้าใส่เยอะไปจะ overshoot)
+        self.Ki = rospy.get_param(self.node_name + '/Ki', 1.0) # I = Ki * ∫(0->t) (e)dt การรวม error ใช้เพื่อปรับเข้าจุด setpoint
+        self.Kd = rospy.get_param(self.node_name + '/Kd', 1.0) # D = Kd * de(t) / dt ใช้ลดอัดตราเร็งของ feedback เมื่อเข้าใกล้จุด setpoint (ลด overshoot)
         self.frequency = rospy.get_param(self.node_name + '/frequency', 50)
 
     def PID_Controller(self, setpoint, dt):
