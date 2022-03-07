@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="frequency" default="80.0"/>
+    <arg name="time_out" default="1.2"/>
+    <arg name="sprofile" default="1000"/>
+    <node pkg="smooth_vel" type="s-curve_acc.py" name="smooth_vel_node" respawn="true" output="screen">.
+        <param name="frequency" value="$(arg frequency)"/>
+        <param name="time_out" value="$(arg time_out)"/>
+        <param name="sprofile" value="$(arg sprofile)"/>
+        <remap from="cmd_vel" to="nav_vel"/>
+        <remap from="cmd_vel_smooth" to="nav_vel_smooth"/>
+    </node>
+</launch>
