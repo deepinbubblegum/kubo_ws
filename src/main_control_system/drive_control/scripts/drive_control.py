@@ -148,7 +148,8 @@ class drive_control:
         drive.MCU1.Drive = (RES_ST_MCU1_STATUS & 0b00000010) >> 1
         drive.MCU1.Stop = (RES_ST_MCU1_STATUS & 0b00000001) >> 0
         drive.MCU1.MCU_LIFE = RES_ST_MCU_LIFE
-        self.pub_mcu1_topic.publish(drive)
+        if self.MCU1_Topic:
+            self.pub_mcu1_topic.publish(drive)
 
     def MCU2_Process_Status(self, rx_msg):
         RES_ST_MCU2_TOTAL_VOLTAGE = (rx_msg.data[1] << 8) | (rx_msg.data[0])
@@ -178,7 +179,8 @@ class drive_control:
         drive.MCU2.CloseTheAuxiliaryContactor = (RES_ST_MCU2_STATUS & 0b00000010) >> 1
         drive.MCU2.CloseTheMainContactor = (RES_ST_MCU2_STATUS & 0b00000001) >> 0
         drive.MCU2.DrivingSystemErrorCode = RES_ST_DRIVING_SYSTEM_ERROR_CODE
-        self.pub_mcu2_topic.publish(drive)
+        if self.MCU2_Topic:
+            self.pub_mcu2_topic.publish(drive)
 
     def MCU3_Process_Status(self, rx_msg):
         RES_ST_SW_VER_CTL_TY_First = rx_msg.data[1]
@@ -196,7 +198,8 @@ class drive_control:
         drive.MCU3.SOFTWARE_VERSION_ADDITIONAL = RES_ST_SW_VER_ADDITIONAL
         drive.MCU3.SOFTWARE_VERSION_MAIN_INFO = RES_ST_SW_VER_MAIN
         drive.MCU3.SOFTWARE_VERSION_SUB_INFO = RES_ST_SW_VER_SUB
-        self.pub_mcu3_topic.publish(drive)
+        if self.MCU3_Topic:
+            self.pub_mcu3_topic.publish(drive)
 
     def MCU4_Process_Status(self, rx_msg):
         RES_ST_MOTOR_PEAK_POWER = rx_msg.data[0]
@@ -225,7 +228,8 @@ class drive_control:
             self.MCU4_ST_MOTOR_PEAK_TORQUE_SCALE
         )
         drive.MCU4.MotorFailure = f"{RES_ST_MOTOR_FAILURE_1}, {RES_ST_MOTOR_FAILURE_2}, {RES_ST_MOTOR_FAILURE_3}, {RES_ST_MOTOR_FAILURE_4}"
-        self.pub_mcu4_topic.publish(drive)
+        if self.MCU4_Topic:
+            self.pub_mcu4_topic.publish(drive)
 
     def canbus_receive(self):
         rx_msg = self.canbus.recv(0.02)

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="Kp" default="1.0"/>
+    <arg name="Ki" default="1.0"/>
+    <arg name="Kd" default="1.0"/>
+    <arg name="frequency" default="50"/>
+    <node pkg="velocity_control_system" exec="velocity_control_system.py" name="velocity_control_system_node" respawn="true" respawn_delay="5" output="screen">
+        <param name="Kp" value="$(arg Kp)"/>
+        <param name="Ki" value="$(arg Ki)"/>
+        <param name="Kd" value="$(arg Kd)"/>
+        <param name="frequency" value="$(arg frequency)"/>
+    </node>
+</launch>
