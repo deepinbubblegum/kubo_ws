@@ -52,6 +52,7 @@ class velocity_control_system:
         return output, brake
 
     def update(self):
+        self.current_time = rospy.Time.now()
         if self.frist_loop:
             self.last_time = self.current_time
             self.frist_loop = False
@@ -62,13 +63,12 @@ class velocity_control_system:
             velocity_msg.header.stamp = rospy.Time.now()
             velocity_msg.header.frame_id = 'velocity_control'
             velocity_msg.velocity.torque = torque
-            velocity_msg.velocity.brake = 0.0
+            velocity_msg.velocity.brake = brake
             self.last_time = self.current_time
 
     def callback_odometry_velocity(self, odom_msg):
         self.pv_speed = odom_msg.twist.twist.linear.x
-        self.current_time = odom_msg.header.stamp
-        self.update()
+        # self.current_time = odom_msg.header.stamp
 
     def callback_ackermann_vel(self, ackermann_msg):
         self.sp_speed = ackermann_msg.drive.speed
@@ -87,7 +87,10 @@ class velocity_control_system:
         self.last_time = rospy.Time.now()
 
     def run(self):
-        rospy.spin()
+        rate = rospy.Rate(self.frequency)
+        while not rospy.is_shutdown():
+            self.update()
+            rate.sleep()
 
 if __name__ == '__main__':
     velocity_ctl_sys = velocity_control_system()
