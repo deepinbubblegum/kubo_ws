@@ -4,10 +4,10 @@
     <include file="$(find central_control_system)/launch/central_control_system.launch"/>
 
     <!-- command_drive_control -->
-    <include file="$(find command_drive_control)/launch/command_drive_control.launch"/>
+    <!-- <include file="$(find command_drive_control)/launch/command_drive_control.launch"/> -->
 
     <!-- drive_control -->
-    <include file="$(find drive_control)/launch/drive_control.launch"/>
+    <!-- <include file="$(find drive_control)/launch/drive_control.launch"/> -->
 
     <!-- event_command_system -->
     <include file="$(find event_command_system)/launch/event_command_system.launch"/>
