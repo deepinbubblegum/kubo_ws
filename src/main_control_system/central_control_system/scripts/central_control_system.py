@@ -116,7 +116,6 @@ class central_control_system:
         msg.PLC.StackLED3 = self.StackLED3
         msg.PLC.StackLED4 = self.StackLED4
         msg.PLC.StackLED5 = self.StackLED5
-        # ยังไม่เสร็จ
         self.pub_plc_control.publish(msg)
 
     def run(self):
