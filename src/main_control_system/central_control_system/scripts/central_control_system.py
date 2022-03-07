@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import rospy
-from sensor_custom_msgs.msg import SteeringControlStamped, SensorPLCStamped, EventControl, VelocityCMDStamped
+from sensor_custom_msgs.msg import SteeringControlStamped, SensorPLCStamped, EventControl, VelocityCMDStamped, LEDState
 
 class central_control_system:
     def __init__(self):
@@ -38,6 +38,13 @@ class central_control_system:
             queue_size=1
         )
 
+        self.sub_led_state = rospy.Subscriber(
+            'led_state',
+            LEDState,
+            self.callback_led_state,
+            queue_size=1
+        )
+
         self.pub_plc_control = rospy.Publisher(
             'plc_control', 
             SensorPLCStamped, 
@@ -53,6 +60,13 @@ class central_control_system:
         self.Pallet = 0x00 # 0x00(Stop), 0x01(PalletForward), 
                             # 0x02(PalletBackward), 0x03(CloseDoor), 
                             # 0x04(OpenDoor)
+
+        self.StackLED0 = 0x00
+        self.StackLED1 = 0x00
+        self.StackLED2 = 0x00
+        self.StackLED3 = 0x00
+        self.StackLED4 = 0x00
+        self.StackLED5 = 0x00
 
     # callback funtion
     def steering_control_callback(self, steer_control_msg):
@@ -70,6 +84,14 @@ class central_control_system:
         # self.torque = velocity_msg.velocity.torque #torque
         self.brake = velocity_msg.velocity.brake #brake
         self.update_plc()
+
+    def callback_led_state(self, led_state):
+        self.StackLED0 = led_state.StackLED0
+        self.StackLED1 = led_state.StackLED1
+        self.StackLED2 = led_state.StackLED2
+        self.StackLED3 = led_state.StackLED3
+        self.StackLED4 = led_state.StackLED4
+        self.StackLED5 = led_state.StackLED5
         
     # end callback funtion
 
@@ -88,6 +110,12 @@ class central_control_system:
         msg.PLC.Pallet = self.Pallet
         msg.PLC.WheelAngleLR = self.steer_control
         msg.PLC.PercentBrake = 0
+        msg.PLC.StackLED0 = self.StackLED0
+        msg.PLC.StackLED1 = self.StackLED1
+        msg.PLC.StackLED2 = self.StackLED2
+        msg.PLC.StackLED3 = self.StackLED3
+        msg.PLC.StackLED4 = self.StackLED4
+        msg.PLC.StackLED5 = self.StackLED5
         # ยังไม่เสร็จ
         self.pub_plc_control.publish(msg)
 
