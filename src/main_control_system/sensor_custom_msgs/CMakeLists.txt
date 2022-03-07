@@ -72,6 +72,7 @@ add_message_files(
   SensorEncoderDistanStemped.msg
   VelocityCMD.msg
   VelocityCMDStamped.msg
+  LEDState.msg
 )
 
 ## Generate services in the 'srv' folder
