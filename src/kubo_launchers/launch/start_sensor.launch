@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Ublox gps front -->
+    <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_front.launch"/>
+
+    <!-- Ublox gps rear -->
+    <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_rear.launch"/>
+</launch>
