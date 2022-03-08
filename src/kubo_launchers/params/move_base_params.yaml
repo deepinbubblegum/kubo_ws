@@ -1,0 +1,15 @@
+controller_frequency: 20.0 #20.0
+controller_patience: 15.0 #15.0 ระยะเวลาที่ตัวควบคุมจะรอเป็นวินาทีโดยไม่ได้รับการควบคุมที่ถูกต้อง ก่อนที่จะดำเนินการเคลียร์พื้นที่
+
+planner_frequency: 1.0 
+planner_patience: 5.0 #ระยะเวลาค้นหาแผนที่ที่ถูกต้องก่อนที่จะดำเนินการเคลียร์พื้นที่ (sec)
+
+oscillation_timeout: 0.0
+oscillation_distance: 0.5
+
+shutdown_costmap: false
+
+recovery_behavior_enabled: true
+conservative_reset_dist: 3.0
+
+clearing_rotation_allowed: false

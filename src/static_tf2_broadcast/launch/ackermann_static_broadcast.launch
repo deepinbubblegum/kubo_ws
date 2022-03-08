@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node pkg="static_tf2_broadcast" type="ackermann_static_tf2.py" name="static_tf2_broadcast_node" respawn="true" output="screen"/>
+
+</launch>

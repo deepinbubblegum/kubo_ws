@@ -1,0 +1,33 @@
+global_costmap:
+   global_frame: map
+   robot_base_frame: base_link
+   update_frequency: 1.0
+   publish_frequency: 0.5
+   always_send_full_costmap: true
+   track_unknown_space: false
+   footprint: [[-0.30,-0.275], [0.30,-0.275], [0.30,0.275], [-0.30,0.275]]
+   footprint_padding: 0.0
+   transform_tolerance: 0.55
+
+   plugins:
+       - {name: static, type: "costmap_2d::StaticLayer"}
+       - {name: sensor_obstacle, type: "costmap_2d::ObstacleLayer"}
+       - {name: inflation, type: "costmap_2d::InflationLayer"}
+   
+   # Define each layer here ....
+   
+   static:
+       map_topic: map
+       # Whether or not the costmap initialize itself based on a map serverd by the map_server
+       static_map: true
+       rolling_window: false       
+       subscribe_to_updates: true
+
+   sensor_obstacle:
+       #Observation_sources <--> define a list of sensors going to pass infomation to costmap
+       observation_sources: scan
+       scan: {sensor_frame: laser , data_type: LaserScan, topic: scan, marking: True, clearing: True}
+
+   inflation:
+      cost_scaling_factor: 10.0  
+      inflation_radius: 0.55
