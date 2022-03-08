@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <arg name="param_file_name" doc="zed_f9p_front"/>
-    <arg name="param_file_dir" default="$(find ublox_gps)/config" doc="$(arg param_file_name).yaml"/>
-    <arg name="node_name" default="ublox" doc="ublox_gps_node"/>
-    <arg name="output" default="screen"/>
-    <arg name="respawn" default="true"/>
-    <arg name="respawn_delay" default="5"/>
-    <arg name="clear_params" default="true"/>
-       
-    <node name="$(arg node_name)" 
-          pkg="ublox_gps" 
-          type="ublox_gps"  
-          output="$(arg output)" 
-          respawn="$(arg respawn)" 
-          respawn_delay="$(arg respawn_delay)">
-      <rosparam command="load" 
-                file="$(arg param_file_dir)/$(arg param_file_name).yaml" />          
-    </node>
+  <arg name="ublox_gps" />
+  <arg name="param_file_name" doc="zed_f9p_front.yaml" />
+  <arg name="output" default="screen" />
+  <arg name="respawn" default="true" />
+  <arg name="respawn_delay" default="30" />
+  <arg name="clear_params" default="true" />
+
+  <node pkg="ublox_gps" type="ublox_gps" name="ublox_gps"
+        output="$(arg output)" 
+        clear_params="$(arg clear_params)"
+        respawn="$(arg respawn)" 
+        respawn_delay="$(arg respawn_delay)">
+    <rosparam command="load" 
+              file="$(find ublox_gps)/config/zed_f9p_front.yaml" />
+  </node>
 </launch>
