@@ -5,4 +5,7 @@
 
     <!-- Ublox gps rear -->
     <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_rear.launch"/>
+
+    <!-- concat_convert_pc_laserscan -->
+    <include file="$(find concat_convert_pc_laserscan)/launch/concat_convert_pc_laserscan.launch"/>
 </launch>
