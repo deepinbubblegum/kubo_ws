@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="min_ang" default="-3.12414"/>
+    <arg name="max_ang" default="3.12414"/>
+    <arg name="range_min" default="0.1"/>
+    <arg name="range_max" default="150.0"/>
+    <arg name="frame_id" default="rslidar_concat"/>
+    <node pkg="concat_convert_pc_laserscan" type="concat_convert_pc_laserscan_node" name="concat_convert_pc_laserscan_node" respawn="true" respawn_delay="5" output="screen">
+        <param name="min_ang" value="$(arg min_ang)"/>
+        <param name="max_ang" value="$(arg max_ang)"/>
+        <param name="range_min" value="$(arg range_min)"/>
+        <param name="range_max" value="$(arg range_max)"/>
+        <param name="frame_id" value="$(arg frame_id)"/>
+    </node>
+</launch>
