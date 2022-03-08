@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- static_tf2_broadcast -->
+    <include file="$(find static_tf2_broadcast)/launch/ackermann_static_broadcast.launch"/>
+
+    <!-- Ublox gps front -->
+    <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_front.launch"/>
+
+    <!-- Ublox gps rear -->
+    <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_rear.launch"/>
+
+    <!-- rslidar -->
+    <include file="$(find rslidar_sdk)/launch/start.launch"/>
+
+    <!-- concat_convert_pc_laserscan -->
+    <include file="$(find concat_convert_pc_laserscan)/launch/concat_convert_pc_laserscan.launch"/>
+
+</launch>
