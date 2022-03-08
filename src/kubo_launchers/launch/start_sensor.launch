@@ -7,7 +7,7 @@
     <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_front.launch"/>
 
     <!-- Ublox gps rear -->
-    <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_rear.launch"/>
+    <!-- <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_rear.launch"/> -->
 
     <!-- rslidar -->
     <include file="$(find rslidar_sdk)/launch/start.launch"/>
