@@ -117,8 +117,8 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "listener");
     ros::NodeHandle n;
-    scan_pub_ = n.advertise<sensor_msgs::LaserScan>("concatenated_scan", 1);
-    cloud_pub_ = n.advertise<sensor_msgs::PointCloud2>("concatenated_cloud", 1);
+    scan_pub_ = n.advertise<sensor_msgs::LaserScan>("scan", 1);
+    cloud_pub_ = n.advertise<sensor_msgs::PointCloud2>("pointcloud", 1);
     ros::Duration duration = ros::Duration(1.0 / 25.0);
     ros::Rate loop_r(duration);
 
