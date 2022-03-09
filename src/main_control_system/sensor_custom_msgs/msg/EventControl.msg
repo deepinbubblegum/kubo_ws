@@ -4,3 +4,4 @@ int32 UpDown # 0x1E(Up), 0x01(Down) 0x00(Stop)
 int32 Pallet # 0x00(Stop), 0x01(PalletForward), 
                 # 0x02(PalletBackward), 0x03(CloseDoor), 
                 # 0x04(OpenDoor)
+int32 PercentBrake
