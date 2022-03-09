@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="frequency" default="25"/>
+    <node pkg="cmd_mux_remote" exec="cmd_mux_remote.py" name="cmd_mux_remote_node" respawn="true" respawn_delay="5" output="screen">
+        <param name="frequency" value="$(arg frequency)"/>
+    </node>
+</launch>
