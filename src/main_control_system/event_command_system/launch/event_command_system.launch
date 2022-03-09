@@ -12,6 +12,7 @@
     <arg name="PalletBackward_topic" default="pallet_backward"/>
     <arg name="PalletCloseDoor_topic" default="pallet_close_door"/>
     <arg name="PalletOpenDoor_topic" default="pallet_open_door"/>
+    <arg name="Brake_topic" default="brake_topic"/>
     <node pkg="event_command_system" type="event_command_system.py" name="event_command_system_node" respawn="true" respawn_delay="5" output="screen">
         <param name="event_cmd_pub" value="$(arg event_cmd_pub)"/>
         <param name="PowerOn_topic" value="$(arg PowerOn_topic)"/>
@@ -25,5 +26,6 @@
         <param name="PalletBackward_topic" value="$(arg PalletBackward_topic)"/>
         <param name="PalletCloseDoor_topic" value="$(arg PalletCloseDoor_topic)"/>
         <param name="PalletOpenDoor_topic" value="$(arg PalletOpenDoor_topic)"/>
+        <param name="Brake_topic" value="$(arg Brake_topic)"/>
     </node>
 </launch>

@@ -29,6 +29,7 @@ class event_command_system:
         self.PalletBackward = False
         self.PalletCloseDoor = False
         self.PalletOpenDoor = False
+        self.Brake = False
 
     def create_ros_topic(self):
         self.sub_PowerOn_topic = rospy.Subscriber(
@@ -97,6 +98,13 @@ class event_command_system:
             self.callback_PalletOpenDoor_topic,
             queue_size=1)
 
+        self.sub_brake = rospy.Subscriber(
+            self.Brake_topic,
+            Bool,
+            self.callback_brake_topic,
+            queue_size=1
+        )
+
         # create topic publisher
         self.pub_event_cmd = rospy.Publisher(
             self.pub_event_cmd_topic,
@@ -116,6 +124,7 @@ class event_command_system:
         self.PalletBackward_topic = rospy.get_param(self.node_name + '/PalletBackward_topic', 'pallet_backward')
         self.PalletCloseDoor_topic = rospy.get_param(self.node_name + '/PalletCloseDoor_topic', 'pallet_close_door')
         self.PalletOpenDoor_topic = rospy.get_param(self.node_name + '/PalletOpenDoor_topic', 'pallet_open_door')
+        self.Brake_topic = rospy.get_param(self.node_name + '/Brake_topic', 'brake_topic')
 
     # callback funtion
     def callback_PowerOn_topic(self, msg):
@@ -162,6 +171,10 @@ class event_command_system:
         self.PalletOpenDoor = msg.data
         self.update()
 
+    def callback_brake_topic(self, msg):
+        self.Brake = msg.data
+        self.update()
+
     # end callback funtion
     def mode_event(self):
         mode = 0x00
@@ -204,6 +217,12 @@ class event_command_system:
             pallet = 0x04 # (CloseDoor)
         return pallet
 
+    def brake_event(self):
+        Brake = 0
+        if self.Brake:
+            Brake = 100
+        return Brake
+
     def update(self):
         msg = EventControl()
         # event process funtions
@@ -213,6 +232,7 @@ class event_command_system:
         msg.Pallet = self.pallet_event()# 0x00(Stop), 0x01(PalletForward), 
                                         # 0x02(PalletBackward), 0x03(CloseDoor), 
                                         # 0x04(OpenDoor)
+        msg.PercentBrake = self.brake_event()
         self.pub_event_cmd.publish(msg)
 
     def run(self):
