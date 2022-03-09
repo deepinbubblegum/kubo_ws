@@ -4,7 +4,7 @@
     <arg name="frame_id" default="recv_encoder"/>
     <arg name="frequency" default="100"/>
     
-    <node pkg="receive_encoder" exec="receive_encoder.py" name="receive_encoder_node" respawn="true" respawn_delay="5" output="screen">
+    <node pkg="receive_encoder" type="receive_encoder.py" name="receive_encoder_node" respawn="true" respawn_delay="5" output="screen">
         <param name="recv_topic" value="$(arg recv_topic)"/>
         <param name="frame_id" value="$(arg frame_id)"/>
         <param name="frequency" value="$(arg frequency)"/>

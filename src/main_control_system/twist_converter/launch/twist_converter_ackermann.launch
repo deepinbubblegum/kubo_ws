@@ -4,7 +4,7 @@
     <arg name="ackermann_cmd_topic" default="ackermann_cmd"/>
     <arg name="wheelbase" default="1.0"/>
     <arg name="frame_id" default="odom"/>
-    <node pkg="twist_converter" exec="twist_converter_ackermann.py" name="twist_converter_node" respawn="true" respawn_delay="5" output="screen">
+    <node pkg="twist_converter" type="twist_converter_ackermann.py" name="twist_converter_node" respawn="true" respawn_delay="5" output="screen">
         <param name="twist_cmd_topic" value="$(arg twist_cmd_topic)"/>
         <param name="ackermann_cmd_topic" value="$(arg ackermann_cmd_topic)"/>
         <param name="wheelbase" value="$(arg wheelbase)"/>
