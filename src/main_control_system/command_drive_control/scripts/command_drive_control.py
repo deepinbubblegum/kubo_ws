@@ -6,9 +6,12 @@ class command_drive_control:
     def __init__(self):
         rospy.init_node('command_drive_control_node', anonymous=False)
 
+        # Get node name
+        self.node_name = rospy.get_name()
+        
         # Get ros params
         self.get_ros_params()
-
+        
         # initial_variable
         self.initial_variable()
 

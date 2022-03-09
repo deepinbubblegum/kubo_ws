@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="inverse" default="False"/>
-    <node pkg="command_drive_control" exec="command_drive_control.py" name="command_drive_control_node" respawn="true" respawn_delay="5" output="screen">
+    <arg name="inverse" default="false"/>
+
+    <node pkg="command_drive_control" type="command_drive_control.py" name="command_drive_control_node" respawn="true" respawn_delay="5" output="screen">
         <param name="inverse" value="$(arg inverse)"/>
     </node>
 </launch>
