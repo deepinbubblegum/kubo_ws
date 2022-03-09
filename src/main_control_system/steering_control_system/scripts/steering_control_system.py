@@ -15,6 +15,7 @@ class steering_control_system:
         self.set_steering_position = 0.0
         self.steering_position = 0.0
         self.virtual_steering = 0.0
+        self.steering_position_limit = 0.32288591162
 
         # Get ros params
         self.get_ros_params()
@@ -61,6 +62,13 @@ class steering_control_system:
         msg.header.stamp = rospy.Time.now()
         msg.header.frame_id = self.frame_id
         self.virtual_steering = self._encoder_wheel_steering(self.steering_position)
+        
+        # limit steering pisition
+        if self.set_steering_position < (self.steering_position_limit * -1):
+            self.set_steering_position = (self.steering_position_limit * -1)
+        elif self.set_steering_position > self.steering_position_limit:
+            self.set_steering_position = self.steering_position_limit
+
         dist_posistion = self.set_steering_position - self.virtual_steering
         if dist_posistion > self.offset:
             msg.steer.SteerCMD = -1
