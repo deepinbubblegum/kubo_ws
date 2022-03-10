@@ -46,7 +46,7 @@ class TwistToAckermann:
         self.frame_id = rospy.get_param(self.node_name + '/frame_id', 'odom')
         self.cmd_angle_instead_rotvel = rospy.get_param('/move_base/TebLocalPlannerROS/cmd_angle_instead_rotvel', False)
     
-    def run():
+    def run(self):
         rospy.spin()
 
 if __name__ == '__main__':
