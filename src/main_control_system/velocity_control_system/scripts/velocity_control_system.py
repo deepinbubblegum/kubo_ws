@@ -47,6 +47,7 @@ class velocity_control_system:
 
     def get_ros_params(self):
         self.frequency = rospy.get_param(self.node_name + '/frequency', 30.0)
+        self.torque_limit = rospy.get_param(self.node_name + '/torque_limit', 1000.0)
         self.Kp = rospy.get_param(self.node_name + '/Kp', 1.0) # P = Kp * e(t) ใช้สำหรับยกกราฟขึ้นแบบรวดเร็ว (ถ้าใส่เยอะไปจะ overshoot)
         self.Ki = rospy.get_param(self.node_name + '/Ki', 1.0) # I = Ki * ∫(0->t) (e)dt การรวม error ใช้เพื่อปรับเข้าจุด setpoint
         self.Kd = rospy.get_param(self.node_name + '/Kd', 1.0) # D = Kd * de(t) / dt ใช้ลดอัดตราเร็งของ feedback เมื่อเข้าใกล้จุด setpoint (ลด overshoot)
@@ -58,10 +59,10 @@ class velocity_control_system:
         derivative = ((error - self.previous_error) / dt ) if dt != 0 else 0
         output = self.Kp * proportional + self.Ki * self.integral + self.Kd * derivative
         self.previous_error = error
-        if output > 1000:
-            output = 1000
-        if output < -1000:
-            output = -1000
+        if output > self.torque_limit:
+            output = self.torque_limit
+        if output < (self.torque_limit * -1):
+            output = (self.torque_limit * -1)
         return output
 
     def output_filter(self, sp_speed, output):
@@ -95,9 +96,9 @@ class velocity_control_system:
             dt = (self.current_time - self.last_time).to_sec()
             output = self.PID_Controller(self.sp_speed, dt)
             torque, brake = self.output_filter(self.sp_speed, output)
-            
+
             velocity_msg.velocity.torque = torque
-            velocity_msg.velocity.brake = brake
+            velocity_msg.velocity.brake = (brake / self.torque_limit) * 100
 
         self.last_time = self.current_time
         self.pub_velocity_control.publish(velocity_msg) # publish topic
