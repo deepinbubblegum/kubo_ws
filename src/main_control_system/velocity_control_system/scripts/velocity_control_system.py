@@ -59,7 +59,7 @@ class velocity_control_system:
         derivative = ((error - self.previous_error) / dt ) if dt != 0 else 0
         output = self.Kp * proportional + self.Ki * self.integral + self.Kd * derivative
         self.previous_error = error
-        if output > self.torque_limit:
+        if output > self.torque_limit: #limit torque pid
             output = self.torque_limit
         if output < (self.torque_limit * -1):
             output = (self.torque_limit * -1)
