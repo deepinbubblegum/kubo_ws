@@ -69,7 +69,7 @@ add_message_files(
   DriveVCU.msg
   DriveVCUStamped.msg
   SensorEncoderDistan.msg
-  SensorEncoderDistanStemped.msg
+  SensorEncoderDistanStamped.msg
   VelocityCMD.msg
   VelocityCMDStamped.msg
   LEDState.msg
