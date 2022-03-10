@@ -1,0 +1,4 @@
+plc_ip: 10.1.100.140
+plc_port: 2000
+buffer_size: 1024
+frequency: 50

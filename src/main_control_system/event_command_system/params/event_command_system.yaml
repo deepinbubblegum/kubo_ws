@@ -1,0 +1,13 @@
+event_cmd_pub: event_cmd
+PowerOn_topic: power_on
+PowerOff_topic: power_off
+BatteryCharging_topic: battery_charging
+ParkingOn_topic: parking_on
+ParkingOff_topic: parking_off
+UpPallet_topic: up_pallet
+DownPallet_topic: down_pallet
+PalletForward_topic: pallet_forward
+PalletBackward_topic: pallet_backward
+PalletCloseDoor_topic: pallet_close_door
+PalletOpenDoor_topic: pallet_open_door
+Brake_topic: brake_topic

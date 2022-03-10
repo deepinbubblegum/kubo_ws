@@ -9,3 +9,5 @@ git submodule init
 git submodule update
 
 catkin build
+
+. src/cartographer/scripts/install_abseil.sh

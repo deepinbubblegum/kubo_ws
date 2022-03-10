@@ -1,23 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="pub_status_topic" default="drive_status"/>
-    <arg name="bustype" default="robotell"/>
-    <arg name="channel" default="/dev/ttyUSB0"/>
-    <arg name="ttyBaudrate" default="115200"/>
-    <arg name="frequency" default="50"/>
-    <arg name="MCU1_Topic" default="True"/>
-    <arg name="MCU2_Topic" default="True"/>
-    <arg name="MCU3_Topic" default="True"/>
-    <arg name="MCU4_Topic" default="True"/>
+    <arg name="param_name" default="drive_control.yaml"/>
     <node pkg="drive_control" type="drive_control.py" name="drive_control_node" respawn="true" respawn_delay="5" output="screen">
-        <param name="pub_status_topic" value="$(arg pub_status_topic)"/>
-        <param name="bustype" value="$(arg bustype)"/>
-        <param name="channel" value="$(arg channel)"/>
-        <param name="ttyBaudrate" value="$(arg ttyBaudrate)"/>
-        <param name="frequency" value="$(arg frequency)"/>
-        <param name="MCU1_Topic" value="$(arg MCU1_Topic)"/>
-        <param name="MCU2_Topic" value="$(arg MCU2_Topic)"/>
-        <param name="MCU3_Topic" value="$(arg MCU3_Topic)"/>
-        <param name="MCU4_Topic" value="$(arg MCU4_Topic)"/>
+        <rosparam file="$(find drive_control)/params/$(arg param_name)" command="load" />
     </node>
 </launch>

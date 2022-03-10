@@ -1,20 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="base_frame_id" default="base_link"/>
-    <arg name="odom_frame_id" default="odom"/>
-    <arg name="tf" default="false"/>
-    <arg name="wheelbase" default="4.19"/>
-    <arg name="ticks_min" default="-2147483648"/>
-    <arg name="ticks_max" default="2147483648"/>
-    <arg name="ticks_meter" default="5542"/>
-
+    <arg name="param_name" default="odometry_steering.yaml"/>
     <node pkg="odometry_steering" type="odometry_steering.py" name="odometry_steering_node" respawn="true" respawn_delay="5" output="screen">
-        <param name="base_frame_id" value="$(arg base_frame_id)"/>
-        <param name="odom_frame_id" value="$(arg odom_frame_id)"/>
-        <param name="tf" value="$(arg tf)"/>
-        <param name="wheelbase" value="$(arg wheelbase)"/>
-        <param name="ticks_min" value="$(arg ticks_min)"/>
-        <param name="ticks_max" value="$(arg ticks_max)"/>
-        <param name="ticks_meter" value="$(arg ticks_meter)"/>
+        <rosparam file="$(find odometry_steering)/params/$(arg param_name)" command="load" />
     </node>
 </launch>

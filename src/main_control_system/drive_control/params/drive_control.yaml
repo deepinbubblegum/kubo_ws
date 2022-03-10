@@ -1,0 +1,9 @@
+pub_status_topic: drive_status
+bustype: robotell
+channel: /dev/ttyUSB0
+ttyBaudrate: 115200
+frequency: 50
+MCU1_Topic: True
+MCU2_Topic: True
+MCU3_Topic: True
+MCU4_Topic: True

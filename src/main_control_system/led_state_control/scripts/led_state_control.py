@@ -3,11 +3,13 @@ import rospy
 from sensor_custom_msgs.msg import LEDState
 
 class led_state_control:
-    def __init__(self, name, age):
+    def __init__(self):
         # Init node
         rospy.init_node('led_state_control_node', anonymous=False)
 
-        # Get ros params
+        self.node_name = rospy.get_name()
+
+        # Get ros params                  
         self.get_ros_params()
 
         # init variable
@@ -60,11 +62,19 @@ class led_state_control:
             led_msg.StackLED3 = 0
             led_msg.StackLED4 = 0
             led_msg.StackLED5 = self.data
-            
+
+        if self.i < 7:
+            self.i += 1
+        else:
+            self.i = 0
+            self.j += 1
+        
+        if self.j > 2:
+            self.j = 0
         self.pub_led_state.publish(led_msg)
 
     def get_ros_params(self):
-        self.frequency = rospy.get_param(self.node_name + '/frequency', 5)
+        self.frequency = rospy.get_param(self.node_name + '/frequency', 2)
 
     def init_variable(self):
         self.data = 0x00
@@ -81,5 +91,5 @@ if __name__ == '__main__':
     led_state = led_state_control()
     try:
       led_state.run()
-    except:
+    except rospy.ROSInterruptException:
       rospy.loginfo('terminate led state node')
