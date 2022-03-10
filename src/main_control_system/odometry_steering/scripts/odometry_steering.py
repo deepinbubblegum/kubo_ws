@@ -10,7 +10,7 @@ from math import sin, cos, tan, pi
 class Odometry_ackermann:
     def __init__(self):
         # Init node
-        rospy.init_node('drive_control_node', anonymous=False)
+        rospy.init_node('odometry_steering_node', anonymous=False)
 
         # Get node name
         self.node_name = rospy.get_name()
@@ -28,8 +28,8 @@ class Odometry_ackermann:
         self.odom_frame_id = rospy.get_param(self.node_name + '/odom_frame_id', 'odom')
         self.tf = rospy.get_param(self.node_name + '/tf', 'True')
         self.wheelbase = rospy.get_param(self.node_name + '/wheelbase', 4.19)
-        self.ticks_min = rospy.get_param(self.node_name + '/ticks_min', -2147483648)
-        self.ticks_max = rospy.get_param(self.node_name + '/ticks_max', 2147483648)
+        self.ticks_min = rospy.get_param(self.node_name + '/ticks_min', -2147483648.0)
+        self.ticks_max = rospy.get_param(self.node_name + '/ticks_max', 2147483648.0)
         self.ticks_meter = rospy.get_param(self.node_name + '/ticks_meter', 5542)
 
     def set_variable(self):

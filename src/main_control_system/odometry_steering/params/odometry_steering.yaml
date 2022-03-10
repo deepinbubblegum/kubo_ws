@@ -1,0 +1,7 @@
+base_frame_id: base_link
+odom_frame_id: odom
+tf: false
+wheelbase: 4.19
+ticks_min: -2147483648.0
+ticks_max: 2147483648.0
+ticks_meter: 5542
