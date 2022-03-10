@@ -21,7 +21,7 @@ class event_command_system:
         self.PowerOn = False
         self.PowerOff = False
         self.BatteryCharging = False
-        self.ParkingOn = False
+        self.ParkingOn = True
         self.ParkingOff = False
         self.UpPallet = False
         self.DownPallet = False
@@ -178,17 +178,22 @@ class event_command_system:
     # end callback funtion
     def mode_event(self):
         mode = 0x00
-        if self.PowerOn == False and self.BatteryCharging == False:
+        if self.PowerOff:
+            self.PowerOn = False
+            self.BatteryCharging = False
             mode = 0x00 # (power off)
-        elif self.PowerOn == True and self.BatteryCharging == False:
-            mode = 0x01 # (power on)
-        else:
-            self.PowerOn = False 
+        elif self.PowerOn:
+            self.PowerOff = False
+            self.BatteryCharging = False
+            mode = 0x01  # (power on)
+        elif self.BatteryCharging:
+            self.PowerOff = False
+            self.PowerOn = False
             mode = 0x02 # (BatteryCharging)
         return mode
 
     def parking_event(self):
-        parking = 0x00
+        parking = 0x01
         if self.ParkingOn == True and self.ParkingOff == False:
             parking = 0x00 # (ParkBrakeOn)
         else:
