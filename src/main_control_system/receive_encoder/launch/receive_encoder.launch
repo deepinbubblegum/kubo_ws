@@ -1,12 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="recv_topic" default="recv_enc_topic"/>
-    <arg name="frame_id" default="recv_encoder"/>
-    <arg name="frequency" default="100"/>
-    
+    <arg name="param_name" default="receive_encoder.yaml"/>
     <node pkg="receive_encoder" type="receive_encoder.py" name="receive_encoder_node" respawn="true" respawn_delay="5" output="screen">
-        <param name="recv_topic" value="$(arg recv_topic)"/>
-        <param name="frame_id" value="$(arg frame_id)"/>
-        <param name="frequency" value="$(arg frequency)"/>
+        <rosparam file="$(find receive_encoder)/params/$(arg param_name)" command="load" />
     </node>
 </launch>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="file_name" default="odometry_steering.yaml"/>
+    <arg name="param_name" default="odometry_steering.yaml"/>
     <node pkg="odometry_steering" type="odometry_steering.py" name="odometry_steering_node" respawn="true" respawn_delay="5" output="screen">
-        <rosparam file="$(find odometry_steering)/params/$(arg file_name)" command="load" />
+        <rosparam file="$(find odometry_steering)/params/$(arg param_name)" command="load" />
     </node>
 </launch>

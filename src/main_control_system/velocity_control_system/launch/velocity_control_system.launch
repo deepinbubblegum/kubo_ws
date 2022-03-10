@@ -1,13 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="Kp" default="1.0"/>
-    <arg name="Ki" default="1.0"/>
-    <arg name="Kd" default="1.0"/>
-    <arg name="frequency" default="30.0"/>
+    <arg name="param_name" default="velocity_control_system.yaml"/>
     <node pkg="velocity_control_system" type="velocity_control_system.py" name="velocity_control_system_node" respawn="true" respawn_delay="5" output="screen">
-        <param name="Kp" value="$(arg Kp)"/>
-        <param name="Ki" value="$(arg Ki)"/>
-        <param name="Kd" value="$(arg Kd)"/>
-        <param name="frequency" value="$(arg frequency)"/>
+        <rosparam file="$(find velocity_control_system)/params/$(arg param_name)" command="load" />
     </node>
 </launch>
