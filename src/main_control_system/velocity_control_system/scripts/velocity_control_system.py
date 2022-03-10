@@ -66,7 +66,7 @@ class velocity_control_system:
         return output
 
     def output_filter(self, sp_speed, output):
-        if sp_speed >= 0:
+        if sp_speed > 0:
             if output >= 0:
                 throttle = output
                 brake = 0
@@ -80,6 +80,9 @@ class velocity_control_system:
             elif output < 0:
                 throttle = output 
                 brake = 0
+        else:
+            throttle = 0
+            brake = abs(output)
         return throttle, brake
 
     def update(self):
