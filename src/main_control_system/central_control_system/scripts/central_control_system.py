@@ -109,7 +109,7 @@ class central_control_system:
         msg.PLC.UpDown = self.UpDown
         msg.PLC.Pallet = self.Pallet
         msg.PLC.WheelAngleLR = self.steer_control
-        msg.PLC.PercentBrake = 0
+        msg.PLC.PercentBrake = self.brake
         msg.PLC.StackLED0 = self.StackLED0
         msg.PLC.StackLED1 = self.StackLED1
         msg.PLC.StackLED2 = self.StackLED2

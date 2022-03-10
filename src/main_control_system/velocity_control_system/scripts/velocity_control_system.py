@@ -57,9 +57,29 @@ class velocity_control_system:
         self.integral = self.integral + error * dt
         derivative = ((error - self.previous_error) / dt ) if dt != 0 else 0
         output = self.Kp * proportional + self.Ki * self.integral + self.Kd * derivative
-        brake = self.Ki * self.integral
         self.previous_error = error
-        return output, brake
+        if output > 1000:
+            output = 1000
+        if output < -1000:
+            output = -1000
+        return output
+
+    def output_filter(self, sp_speed, output):
+        if sp_speed >= 0:
+            if output >= 0:
+                throttle = output
+                brake = 0
+            elif output < 0:
+                throttle = 0
+                brake = abs(output)
+        elif sp_speed < 0:
+            if output >= 0:
+                throttle = 0
+                brake = output
+            elif output < 0:
+                throttle = output 
+                brake = 0
+        return throttle, brake
 
     def update(self):
         velocity_msg = VelocityCMDStamped()
@@ -73,10 +93,13 @@ class velocity_control_system:
             if self.drive_ready_state is False: # mcu 1 topic is not ready
                 self.sp_speed = 0.0
             dt = (self.current_time - self.last_time).to_sec()
-            torque, brake = self.PID_Controller(self.sp_speed, dt)
+            output = self.PID_Controller(self.sp_speed, dt)
+            torque, brake = self.output_filter(self.sp_speed, output)
+            
             velocity_msg.velocity.torque = torque
             velocity_msg.velocity.brake = brake
-            self.last_time = self.current_time
+
+        self.last_time = self.current_time
         self.pub_velocity_control.publish(velocity_msg) # publish topic
         setpoint_time_distanc = (self.current_setpoint_time - self.last_setpoint_time).to_sec()
         if setpoint_time_distanc >= 2.5:
