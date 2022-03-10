@@ -55,13 +55,16 @@ class velocity_control_system:
         error = setpoint - self.pv_speed
         proportional = error
         self.integral = self.integral + error * dt
-        derivative = (error - self.previous_error) / dt
+        derivative = ((error - self.previous_error) / dt ) if dt != 0 else 0
         output = self.Kp * proportional + self.Ki * self.integral + self.Kd * derivative
         brake = self.Ki * self.integral
         self.previous_error = error
         return output, brake
 
     def update(self):
+        velocity_msg = VelocityCMDStamped()
+        velocity_msg.header.frame_id = 'velocity_control'
+        velocity_msg.header.stamp = rospy.Time.now()
         self.current_time = rospy.Time.now()
         if self.frist_loop:
             self.last_time = self.current_time
@@ -71,9 +74,6 @@ class velocity_control_system:
                 self.sp_speed = 0.0
             dt = (self.current_time - self.last_time).to_sec()
             torque, brake = self.PID_Controller(self.sp_speed, dt)
-            velocity_msg = VelocityCMDStamped()
-            velocity_msg.header.stamp = rospy.Time.now()
-            velocity_msg.header.frame_id = 'velocity_control'
             velocity_msg.velocity.torque = torque
             velocity_msg.velocity.brake = brake
             self.last_time = self.current_time
