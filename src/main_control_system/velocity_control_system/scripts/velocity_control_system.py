@@ -101,7 +101,10 @@ class velocity_control_system:
             torque, brake = self.output_filter(self.sp_speed, output)
 
             velocity_msg.velocity.torque = torque
-            velocity_msg.velocity.brake = (brake / self.torque_limit) * 100
+            percent_brake = (brake / self.torque_limit) * 100
+            if percent_brake > 100:
+                percent_brake = 100
+            velocity_msg.velocity.brake = percent_brake
 
         self.last_time = self.current_time
         self.pub_velocity_control.publish(velocity_msg) # publish topic
