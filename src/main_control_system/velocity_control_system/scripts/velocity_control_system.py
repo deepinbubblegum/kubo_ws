@@ -102,8 +102,8 @@ class velocity_control_system:
 
             velocity_msg.velocity.torque = torque
             percent_brake = (brake / self.torque_limit) * 100
-            if percent_brake > 100:
-                percent_brake = 100
+            if percent_brake > 100.0:
+                percent_brake = 100.0
             velocity_msg.velocity.brake = percent_brake
 
         self.last_time = self.current_time

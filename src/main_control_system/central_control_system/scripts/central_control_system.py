@@ -60,6 +60,7 @@ class central_control_system:
         self.Pallet = 0x00 # 0x00(Stop), 0x01(PalletForward), 
                             # 0x02(PalletBackward), 0x03(CloseDoor), 
                             # 0x04(OpenDoor)
+        self.brake = 0x00
 
         self.StackLED0 = 0x00
         self.StackLED1 = 0x00
@@ -109,7 +110,7 @@ class central_control_system:
         msg.PLC.UpDown = self.UpDown
         msg.PLC.Pallet = self.Pallet
         msg.PLC.WheelAngleLR = self.steer_control
-        msg.PLC.PercentBrake = self.brake
+        msg.PLC.PercentBrake = int(self.brake)
         msg.PLC.StackLED0 = self.StackLED0
         msg.PLC.StackLED1 = self.StackLED1
         msg.PLC.StackLED2 = self.StackLED2
