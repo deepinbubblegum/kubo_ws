@@ -72,22 +72,19 @@ class PLC:
             print("try re-connection...")
             self.connect_network()
 
-    def steering(self, msg_data, time_stamp):
-        if (rospy.Time.now().secs - time_stamp.secs) > 2:
-            if msg_data == -1:
-                self.ctl_custom_package[2] &= 0b11110011
-                self.ctl_custom_package[2] |= 0b00001000
-            elif msg_data == 1:
-                self.ctl_custom_package[2] &= 0b11110011
-                self.ctl_custom_package[2] |= 0b00000100
-            else:
-                self.ctl_custom_package[2] &= 0b11110011
+    def steering(self, msg_data):
+        if msg_data == -1:
+            self.ctl_custom_package[2] &= 0b11111100
+            self.ctl_custom_package[2] |= 0b00000001
+        elif msg_data == 1:
+            self.ctl_custom_package[2] &= 0b11111100
+            self.ctl_custom_package[2] |= 0b00000010
         else:
-            self.ctl_custom_package[2] &= 0b11110011
+            self.ctl_custom_package[2] &= 0b11111100
 
     def callback_control_plc(self, control_msg):
         self.ctl_custom_package[0] = control_msg.PLC.UpDown
-        self.steering(control_msg.PLC.WheelAngleLR, control_msg.header.stamp)
+        self.steering(control_msg.PLC.WheelAngleLR)
         self.ctl_custom_package[4] = control_msg.PLC.StackLED0
         self.ctl_custom_package[6] = control_msg.PLC.StackLED1
         self.ctl_custom_package[8] = control_msg.PLC.StackLED2
