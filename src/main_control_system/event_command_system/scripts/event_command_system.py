@@ -10,6 +10,8 @@ class event_command_system:
 
         # Get node name
         self.node_name = rospy.get_name()
+        
+        self.init_variable()
 
         # Get ros params
         self.get_ros_params()
@@ -128,48 +130,56 @@ class event_command_system:
 
     # callback funtion
     def callback_PowerOn_topic(self, msg):
-        self.PowerOn = msg.data
-        self.update()
+        if msg.data:
+            if self.BatteryCharging == False:
+                self.PowerOn = True
+                self.update()
 
     def callback_PowerOff_topic(self, msg):
-        self.PowerOff = msg.data
-        self.update()
-
+        if msg.data:
+            self.PowerOn = False
+            self.BatteryCharging = False
+            self.update()
+            
     def callback_BatteryCharging_topic(self, msg):
-        self.BatteryCharging = msg.data
-        self.update()
+        if msg.data:
+            if self.PowerOn == False:
+                self.BatteryCharging = True
+                self.update()
 
     def callback_ParkingOn_topic(self, msg):
-        self.ParkingOn = msg.data
-        self.update()
+        if msg.data:
+            self.ParkingOn = True
+            self.update()
 
     def callback_ParkingOff_topic(self, msg):
-        self.ParkingOff  = msg.data
-        self.update()
+        if msg.data:
+            self.ParkingOn = False
+            self.update()
 
     def callback_UpPallet_topic(self, msg):
-        self.UpPallet = msg.data
-        self.update()
+            self.UpPallet = msg.data
+            self.update()
 
     def callback_DownPallet_topic(self, msg):
-        self.DownPallet = msg.data
-        self.update()
+            self.DownPallet = msg.data
+            self.update()
 
     def callback_PalletForward_topic(self, msg):
-        self.PalletForward = msg.data
-        self.update()
+            self.PalletForward = msg.data
+            self.update()
 
     def callback_PalletBackward_topic(self, msg):
-        self.PalletBackward = msg.data
-        self.update()
+            self.PalletBackward = msg.data
+            self.update()
 
     def callback_PalletCloseDoor_topic(self, msg):
-        self.PalletCloseDoor = msg.data
-        self.update()
+            self.PalletCloseDoor = msg.data
+            self.update()
 
     def callback_PalletOpenDoor_topic(self, msg):
-        self.PalletOpenDoor = msg.data
-        self.update()
+            self.PalletOpenDoor = msg.data
+            self.update()
 
     def callback_brake_topic(self, msg):
         self.Brake = msg.data
@@ -178,23 +188,17 @@ class event_command_system:
     # end callback funtion
     def mode_event(self):
         mode = 0x00
-        if self.PowerOff:
-            self.PowerOn = False
-            self.BatteryCharging = False
-            mode = 0x00 # (power off)
-        elif self.PowerOn:
-            self.PowerOff = False
-            self.BatteryCharging = False
-            mode = 0x01  # (power on)
+        if self.PowerOn:
+            mode = 0x01 # (power on)
         elif self.BatteryCharging:
-            self.PowerOff = False
-            self.PowerOn = False
-            mode = 0x02 # (BatteryCharging)
+            mode = 0x02  # (BatteryCharging)
+        else:
+            mode = 0x00 # (power off)
         return mode
 
     def parking_event(self):
         parking = 0x01
-        if self.ParkingOn == True and self.ParkingOff == False:
+        if self.ParkingOn:
             parking = 0x00 # (ParkBrakeOn)
         else:
             parking = 0x01 # (ParkBrakeOff)
