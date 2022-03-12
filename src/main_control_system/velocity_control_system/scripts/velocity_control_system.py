@@ -72,7 +72,11 @@ class velocity_control_system:
                 brake = 0
             elif output < 0:
                 throttle = 0
-                brake = abs(output)
+                throttle = 0
+            if (sp_speed - pv_speed) >= 0:
+                
+                self.auto_brake -= 2
+
         elif sp_speed < 0:
             if output >= 0:
                 throttle = 0
