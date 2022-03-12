@@ -134,6 +134,7 @@ class drive_control:
             RES_ST_Speed,
             self.MCU1_ST_SPEED_SCALE
         )
+        # rospy.loginfo(rx_msg)
         drive.MCU1.DCInputCurrent = self.Status_Scale_Offset(
             self.MCU1_ST_DC_INPUT_Current_OFFSET,
             RES_ST_DC_INPUT_Current,
@@ -232,7 +233,7 @@ class drive_control:
             self.pub_mcu4_topic.publish(drive)
 
     def canbus_receive(self):
-        rx_msg = self.canbus.recv(0.05)
+        rx_msg = self.canbus.recv(0.02)
         if rx_msg is not None:
             MCU_Message_ID = format(rx_msg.arbitration_id, "#X")
             if MCU_Message_ID == format(self.MCU1_ID, "#X") and self.MCU1_Topic:

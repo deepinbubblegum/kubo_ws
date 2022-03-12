@@ -65,47 +65,90 @@ class velocity_control_system:
             output = (self.torque_limit * -1)
         return output
 
-    def output_filter(self, sp_speed, output):
+    def output_filter(self, sp_speed, output, pv_speed):
         if sp_speed > 0:
-            if output >= 0:
+            if output > 0:
                 throttle = output
-                brake = 0
-            elif output < 0:
+                self.auto_brake = 0
+            else:
                 throttle = 0
-                throttle = 0
-            if (sp_speed - pv_speed) >= 0:
-                
-                self.auto_brake -= 2
-
+                self.auto_brake += 1
         elif sp_speed < 0:
-            if output >= 0:
+            if output < 0:
+                throttle = output
+                self.auto_brake = 0
+            else:
                 throttle = 0
-                brake = output
-            elif output < 0:
-                throttle = output 
-                brake = 0
+                self.auto_brake += 1
         else:
             throttle = 0
-            brake = abs(output)
-        return throttle, brake
+            if pv_speed != 0:
+                self.auto_brake += 3
+        if self.auto_brake < 0:
+            self.auto_brake = 0
+        
+        return throttle, self.auto_brake
 
     def update(self):
         velocity_msg = VelocityCMDStamped()
         velocity_msg.header.frame_id = 'velocity_control'
         velocity_msg.header.stamp = rospy.Time.now()
         self.current_time = rospy.Time.now()
+        
+        gear_ready = False
+        
         if self.frist_loop:
             self.last_time = self.current_time
             self.frist_loop = False
         else:
-            if self.drive_ready_state is False: # mcu 1 topic is not ready
+            
+            if self.sp_speed > 0 :
+                if self.last_sp_speed <= 0:
+                    if self.pv_speed == 0:
+                        self.stop_sleep += 1
+                    else:
+                        self.stop_sleep = 0
+                    if self.stop_sleep >= 20:
+                        gear_ready = True
+                    else:
+                        gear_ready = False
+                else:
+                    gear_ready = True
+            
+            if self.sp_speed < 0 :
+                if self.last_sp_speed >= 0:
+                    if self.pv_speed == 0:
+                        self.stop_sleep += 1
+                    else:
+                        self.stop_sleep = 0
+                    if self.stop_sleep >= 20:
+                        gear_ready = True
+                    else:
+                        gear_ready = False
+                else:
+                    gear_ready = True  
+            
+            if self.sp_speed == 0 :
+                gear_ready = True
+                self.previous_error = 0.0
+                self.integral = 0.0
+                   
+            if gear_ready == True:
+                self.last_sp_speed = self.sp_speed
+                
+                
+            if self.drive_ready_state is False or gear_ready is False: # mcu 1 topic is not ready
                 self.sp_speed = 0.0
+                self.previous_error = 0.0
+                self.integral = 0.0
             dt = (self.current_time - self.last_time).to_sec()
             output = self.PID_Controller(self.sp_speed, dt)
-            torque, brake = self.output_filter(self.sp_speed, output)
+            torque, brake = self.output_filter(self.sp_speed, output, self.pv_speed)
 
             velocity_msg.velocity.torque = torque
-            percent_brake = (brake / self.torque_limit) * 100
+            percent_brake = (brake/ self.torque_limit) * 100
+            if percent_brake > 0:
+                percent_brake + 30
             if percent_brake > 100.0:
                 percent_brake = 100.0
             velocity_msg.velocity.brake = percent_brake
@@ -131,6 +174,12 @@ class velocity_control_system:
     def initial_variable(self):
         self.sp_speed = 0.0
         self.pv_speed = 0.0
+
+        self.auto_brake = 0
+        self.flag_forward = 0
+        self.flag_reward = 0
+        
+        self.stop_sleep = self.last_sp_speed = self.sp_speed = 0
 
         # drive mcu status
         self.drive_ready_state = False
