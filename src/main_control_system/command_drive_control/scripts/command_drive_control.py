@@ -72,7 +72,7 @@ class command_drive_control:
                 self.send_topic()
                 self.second_torque = True
             else:
-                self.set_torque = abs(self.torque)
+                self.set_torque = int(abs(self.torque))
                 self.dc_limit_current = 100 #A
                 self.drive_working = self.drive_working_mode(self.torque)
                 self.send_topic()

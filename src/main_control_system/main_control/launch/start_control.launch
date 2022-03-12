@@ -25,7 +25,7 @@
     <include file="$(find receive_encoder)/launch/receive_encoder.launch"/>
 
     <!-- smooth_vel -->
-    <include file="$(find smooth_vel)/launch/smooth_vel.launch"/>
+    <include file="$(find smooth_vel)/launch/s_curve_accel.launch"/>
 
     <!-- steering_control_system -->
     <include file="$(find steering_control_system)/launch/steering_control_system.launch"/>

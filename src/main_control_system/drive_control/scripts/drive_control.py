@@ -232,8 +232,8 @@ class drive_control:
             self.pub_mcu4_topic.publish(drive)
 
     def canbus_receive(self):
-        rx_msg = self.canbus.recv(0.02)
-        if rx_msg is None:
+        rx_msg = self.canbus.recv(0.05)
+        if rx_msg is not None:
             MCU_Message_ID = format(rx_msg.arbitration_id, "#X")
             if MCU_Message_ID == format(self.MCU1_ID, "#X") and self.MCU1_Topic:
                 self.MCU1_Process_Status(rx_msg)
@@ -286,7 +286,7 @@ class drive_control:
             ],
             is_extended_id=True
         )
-        self.bus.send(tx_msg)
+        self.canbus.send(tx_msg)
 
     def update(self):
         self.canbus_receive()
