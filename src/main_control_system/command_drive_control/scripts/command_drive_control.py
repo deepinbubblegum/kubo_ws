@@ -65,18 +65,18 @@ class command_drive_control:
             self.send_topic()
             self.second_torque = False
         else:
-            if self.second_torque is False:
-                self.set_torque = 0
-                self.dc_limit_current = 100 #A
-                self.drive_working = 0x92
-                self.send_topic()
-                self.second_torque = True
-            else:
-                self.set_torque = int(abs(self.torque))
-                self.dc_limit_current = 100 #A
-                self.drive_working = self.drive_working_mode(self.torque)
-                self.send_topic()
-                self.second_torque = False
+            # if self.second_torque is False:
+            #     self.set_torque = 0
+            #     self.dc_limit_current = 100 #A
+            #     self.drive_working = 0x92
+            #     self.send_topic()
+            #     self.second_torque = True
+            # else:
+            self.set_torque = int(abs(self.torque))
+            self.dc_limit_current = 100 #A
+            self.drive_working = self.drive_working_mode(self.torque)
+            self.send_topic()
+                # self.second_torque = False
 
     def initial_variable(self):
         # second torque 0 set

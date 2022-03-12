@@ -39,4 +39,7 @@
     <!-- velocity_control_system -->
     <include file="$(find velocity_control_system)/launch/velocity_control_system.launch"/>
 
+    <!-- cmd_mux_remote -->
+    <include file="$(find cmd_mux_remote)/launch/cmd_mux_remote.launch"/>
+
 </launch>
