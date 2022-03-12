@@ -2,7 +2,7 @@ pub_status_topic: drive_status
 bustype: robotell
 channel: /dev/ttyUSB0
 ttyBaudrate: 115200
-frequency: 20
+frequency: 10
 MCU1_Topic: True
 MCU2_Topic: True
 MCU3_Topic: True
