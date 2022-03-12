@@ -20,7 +20,7 @@ lidar:
       msop_port: 9966              #Msop port of lidar
       difop_port: 8877             #Difop port of lidar
       start_angle: 273               #Start angle of point cloud
-      end_angle: 177.5            	#End angle of point cloud 
+      end_angle: 173.5            	#End angle of point cloud 177.5
       min_distance: 0.2            #Minimum distance of point cloud
       max_distance: 150.0            #Maximum distance of point cloud
       use_lidar_clock: false       #True--Use the lidar clock as the message timestamp
@@ -52,7 +52,7 @@ lidar:
       msop_port: 6699              #Msop port of lidar
       difop_port: 7788             #Difop port of lidar
       start_angle: 273 #271               #Start angle of point cloud
-      end_angle: 177.5 #178.5              #End angle of point cloud 
+      end_angle: 173.5 #178.5              #End angle of point cloud 
       min_distance: 0.2            #Minimum distance of point cloud
       max_distance: 150            #Maximum distance of point cloud
       use_lidar_clock: false       #True--Use the lidar clock as the message timestamp
