@@ -72,18 +72,18 @@ class velocity_control_system:
                 self.auto_brake = 0
             else:
                 throttle = 0
-                self.auto_brake += 1
+                self.auto_brake += 4
         elif sp_speed < 0:
             if output < 0:
                 throttle = output
                 self.auto_brake = 0
             else:
                 throttle = 0
-                self.auto_brake += 1
+                self.auto_brake += 4
         else:
             throttle = 0
             if pv_speed != 0:
-                self.auto_brake += 3
+                self.auto_brake += 10
         if self.auto_brake < 0:
             self.auto_brake = 0
         
@@ -108,7 +108,7 @@ class velocity_control_system:
                         self.stop_sleep += 1
                     else:
                         self.stop_sleep = 0
-                    if self.stop_sleep >= 20:
+                    if self.stop_sleep >= 5:
                         gear_ready = True
                     else:
                         gear_ready = False
@@ -121,7 +121,7 @@ class velocity_control_system:
                         self.stop_sleep += 1
                     else:
                         self.stop_sleep = 0
-                    if self.stop_sleep >= 20:
+                    if self.stop_sleep >= 5:
                         gear_ready = True
                     else:
                         gear_ready = False

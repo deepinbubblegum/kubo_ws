@@ -1,4 +1,4 @@
-Kp: 500.0
+Kp: 300.0
 Ki: 100.0
 Kd: 0.0
-frequency: 100.0
+frequency: 25.0

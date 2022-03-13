@@ -29,7 +29,7 @@
     <remap from="echoes" to="horizontal_laser_2d" />
     <remap from="fix" to="ublox_gps/fix"/>
     <remap from="odom" to="odometry/filtered"/>
-    <remap from="imu" to="imu/data"/>
+    <remap from="imu" to="bno055/imu"/>
   </node>
 
   <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
