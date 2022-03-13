@@ -15,7 +15,9 @@
         <rosparam command="load" file="$(find kubo_launchers)/params/base_local_planner_params.yaml" />
 
         <param name="base_global_planner" value="global_planner/GlobalPlanner" />
-        <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS"/>        
+        <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS">
+            <remap from="cmd_vel" to="nav_vel"/>
+        </param>      
     </node>
 
 </launch>

@@ -25,7 +25,7 @@ class ackermann_static_tf2:
         imu_link_to_base_link = TransformStamped()
         imu_link_to_base_link.header.stamp = rospy.Time.now()
         imu_link_to_base_link.header.frame_id = "base_link"
-        imu_link_to_base_link.child_frame_id = "bno055"
+        imu_link_to_base_link.child_frame_id = "imu_link"
         imu_link_to_base_link.transform.translation.x = 4.10
         imu_link_to_base_link.transform.translation.y = 0.14
         imu_link_to_base_link.transform.translation.z = 0.585
