@@ -16,6 +16,6 @@
     <include file="$(find rslidar_sdk)/launch/start.launch"/>
 
     <!-- concat_convert_pc_laserscan -->
-    <!-- <include file="$(find concat_convert_pc_laserscan)/launch/concat_convert_pc_laserscan.launch"/> -->
+    <include file="$(find concat_convert_pc_laserscan)/launch/concat_convert_pc_laserscan.launch"/>
 
 </launch>

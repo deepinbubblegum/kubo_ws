@@ -187,7 +187,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "listener");
     ros::NodeHandle n;
     ros::Rate loop_rate(100);
-    scan_pub_ = n.advertise<sensor_msgs::LaserScan>("concatenated_scan", 1);
+    scan_pub_ = n.advertise<sensor_msgs::LaserScan>("scan", 1);
     cloud_pub_ = n.advertise<sensor_msgs::PointCloud2>("concatenated_cloud", 1);
 
     ros::Subscriber sub_front_rslidar_points;
