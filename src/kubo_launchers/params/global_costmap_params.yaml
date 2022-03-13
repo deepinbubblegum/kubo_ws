@@ -5,7 +5,7 @@ global_costmap:
    publish_frequency: 0.5
    always_send_full_costmap: true
    track_unknown_space: false
-   footprint: [[-0.30,-0.275], [0.30,-0.275], [0.30,0.275], [-0.30,0.275]]
+   footprint: [[-1.204, -1.818], [-1.204,1.818], [5.397,1.818], [5.397, -1.818]]
    footprint_padding: 0.0
    transform_tolerance: 0.55
 

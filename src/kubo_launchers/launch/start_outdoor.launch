@@ -22,14 +22,12 @@
     <include file="$(find robot_localization)/launch/dual_ekf_navsat_outdoor.launch"/>
 
     <!-- Map_server -->
-    <include file="$(find kubo_launchers)/navi_launch/map_server.launch"/>
+    <include file="$(find kubo_launcher)/navi_launch/map_server.launch"/>
 
     <!-- amcl -->
     <include file="$(find amcl)/launch/amcl_diff.launch"/>
 
     <!-- Move_Base -->
-    <include file="$(find kubo_launchers)/navi_launch/move_base.launch"/>
+    <include file="$(find kubo_launcher)/navi_launch/move_base.launch"/>
 
-    <!-- smooth cmd vel -->
-    <include file="$(find smooth_vel)/launch/s_curve_accel.launch"/>
 </launch>
