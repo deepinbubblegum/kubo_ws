@@ -40,11 +40,14 @@ sensor_msgs::LaserScanPtr pointcloud_to_laserscan(sensor_msgs::PointCloud2 *merg
     // -179 degrees
     output->angle_max = 3.12414;
     // +179 degrees
-    output->angle_increment = 0.0174532923847;
+    output->angle_increment = 0.0087;
+    
     output->time_increment = 0.000185185184819;
     output->scan_time = 0.0666666701436;
-    output->range_min = 1.0;
-    output->range_max = 200.0;
+    output->range_min = 0.1;
+    output->range_max = 150.0;
+    float min_height_ = 0.1;
+    float max_height_ = 2.0;
     float inf = std::numeric_limits<float>::infinity();
     uint32_t ranges_size = std::ceil((output->angle_max - output->angle_min) / output->angle_increment);
     output->ranges.assign(ranges_size, inf);
@@ -67,6 +70,13 @@ sensor_msgs::LaserScanPtr pointcloud_to_laserscan(sensor_msgs::PointCloud2 *merg
         if (range_sq < range_min_sq_)
         {
             ROS_DEBUG("rejected for range %f below minimum value %f. Point: (%f, %f, %f)", range_sq, range_min_sq_, x, y, z);
+            continue;
+        }
+
+        
+        if (z > max_height_ || z < min_height_)
+        {
+            //ROS_INFO("reject z = %f",z);
             continue;
         }
 
@@ -146,8 +156,9 @@ void concat_with_pc()
             tf2::doTransform(cloud_2, cloud_2_out, cloud_2_transform);
 
             pcl::concatenatePointCloud(cloud_1_out, cloud_2_out, concatenated_cloud);
-            concatenated_cloud.header.frame_id = "base_link";
             concatenated_cloud.fields[3].name = "intensity";
+            concatenated_cloud.header.frame_id = "base_link";
+            
 
             cloud_pub_.publish(concatenated_cloud);
 
