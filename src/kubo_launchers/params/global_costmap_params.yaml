@@ -5,7 +5,9 @@ global_costmap:
    publish_frequency: 0.5
    always_send_full_costmap: true
    track_unknown_space: false
+#    footprint: [[-1.204, -1.918], [-1.204,1.918], [5.397,1.918], [5.397, -1.918]]
    footprint: [[-1.204, -1.818], [-1.204,1.818], [5.397,1.818], [5.397, -1.818]]
+
    footprint_padding: 0.0
    transform_tolerance: 0.55
 
@@ -26,7 +28,7 @@ global_costmap:
    sensor_obstacle:
        #Observation_sources <--> define a list of sensors going to pass infomation to costmap
        observation_sources: scan
-       scan: {sensor_frame: laser , data_type: LaserScan, topic: scan, marking: True, clearing: True}
+       scan: {sensor_frame: laser , data_type: LaserScan, topic: scan, marking: True, clearing: True, inf_is_valid: True}
 
    inflation:
       cost_scaling_factor: 10.0  

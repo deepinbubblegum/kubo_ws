@@ -12,9 +12,12 @@ local_costmap:
   origin_x: -9.0
   origin_y: -9.0
 
-  obstacle_range : 3.5
-  raytrace_range : 5.0
-  footprint: [[-0.30,-0.275], [0.30,-0.275], [0.30,0.275], [-0.30,0.275]]
+  obstacle_range : 10.0 #3.5
+  raytrace_range : 15.0 #5.0
+  # footprint: [[-1.204, -1.918], [-1.204,1.918], [5.397,1.918], [5.397, -1.918]]
+  footprint: [[-1.204, -1.818], [-1.204,1.818], [5.397,1.818], [5.397, -1.818]]
+
+
   footprint_padding: 0.0
   transform_tolerance: 0.55
 
@@ -24,7 +27,7 @@ local_costmap:
   
   sensor_obstacle:
       observation_sources: scan
-      scan: {sensor_frame: laser, data_type: LaserScan, topic: scan, marking: True, clearing: True}
+      scan: {sensor_frame: laser, data_type: LaserScan, topic: scan, marking: True, clearing: True, inf_is_valid: True}
   inflation:
       cost_scaling_factor: 10.0  
       inflation_radius: 0.55

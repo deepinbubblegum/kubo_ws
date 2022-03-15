@@ -46,7 +46,7 @@ sensor_msgs::LaserScanPtr pointcloud_to_laserscan(sensor_msgs::PointCloud2 *merg
     output->scan_time = 0.0666666701436;
     output->range_min = 0.1;
     output->range_max = 150.0;
-    float min_height_ = -0.28;
+    float min_height_ = -0.26;
     float max_height_ = 2.0;
     float inf = std::numeric_limits<float>::infinity();
     uint32_t ranges_size = std::ceil((output->angle_max - output->angle_min) / output->angle_increment);

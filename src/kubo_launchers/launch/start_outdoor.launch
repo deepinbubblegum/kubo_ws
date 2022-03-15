@@ -18,14 +18,14 @@
     <!-- concat_convert_pc_laserscan -->
     <include file="$(find concat_convert_pc_laserscan)/launch/concat_convert_pc_laserscan.launch"/>
 
-    <!-- robot_localization -->
-    <include file="$(find robot_localization)/launch/dual_ekf_navsat_outdoor.launch"/>
-
     <!-- Map_server -->
     <include file="$(find kubo_launcher)/navi_launch/map_server.launch"/>
 
     <!-- amcl -->
     <include file="$(find amcl)/launch/amcl_diff.launch"/>
+
+    <!-- robot_localization -->
+    <include file="$(find robot_localization)/launch/dual_ekf_navsat_outdoor.launch"/>
 
     <!-- Move_Base -->
     <include file="$(find kubo_launcher)/navi_launch/move_base.launch"/>
