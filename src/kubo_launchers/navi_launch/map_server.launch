@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="map_file" default="$(find kubo_launchers)/maps/map_name.yaml"/>
+  <arg name="map_file" default="$(find kubo_launcher)/maps/outdoor_mi.yaml"/>
   <node pkg="map_server" type="map_server" name="map_server_node" args="$(arg map_file)" respawn="true" output="screen"/>
 </launch>

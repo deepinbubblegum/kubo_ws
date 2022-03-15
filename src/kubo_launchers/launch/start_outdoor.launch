@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- main_control -->
+    <include file="$(find main_control)/launch/start_control.launch"/>
+
+    <!-- static_tf2_broadcast -->
+    <include file="$(find static_tf2_broadcast)/launch/ackermann_static_broadcast.launch"/>
+
+    <!-- Ublox gps front -->
+    <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_front.launch"/>
+
+    <!-- Ublox gps rear -->
+    <!-- <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_rear.launch"/> -->
+
+    <!-- rslidar -->
+    <include file="$(find rslidar_sdk)/launch/start.launch"/>
+
+    <!-- concat_convert_pc_laserscan -->
+    <include file="$(find concat_convert_pc_laserscan)/launch/concat_convert_pc_laserscan.launch"/>
+
+    <!-- Map_server -->
+    <include file="$(find kubo_launcher)/navi_launch/map_server.launch"/>
+
+    <!-- amcl -->
+    <include file="$(find amcl)/launch/amcl_diff.launch"/>
+
+    <!-- robot_localization -->
+    <include file="$(find robot_localization)/launch/dual_ekf_navsat_outdoor.launch"/>
+
+    <!-- Move_Base -->
+    <include file="$(find kubo_launcher)/navi_launch/move_base.launch"/>
+
+</launch>

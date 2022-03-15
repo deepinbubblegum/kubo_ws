@@ -43,9 +43,11 @@ class cmd_mux_remote:
 
     def twist_cmd_angular(self, twist_cmd):
         self.angular_z = twist_cmd.angular.z
+        self.update()
 
     def twist_cmd_linear(self, twist_cmd):
         self.linear_x = twist_cmd.linear.x
+        self.update()
 
     def update(self):
         twist_msg = Twist()
@@ -54,10 +56,11 @@ class cmd_mux_remote:
         self.pub_twist_cmd.publish(twist_msg)
 
     def run(self):
-        rate = rospy.Rate(self.frequency)
-        while not rospy.is_shutdown():
-            self.update()
-            rate.sleep()
+        rospy.spin()
+        # rate = rospy.Rate(self.frequency)
+        # while not rospy.is_shutdown():
+        #     self.update()
+        #     rate.sleep()
 
 if __name__ == '__main__':
     cmd_remote = cmd_mux_remote()

@@ -106,6 +106,7 @@ class Odometry_ackermann:
             odom.twist.twist.angular.z = self.current_angular_velocity
             self.pub_odom_wheel.publish(odom)
             self.last_time = self.current_time
+            self.prev_ticker = self.ticker
 
     def create_topic_node(self):
         self.sub_steering_enc = rospy.Subscriber(

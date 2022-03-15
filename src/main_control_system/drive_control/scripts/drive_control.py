@@ -134,6 +134,7 @@ class drive_control:
             RES_ST_Speed,
             self.MCU1_ST_SPEED_SCALE
         )
+        # rospy.loginfo(rx_msg)
         drive.MCU1.DCInputCurrent = self.Status_Scale_Offset(
             self.MCU1_ST_DC_INPUT_Current_OFFSET,
             RES_ST_DC_INPUT_Current,
@@ -232,16 +233,22 @@ class drive_control:
             self.pub_mcu4_topic.publish(drive)
 
     def canbus_receive(self):
-        rx_msg = self.canbus.recv(0.02)
-        if rx_msg is None:
+        rx_msg = self.canbus.recv(0.1)
+        if rx_msg is not None:
+            
             MCU_Message_ID = format(rx_msg.arbitration_id, "#X")
+            
             if MCU_Message_ID == format(self.MCU1_ID, "#X") and self.MCU1_Topic:
+                #rospy.loginfo("rx1===============")
                 self.MCU1_Process_Status(rx_msg)
             elif MCU_Message_ID == format(self.MCU2_ID, "#X") and self.MCU2_Topic:
+                #rospy.loginfo("rx2===============")
                 self.MCU2_Process_Status(rx_msg)
             elif MCU_Message_ID == format(self.MCU3_ID, "#X") and self.MCU3_Topic:
+                #rospy.loginfo("rx3===============")
                 self.MCU3_Process_Status(rx_msg)
             elif MCU_Message_ID == format(self.MCU4_ID, "#X") and self.MCU4_Topic:
+                #rospy.loginfo("rx4===============")
                 self.MCU4_Process_Status(rx_msg)
 
     def _1Word_extract_2Byte(self, Word):
@@ -286,13 +293,14 @@ class drive_control:
             ],
             is_extended_id=True
         )
-        self.bus.send(tx_msg)
+        #rospy.loginfo("tx==============================")
+        self.canbus.send(tx_msg)
 
     def update(self):
         self.canbus_receive()
 
     def run(self):
-        rate = rospy.Rate(self.frequency)
+        rate = rospy.Rate(200)
         while not rospy.is_shutdown():
             self.update()
             rate.sleep()

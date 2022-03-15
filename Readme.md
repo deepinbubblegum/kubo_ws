@@ -11,3 +11,6 @@ git submodule update
 catkin build
 
 . src/cartographer/scripts/install_abseil.sh
+
+
+rosrun map_server map_saver -f mapname

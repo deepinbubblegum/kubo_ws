@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="frequency" default="5"/>
+    <arg name="frequency" default="20"/>
     <node pkg="led_state_control" type="led_state_control.py" name="led_state_control_node" respawn="true" respawn_delay="5" output="screen">
         <param name="frequency" value="$(arg frequency)"/>
     </node>

@@ -61,26 +61,31 @@ class command_drive_control:
     def update(self):
         if self.drive_ready is False: # vcu send ready
             self.set_torque = 0 #N⋅m
+            self.dc_limit_current = 0 #A
             self.drive_working = 0x80 # 1000 0000 = Ready
             self.send_topic()
             self.second_torque = False
+            self.send_ready = False
         else:
-            if self.second_torque is False:
-                self.set_torque = 0
-                self.dc_limit_current = 100 #A
-                self.drive_working = 0x92
-                self.send_topic()
-                self.second_torque = True
-            else:
-                self.set_torque = abs(self.torque)
-                self.dc_limit_current = 100 #A
-                self.drive_working = self.drive_working_mode(self.torque)
-                self.send_topic()
-                self.second_torque = False
+            # if self.second_torque is False:
+            #     self.set_torque = 0
+            #     self.dc_limit_current = 100 #A
+            #     self.drive_working = 0x92
+            #     self.send_topic()
+            #     self.second_torque = True
+            # else:
+            self.set_torque = int(abs(self.torque))
+            self.dc_limit_current = 100 #A
+            self.drive_working = self.drive_working_mode(self.torque)
+            self.send_topic()
+            self.second_torque = True
+            # self.send_ready = True
 
     def initial_variable(self):
         # second torque 0 set
         self.second_torque = False
+
+        self.send_ready = False
 
         self.brake = 0
         self.drive_ready = False

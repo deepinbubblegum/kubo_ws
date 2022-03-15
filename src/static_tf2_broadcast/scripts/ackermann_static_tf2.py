@@ -25,7 +25,7 @@ class ackermann_static_tf2:
         imu_link_to_base_link = TransformStamped()
         imu_link_to_base_link.header.stamp = rospy.Time.now()
         imu_link_to_base_link.header.frame_id = "base_link"
-        imu_link_to_base_link.child_frame_id = "bno055"
+        imu_link_to_base_link.child_frame_id = "imu_link"
         imu_link_to_base_link.transform.translation.x = 4.10
         imu_link_to_base_link.transform.translation.y = 0.14
         imu_link_to_base_link.transform.translation.z = 0.585
@@ -54,8 +54,8 @@ class ackermann_static_tf2:
         rslidar_front_to_base_link.transform.translation.y = 1.345
         rslidar_front_to_base_link.transform.translation.z = 0.6125
         rslidar_front_to_base_link.transform.rotation.w = 0.0
-        rslidar_front_to_base_link.transform.rotation.x = -0.707
-        rslidar_front_to_base_link.transform.rotation.y = -0.707
+        rslidar_front_to_base_link.transform.rotation.x = -1.0
+        rslidar_front_to_base_link.transform.rotation.y = 0.0
         rslidar_front_to_base_link.transform.rotation.z = 0.0
 
         laser_to_base_link = TransformStamped()
@@ -90,8 +90,8 @@ class ackermann_static_tf2:
         rslidar_back_to_base_link.transform.translation.y = -1.345
         rslidar_back_to_base_link.transform.translation.z = 0.6125
         rslidar_back_to_base_link.transform.rotation.w = 0.0
-        rslidar_back_to_base_link.transform.rotation.x = 0.707
-        rslidar_back_to_base_link.transform.rotation.y = -0.707
+        rslidar_back_to_base_link.transform.rotation.x = 0.0
+        rslidar_back_to_base_link.transform.rotation.y = -1.0
         rslidar_back_to_base_link.transform.rotation.z = 0.0
 
         return [

@@ -1,4 +1,4 @@
 twist_cmd_topic: twist_mux/cmd_vel
 ackermann_cmd_topic: ackermann_cmd
-wheelbase: 1.0
+wheelbase: 4.19
 frame_id: odom
