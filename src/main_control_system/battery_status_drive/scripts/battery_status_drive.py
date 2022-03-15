@@ -33,18 +33,18 @@ class battery_status_drive:
     def get_ros_params(self):
         self.pub_status_topic = rospy.get_param(self.node_name + '/pub_status_topic', 'battery_status')
         self.voltage_min = rospy.get_param(self.node_name + '/voltage_min', 512.0)
-        self.voltage_max = rospy.get_param(self.node_name + '/voltage_min', 540.0)
+        self.voltage_max = rospy.get_param(self.node_name + '/voltage_max', 540.0)
     
     def mcu2_update(self, mcu2_msg):
         battery_state = BatteryState()
-        self.total_voltage = mcu2_msg.MCU2.total_voltage
+        self.total_voltage = mcu2_msg.MCU2.Total_Voltage
         # limit total voltage
+        
         if self.total_voltage < self.voltage_min:
             self.total_voltage = self.voltage_min
         elif self.total_voltage > self.voltage_max:
             self.total_voltage = self.voltage_max
-                
-        self.current_voltage = self.voltage_max - self.total_voltage
+        self.current_voltage = self.total_voltage - self.voltage_min
         self.current_voltage_max = self.voltage_max - self.voltage_min
         self.battery_percent = round((self.cal_percent(self.current_voltage, self.current_voltage_max) / 100),2)
 
