@@ -2,10 +2,10 @@
 <launch>
     <arg name="pub_status_topic" default="battery_status"/>
     <arg name="voltage_min" default="512.0"/>
-    <arg name="voltage_min" default="540.0"/>
+    <arg name="voltage_max" default="540.0"/>
     <node pkg="battery_status_drive" type="battery_status_drive.py" name="battery_status_drive_node" respawn="true" respawn_delay="5" output="screen">
         <param name="pub_status_topic" value="$(arg pub_status_topic)"/>
         <param name="voltage_min" value="$(arg voltage_min)"/>
-        <param name="voltage_min" value="$(arg voltage_min)"/>
+        <param name="voltage_max" value="$(arg voltage_max)"/>
     </node>
 </launch>
