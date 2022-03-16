@@ -15,19 +15,13 @@ TebLocalPlannerROS:
  global_plan_prune_distance: 2.0
     
  # Robot
- # Note: I added these parameters to help on the real robot (not needed in simulation)
- min_vel_x: 0.2 
- min_vel_y: 0.0
- min_vel_theta: 0
- min_vel_x_backwards: 0.2
-
  # Note: the real robot
  max_vel_x: 0.6 #0.4
  max_vel_x_backwards: 0.6 #0.2
  max_vel_theta: 0.36 #0.3
  acc_lim_x: 1.2 #0.5
  acc_lim_y: 0.0
- acc_lim_theta: 0.01 #0.5
+ acc_lim_theta: 0.36 #0.5
  min_turning_radius: 6.44
  wheelbase: 4.19
  cmd_angle_instead_rotvel: true 
