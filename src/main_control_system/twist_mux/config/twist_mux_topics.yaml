@@ -7,8 +7,8 @@
 
 topics:
 -
-  name    : navigation_smooth_off
-  topic   : nav_vel_smooth_off
+  name    : navigation_smooth
+  topic   : nav_vel_smooth
   timeout : 0.5
   priority: 10
 -

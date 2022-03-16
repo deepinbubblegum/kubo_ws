@@ -6,7 +6,8 @@ global_costmap:
    always_send_full_costmap: true
    track_unknown_space: false
 #    footprint: [[-1.204, -1.918], [-1.204,1.918], [5.397,1.918], [5.397, -1.918]]
-   footprint: [[-1.204, -1.818], [-1.204,1.818], [5.397,1.818], [5.397, -1.818]]
+#    footprint: [[-1.204, -1.818], [-1.204,1.818], [5.397,1.818], [5.397, -1.818]]
+   footprint: [[-3.25, -1.4], [-3.25,1.4], [3.25,1.4], [3.25, -1.4]]
 
    footprint_padding: 0.0
    transform_tolerance: 0.55

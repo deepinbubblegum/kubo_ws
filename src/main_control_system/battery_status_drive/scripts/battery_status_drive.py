@@ -46,7 +46,7 @@ class battery_status_drive:
             self.total_voltage = self.voltage_max
         self.current_voltage = self.total_voltage - self.voltage_min
         self.current_voltage_max = self.voltage_max - self.voltage_min
-        self.battery_percent = round((self.cal_percent(self.current_voltage, self.current_voltage_max) / 100),2)
+        self.battery_percent = round((self.cal_percent(self.current_voltage, self.current_voltage_max)),2)
 
         battery_state.header.stamp = rospy.Time.now()
         battery_state.header.frame_id = 'battery_state'

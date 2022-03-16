@@ -82,8 +82,8 @@ class velocity_control_system:
                 self.auto_brake += 4
         else:
             throttle = 0
-            if pv_speed != 0:
-                self.auto_brake += 10
+            # if pv_speed != 0:
+            #     self.auto_brake += 10
         if self.auto_brake < 0:
             self.auto_brake = 0
         
