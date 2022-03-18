@@ -84,10 +84,11 @@ class SCurve:
         if self.last_cmd_speed[0] != twist.linear.x or self.last_cmd_speed[1] != twist.angular.z:
             self.sprofile_t = self.sprofile_T
             self.last_cmd_speed[0] = self.cmd_speed[0] = twist.linear.x
-            if twist.linear.x < 0:
-                self.last_cmd_speed[1] = self.cmd_speed[1] = (twist.angular.z * -1)
-            else:
-                self.last_cmd_speed[1] = self.cmd_speed[1] = twist.angular.z
+            self.last_cmd_speed[1] = self.cmd_speed[1] = twist.angular.z
+            # if twist.linear.x < 0:
+            #     self.last_cmd_speed[1] = self.cmd_speed[1] = (twist.angular.z * -1)
+            # else:
+            #     self.last_cmd_speed[1] = self.cmd_speed[1] = twist.angular.z
             self.even_cmd_vel_set()
 
     def get_ros_params(self):
