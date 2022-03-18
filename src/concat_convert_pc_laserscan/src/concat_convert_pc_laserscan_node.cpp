@@ -46,8 +46,8 @@ sensor_msgs::LaserScanPtr pointcloud_to_laserscan(sensor_msgs::PointCloud2 *merg
     output->scan_time = 0.0666666701436;
     output->range_min = 0.1;
     output->range_max = 150.0;
-    float min_height_ = -0.15;
-    float max_height_ = 2.0;
+    float min_height_ = -0.16;
+    float max_height_ = 1.8;
     float inf = std::numeric_limits<float>::infinity();
     uint32_t ranges_size = std::ceil((output->angle_max - output->angle_min) / output->angle_increment);
     output->ranges.assign(ranges_size, inf);
@@ -136,7 +136,7 @@ void concat_with_pc()
             cloud_1_transform.child_frame_id = "rslidar_front";
             cloud_2_transform.child_frame_id = "rslidar_back";
 
-            cloud_1_transform.transform.translation.x = 3.165;
+            cloud_1_transform.transform.translation.x = 5.26;
             cloud_1_transform.transform.translation.y = 1.345;
             cloud_1_transform.transform.translation.z = 1.0;
             cloud_1_transform.transform.rotation.w = 0.0;
@@ -144,7 +144,7 @@ void concat_with_pc()
             cloud_1_transform.transform.rotation.y = 0.0;
             cloud_1_transform.transform.rotation.z = 0.0;
 
-            cloud_2_transform.transform.translation.x = -3.165;
+            cloud_2_transform.transform.translation.x = -1.07;
             cloud_2_transform.transform.translation.y = -1.345;
             cloud_2_transform.transform.translation.z = 1.0;
             cloud_2_transform.transform.rotation.w = 0.0;

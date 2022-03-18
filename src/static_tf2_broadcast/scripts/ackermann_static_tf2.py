@@ -26,9 +26,9 @@ class ackermann_static_tf2:
         imu_link_to_base_link.header.stamp = rospy.Time.now()
         imu_link_to_base_link.header.frame_id = "base_link"
         imu_link_to_base_link.child_frame_id = "imu_link"
-        imu_link_to_base_link.transform.translation.x = 0.565 #4.10
-        imu_link_to_base_link.transform.translation.y = 0.635 #0.14
-        imu_link_to_base_link.transform.translation.z = 0.85 #0.585
+        imu_link_to_base_link.transform.translation.x = 4.10
+        imu_link_to_base_link.transform.translation.y = 0.14
+        imu_link_to_base_link.transform.translation.z = 0.585
         imu_link_to_base_link.transform.rotation.w = 1.0
         imu_link_to_base_link.transform.rotation.x = 0.0
         imu_link_to_base_link.transform.rotation.y = 0.0 
@@ -38,9 +38,9 @@ class ackermann_static_tf2:
         gps_front_to_base_link.header.stamp = rospy.Time.now()     
         gps_front_to_base_link.header.frame_id = "base_link"
         gps_front_to_base_link.child_frame_id = "gps_front"
-        gps_front_to_base_link.transform.translation.x = 3.165 #5.26 #3.165 base at center
+        gps_front_to_base_link.transform.translation.x = 5.26 #3.165 base at center
         gps_front_to_base_link.transform.translation.y = 1.345
-        gps_front_to_base_link.transform.translation.z = 1.0 #0.6975
+        gps_front_to_base_link.transform.translation.z = 0.6975
         gps_front_to_base_link.transform.rotation.w = 1.0
         gps_front_to_base_link.transform.rotation.x = 0.0
         gps_front_to_base_link.transform.rotation.y = 0.0
@@ -50,7 +50,7 @@ class ackermann_static_tf2:
         rslidar_front_to_base_link.header.stamp = rospy.Time.now()     
         rslidar_front_to_base_link.header.frame_id = "base_link"
         rslidar_front_to_base_link.child_frame_id = "rslidar_front"
-        rslidar_front_to_base_link.transform.translation.x = 3.165 #5.26 #3.165 base at center
+        rslidar_front_to_base_link.transform.translation.x = 5.26 #3.165 base at center
         rslidar_front_to_base_link.transform.translation.y = 1.345
         rslidar_front_to_base_link.transform.translation.z = 1.0 #0.6125
         rslidar_front_to_base_link.transform.rotation.w = 0.0
@@ -74,7 +74,7 @@ class ackermann_static_tf2:
         gps_back_to_base_link.header.stamp = rospy.Time.now()     
         gps_back_to_base_link.header.frame_id = "base_link"
         gps_back_to_base_link.child_frame_id = "gps_back"
-        gps_back_to_base_link.transform.translation.x = -3.165 #-1.07
+        gps_back_to_base_link.transform.translation.x = -1.07
         gps_back_to_base_link.transform.translation.y = -1.345
         gps_back_to_base_link.transform.translation.z = 1.0 #0.6975
         gps_back_to_base_link.transform.rotation.w = 1.0
@@ -86,7 +86,7 @@ class ackermann_static_tf2:
         rslidar_back_to_base_link.header.stamp = rospy.Time.now()     
         rslidar_back_to_base_link.header.frame_id = "base_link"
         rslidar_back_to_base_link.child_frame_id = "rslidar_back"
-        rslidar_back_to_base_link.transform.translation.x = -3.165 #-1.07
+        rslidar_back_to_base_link.transform.translation.x = -1.07
         rslidar_back_to_base_link.transform.translation.y = -1.345
         rslidar_back_to_base_link.transform.translation.z = 1.0 #0.6125
         rslidar_back_to_base_link.transform.rotation.w = 0.0
