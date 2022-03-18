@@ -13,6 +13,8 @@ class TwistToAckermann:
         self.node_name = rospy.get_name()
         
         self._remote = False
+        self._v = 0.0
+        self._steer = 0.0
 
         # Get ros params
         self.get_ros_params()
