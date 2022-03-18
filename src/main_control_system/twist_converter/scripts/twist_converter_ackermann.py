@@ -13,6 +13,8 @@ class TwistToAckermann:
         self.node_name = rospy.get_name()
         
         self._remote = False
+        self._v = 0.0
+        self._steer = 0.0
 
         # Get ros params
         self.get_ros_params()
@@ -35,24 +37,52 @@ class TwistToAckermann:
         msg.drive.speed = v
         self.pub_acker_cmd.publish(msg)
 
+    # def twist_callback(self, twist_msg):
+    #     # reference https://github.com/rst-tu-dortmund/teb_local_planner/blob/melodic-devel/scripts/cmd_vel_to_ackermann_drive.py
+    #     v = twist_msg.linear.x
+    #     if self.cmd_angle_instead_rotvel:
+    #         steering = self.tiwst_convert_to_steering(v, twist_msg.angular.z)
+    #     else:
+    #         steering = twist_msg.angular.z
+    #     if self._remote is False:
+    #         self.sending(v, steering)
+
+    # def twist_tab_callback(self, twist_msg):
+    #     v = twist_msg.linear.x
+    #     steering = twist_msg.angular.z
+    #     if steering != 0 or v != 0:
+    #         self._remote = True
+    #         self.sending(v, steering)
+    #     else:
+    #         self._remote = False
+
     def twist_callback(self, twist_msg):
         # reference https://github.com/rst-tu-dortmund/teb_local_planner/blob/melodic-devel/scripts/cmd_vel_to_ackermann_drive.py
         v = twist_msg.linear.x
-        if self.cmd_angle_instead_rotvel:
-            steering = self.tiwst_convert_to_steering(v, twist_msg.angular.z)
-        else:
-            steering = twist_msg.angular.z
-        if self._remote is False:
-            self.sending(v, steering)
+        self._steer = twist_msg.angular.z
+        # if self.cmd_angle_instead_rotvel:
+        #     steering = self.tiwst_convert_to_steering(v, twist_msg.angular.z)
+        # else:
+        #     steering = twist_msg.angular.z
+        # if self._remote is False:
+        #     self.sending(v, steering)
 
     def twist_tab_callback(self, twist_msg):
         v = twist_msg.linear.x
         steering = twist_msg.angular.z
-        if steering != 0 or v != 0:
-            self._remote = True
-            self.sending(v, steering)
+        if steering == 0:
+            self.sending(v, self._steer)
         else:
-            self._remote = False
+            self.sending(v, steering)
+
+        # if steering != 0 or v != 0:
+        #     self._remote = True
+            
+        # if steering != 0 or v != 0:
+        #     self._remote = True
+        #     self.sending(v, steering)
+        # else:
+        #     self._remote = False
 
     def get_ros_params(self):
         self.twist_cmd_topic = rospy.get_param(self.node_name + '/twist_cmd_topic', 'cmd_vel')
