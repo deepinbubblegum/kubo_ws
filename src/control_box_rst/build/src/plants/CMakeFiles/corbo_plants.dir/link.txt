@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcorbo_plants.a  CMakeFiles/corbo_plants.dir/src/plant_interface.cpp.o CMakeFiles/corbo_plants.dir/src/simulated_plant.cpp.o CMakeFiles/corbo_plants.dir/src/simulated_plant_threaded.cpp.o CMakeFiles/corbo_plants.dir/src/disturbances.cpp.o
+/usr/bin/ranlib libcorbo_plants.a

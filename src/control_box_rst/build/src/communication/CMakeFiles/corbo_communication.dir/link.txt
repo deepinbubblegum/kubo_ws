@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcorbo_communication.a  CMakeFiles/corbo_communication.dir/src/main_service_client.cpp.o CMakeFiles/corbo_communication.dir/src/signal_target_rpc.cpp.o CMakeFiles/corbo_communication.dir/src/message_parser.cpp.o CMakeFiles/corbo_communication.dir/src/utilities.cpp.o
+/usr/bin/ranlib libcorbo_communication.a

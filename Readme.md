@@ -14,3 +14,11 @@ catkin build
 
 
 rosrun map_server map_saver -f mapname
+
+
+cd some_folder/control_box_rst
+mkdir build
+cd build
+cmake ..
+make
+sudo make install

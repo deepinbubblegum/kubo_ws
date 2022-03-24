@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcorbo_tasks.a  CMakeFiles/corbo_tasks.dir/src/environment.cpp.o CMakeFiles/corbo_tasks.dir/src/task_open_loop_control.cpp.o CMakeFiles/corbo_tasks.dir/src/task_closed_loop_control.cpp.o CMakeFiles/corbo_tasks.dir/src/benchmark_task_increasing_n_open_loop.cpp.o CMakeFiles/corbo_tasks.dir/src/benchmark_task_varying_initial_state.cpp.o
+/usr/bin/ranlib libcorbo_tasks.a
