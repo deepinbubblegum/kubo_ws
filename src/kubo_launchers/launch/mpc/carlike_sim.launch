@@ -51,7 +51,7 @@
 	<node pkg="amcl" type="amcl" name="amcl" output="screen">
 		<rosparam file="$(find mpc_local_planner_examples)/cfg/amcl_params.yaml" command="load" />
 
-	    <param name="initial_pose_x"            value="2"/>
+	        <param name="initial_pose_x"            value="2"/>
 		<param name="initial_pose_y"            value="2"/>
 		<param name="initial_pose_a"            value="0"/>
 	</node>
