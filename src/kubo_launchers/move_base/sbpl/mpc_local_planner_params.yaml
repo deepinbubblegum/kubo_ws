@@ -76,7 +76,7 @@ MpcLocalPlannerROS:
     outer_ocp_iterations: 1
     xy_goal_tolerance: 0.2
     yaw_goal_tolerance: 0.1
-    global_plan_overwrite_orientation: False
+    global_plan_overwrite_orientation: True
     global_plan_prune_distance: 1.0
     allow_init_with_backward_motion: True
     max_global_plan_lookahead_dist: 1.5 
