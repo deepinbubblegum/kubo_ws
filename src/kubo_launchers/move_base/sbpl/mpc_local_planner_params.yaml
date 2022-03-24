@@ -34,7 +34,7 @@ MpcLocalPlannerROS:
   ## Collision avoidance
   collision_avoidance:
     min_obstacle_dist: 0.27 # Note, this parameter must be chosen w.r.t. the footprint_model
-    enable_dynamic_obstacles: False
+    enable_dynamic_obstacles: True
     force_inclusion_dist: 0.5
     cutoff_dist: 2.5 
     include_costmap_obstacles: True
@@ -65,6 +65,7 @@ MpcLocalPlannerROS:
   planning:
     objective:
       type: "minimum_time" # minimum_time requires grid/variable_grid/enable=True and grid/xf_fixed set properly
+      # type: "minimum_time_via_points"
     terminal_cost:
       type: "none"
     terminal_constraint:
