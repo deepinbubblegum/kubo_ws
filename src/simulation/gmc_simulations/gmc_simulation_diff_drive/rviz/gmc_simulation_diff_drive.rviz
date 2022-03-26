@@ -5,8 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /TF1/Status1
-        - /PointCloud22
       Splitter Ratio: 0.5
     Tree Height: 476
   - Class: rviz/Selection
@@ -107,7 +105,7 @@ Visualization Manager:
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Min Color: 0; 0; 0
-      Name: PointCloud2
+      Name: PointCloud2_RAW
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
@@ -136,7 +134,7 @@ Visualization Manager:
           Scale: 1
           Value: true
         Value: false
-      Enabled: false
+      Enabled: true
       Keep: 100
       Name: Odometry
       Position Tolerance: 0.10000000149011612
@@ -153,7 +151,7 @@ Visualization Manager:
         Value: Arrow
       Topic: /odom
       Unreliable: false
-      Value: false
+      Value: true
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
@@ -214,7 +212,7 @@ Visualization Manager:
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Min Color: 0; 0; 0
-      Name: PointCloud2
+      Name: PointCloud2_Filter
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
@@ -254,7 +252,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 4.369154930114746
+      Distance: 3.1467795372009277
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -262,17 +260,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 1.2709300518035889
-        Y: -2.1296472549438477
-        Z: 6.419249984901398e-07
+        X: 1.2192111015319824
+        Y: -0.26842638850212097
+        Z: 1.6508784028701484e-07
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7697970867156982
+      Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
-      Yaw: 5.8336052894592285
+      Yaw: 0.44542208313941956
     Saved: ~
 Window Geometry:
   Displays:
