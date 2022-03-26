@@ -12,7 +12,7 @@
 #include <sensor_msgs/PointCloud2.h>
 
 #define CLIP_HEIGHT 0.2 //
-#define MIN_DISTANCE 0.3
+#define MIN_DISTANCE 0.1
 #define RADIAL_DIVIDER_ANGLE 0.18
 #define SENSOR_HEIGHT 0.19
 
