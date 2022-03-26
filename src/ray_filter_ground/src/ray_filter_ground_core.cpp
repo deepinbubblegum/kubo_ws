@@ -3,10 +3,10 @@
 
 PclTestCore::PclTestCore(ros::NodeHandle &nh)
 {
-    sub_point_cloud_ = nh.subscribe("/rs_points", 10, &PclTestCore::point_cb, this);
+    sub_point_cloud_ = nh.subscribe("/rs_points", 5, &PclTestCore::point_cb, this);
 
-    pub_ground_ = nh.advertise<sensor_msgs::PointCloud2>("/filtered_points_ground", 10);
-    pub_no_ground_ = nh.advertise<sensor_msgs::PointCloud2>("/filtered_points_no_ground", 10);
+    pub_ground_ = nh.advertise<sensor_msgs::PointCloud2>("/filtered_points_ground", 1);
+    pub_no_ground_ = nh.advertise<sensor_msgs::PointCloud2>("/filtered_points_no_ground", 1);
 
     ros::spin();
 }
