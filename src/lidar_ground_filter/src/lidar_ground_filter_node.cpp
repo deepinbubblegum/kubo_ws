@@ -60,9 +60,9 @@ public:
 		pass.filter(*floorRemoved);
 
         // Publish the data
-        // this->publisher.publish (*cloudVoxel);
+        this->publisher.publish (*cloudVoxel);
         // this->publisher.publish (cloud_msg);
-        this->publisher.publish(*floorRemoved);
+        // this->publisher.publish(*floorRemoved);
     }
 };
 

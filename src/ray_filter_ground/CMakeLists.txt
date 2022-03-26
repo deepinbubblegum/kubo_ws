@@ -105,7 +105,6 @@ find_package(PCL 1.9 REQUIRED)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
   INCLUDE_DIRS include
-#  LIBRARIES ray_filter_ground
   CATKIN_DEPENDS pcl_ros roscpp sensor_msgs
 #  DEPENDS system_lib
 )
