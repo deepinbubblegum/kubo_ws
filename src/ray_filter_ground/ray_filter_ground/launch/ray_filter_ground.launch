@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="ray_filter_ground" type="ray_filter_ground_node" name="filter_ground" output="screen" />
+</launch>
