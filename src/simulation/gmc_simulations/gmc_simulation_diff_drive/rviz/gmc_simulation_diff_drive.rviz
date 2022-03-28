@@ -9,6 +9,7 @@ Panels:
         - /TF1/Frames1
         - /PointCloud2_points_ground1/Autocompute Value Bounds1
         - /PointCloud2_no_points_ground1/Autocompute Value Bounds1
+        - /LaserScan1
       Splitter Ratio: 0.5088889002799988
     Tree Height: 746
   - Class: rviz/Selection
@@ -312,7 +313,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 3.2241337299346924
+      Distance: 1.0475609302520752
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -320,17 +321,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 1.0206760168075562
-        Y: -0.6993839740753174
-        Z: 1.118529326049611e-06
+        X: -0.2720412611961365
+        Y: -1.403862714767456
+        Z: 6.41692167846486e-07
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.9997962713241577
+      Pitch: 0.5547964572906494
       Target Frame: <Fixed Frame>
-      Yaw: 3.5653934478759766
+      Yaw: 2.83539080619812
     Saved: ~
 Window Geometry:
   Displays:
