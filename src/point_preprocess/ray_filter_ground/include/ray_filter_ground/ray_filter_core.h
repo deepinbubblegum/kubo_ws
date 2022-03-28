@@ -22,12 +22,11 @@
 #define general_max_slope_ 5 //max slope of the ground in entire point cloud, degree
 #define reclass_distance_threshold_ 0.2
 
-class PclTestCore
+class PclCore
 {
 
 private:
   ros::Subscriber sub_point_cloud_;
-
   ros::Publisher pub_ground_, pub_no_ground_;
 
   struct PointXYZIRTColor
@@ -67,7 +66,7 @@ private:
                      const std_msgs::Header &in_header);
 
 public:
-  PclTestCore(ros::NodeHandle &nh);
-  ~PclTestCore();
+  PclCore(ros::NodeHandle &nh);
+  ~PclCore();
   void Spin();
 };

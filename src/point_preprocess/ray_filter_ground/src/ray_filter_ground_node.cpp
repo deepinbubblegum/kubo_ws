@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
     
     ros::NodeHandle nh;
 
-    PclTestCore core(nh);
+    PclCore core(nh);
 
     return 0;
 }
