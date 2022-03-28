@@ -1,11 +1,10 @@
 <launch>
     <arg name="topic_sub_point_cloud" default="rs_points"/>
-    <arg name="topic_point_ground" default="filtered_points_ground"/>
-    <arg name="topic_point_no_ground" default="filtered_points_no_ground"/>
+    <arg name="topic_point_ground" default="$(arg topic_sub_point_cloud)/filtered_points_ground"/>
+    <arg name="topic_point_no_ground" default="$(arg topic_sub_point_cloud)/filtered_points_no_ground"/>
     <node pkg="ray_filter_ground" type="ray_filter_ground_node" name="ray_filter_ground" output="screen">
         <param name="topic_sub_point_cloud" value="$(arg topic_sub_point_cloud)"/>
         <param name="topic_point_ground" value="$(arg topic_point_ground)"/>
         <param name="topic_point_no_ground" value="$(arg topic_point_no_ground)"/>
     </node>
-
 </launch>
