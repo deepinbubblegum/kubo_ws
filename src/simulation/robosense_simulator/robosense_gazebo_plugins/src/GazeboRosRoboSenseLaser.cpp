@@ -35,6 +35,9 @@
 #include <robosense_gazebo_plugins/GazeboRosRoboSenseLaser.h>
 
 #include <algorithm>
+#include <string>
+
+#include <algorithm>
 #include <assert.h>
 
 #include <gazebo/physics/World.hh>
@@ -172,7 +175,7 @@ void GazeboRosRobosenseLaser::Load(sensors::SensorPtr _parent, sdf::ElementPtr _
   std::string prefix;
   nh_->getParam(std::string("tf_prefix"), prefix);
   if (robot_namespace_ != "/") {
-    prefix = robot_namespace_;
+    prefix = ""; //robot_namespace_ remove prefix
   }
   boost::trim_right_if(prefix, boost::is_any_of("/"));
   frame_name_ = tf::resolve(prefix, frame_name_);
@@ -269,6 +272,7 @@ void GazeboRosRobosenseLaser::OnScan(ConstLaserScanStampedPtr& _msg)
   // Populate message fields
   const uint32_t POINT_STEP = 32;
   sensor_msgs::PointCloud2 msg;
+  // std::replace( frame_name_.begin(), frame_name_.end(), '/', '_');
   msg.header.frame_id = frame_name_;
   msg.header.stamp = ros::Time(_msg->time().sec(), _msg->time().nsec());
   msg.fields.resize(5);

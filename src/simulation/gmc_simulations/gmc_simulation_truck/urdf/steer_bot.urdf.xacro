@@ -18,6 +18,9 @@
 -->
 <robot name="steer_bot" xmlns:xacro="http://wiki.ros.org/xacro">
   <!-- Include xacro for inertials, materials and wheels -->
+  <xacro:arg name="gpu" default="false"/>
+  <xacro:property name="gpu" value="$(arg gpu)" />
+
   <xacro:include filename="$(find gmc_simulation_truck)/urdf/wheel.xacro"/>
 
   <xacro:property name="robot_namespace" value="/steer_bot"/>
@@ -37,14 +40,14 @@
   <xacro:property name="deg_to_rad" value="0.01745329251994329577"/>
 
   <!-- Robot base dimensions -->
-  <xacro:property name="base_length" value="0.5" /> 
-  <xacro:property name="base_width" value="0.3" /> 
-  <xacro:property name="base_height" value="0.1" /> 
-  <xacro:property name="base_mass" value="5" /> 
+  <xacro:property name="base_length" value="4.19" /> 
+  <xacro:property name="base_width" value="1.818" /> 
+  <xacro:property name="base_height" value="0.6" /> 
+  <xacro:property name="base_mass" value="1" /> 
 
   <!-- Wheel link dimensions -->
-  <xacro:property name="wheel_radius" value="0.1" />
-  <xacro:property name="wheel_thickness" value="0.08" />
+  <xacro:property name="wheel_radius" value="0.5" />
+  <xacro:property name="wheel_thickness" value="0.4" />
   <xacro:property name="wheel_mass" value="1" />
 
   <!-- Steering link dimensions -->
@@ -149,9 +152,19 @@
     <origin xyz="${-base_length/2+axle_offset} ${+base_width/2+axle_offset} 0" rpy="${-90 * deg_to_rad} 0 0"/>
   </xacro:rear_wheel_lr>
 
+  <xacro:include filename="$(find robosense_description)/urdf/RS-16.urdf.xacro"/>
+  <xacro:RS-16 parent="base_link" name="rslidar_front" topic="rslidar_front" hz="20" samples="900" gpu="${gpu}">
+    <origin xyz="3.2 1.345 1.0" rpy="0.0 0 0" />
+  </xacro:RS-16>
+
+  <xacro:include filename="$(find robosense_description)/urdf/RS-16.urdf.xacro"/>
+  <xacro:RS-16 parent="base_link" name="rslidar_back" topic="rslidar_back" hz="20" samples="900" gpu="${gpu}">
+    <origin xyz="-3.2 -1.345 1.0" rpy="0.0 0 0" />
+  </xacro:RS-16>
+
+
   <!-- Colour -->
   <gazebo reference="base_link">
     <material>Gazebo/Green</material>
   </gazebo>
-
 </robot>

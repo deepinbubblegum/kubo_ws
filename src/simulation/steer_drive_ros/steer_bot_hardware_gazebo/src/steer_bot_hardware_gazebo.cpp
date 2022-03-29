@@ -196,7 +196,7 @@ namespace steer_bot_hardware_gazebo
       else if(gazebo_jnt_name == front_steer_jnt_name_)
       {
         front_steer_jnt_pos_ = front_steer_jnt_pos_cmd_;
-        ROS_INFO_STREAM("front_steer_jnt_pos_ '" << front_steer_jnt_pos_ << " ' at writeSim()");
+        // ROS_INFO_STREAM("front_steer_jnt_pos_ '" << front_steer_jnt_pos_ << " ' at writeSim()");
       }
       else if(gazebo_jnt_name == virtual_front_steer_jnt_names_[INDEX_RIGHT])
       {
@@ -248,15 +248,15 @@ namespace steer_bot_hardware_gazebo
     front_steer_jnt_pos_ = front_steer_jnt_pos_cmd_;
     if(log_cnt_ % 500 == 0)
     {
-      ROS_DEBUG_STREAM("front_steer_jnt_pos_ '" << front_steer_jnt_pos_ << " ' at writeSim()");
+      // ROS_DEBUG_STREAM("front_steer_jnt_pos_ '" << front_steer_jnt_pos_ << " ' at writeSim()");
     }
     // wheel joint for steer_drive_controller
     rear_wheel_jnt_pos_ = 0.5 * (virtual_rear_wheel_jnt_pos_[INDEX_RIGHT] + virtual_rear_wheel_jnt_pos_[INDEX_LEFT]);
     rear_wheel_jnt_vel_ = 0.5 * (virtual_rear_wheel_jnt_vel_[INDEX_RIGHT] + virtual_rear_wheel_jnt_vel_[INDEX_LEFT]);
     if(log_cnt_ % 500 == 0)
     {
-      ROS_DEBUG_STREAM("rear_wheel_jnt_pos_ '" << rear_wheel_jnt_pos_ << " ' at writeSim()");
-      ROS_DEBUG_STREAM("rear_wheel_jnt_vel_ '" << rear_wheel_jnt_vel_ << " ' at writeSim()");
+      // ROS_DEBUG_STREAM("rear_wheel_jnt_pos_ '" << rear_wheel_jnt_pos_ << " ' at writeSim()");
+      // ROS_DEBUG_STREAM("rear_wheel_jnt_vel_ '" << rear_wheel_jnt_vel_ << " ' at writeSim()");
     }
   }
 
