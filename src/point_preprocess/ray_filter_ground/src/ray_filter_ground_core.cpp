@@ -7,6 +7,16 @@ std::string topic_sub_point_cloud_;
 std::string topic_point_ground_;
 std::string topic_point_no_ground_;
 
+float clip_height_;
+float min_distance_;
+float radial_divider_angle_;
+float sensor_height_;
+float concentric_div_dist_;
+float threshold_min_heigh_;
+int slope_local_max_;
+int slope_general_max_;
+float threshold_reclass_distance_;
+
 PclCore::PclCore(ros::NodeHandle &nh)
 {
     // get node name
@@ -16,6 +26,28 @@ PclCore::PclCore(ros::NodeHandle &nh)
     ros::param::param<std::string>(node_name + "/topic_sub_point_cloud", topic_sub_point_cloud_, "rs_points");
     ros::param::param<std::string>(node_name + "/topic_point_ground", topic_point_ground_, "filtered_points_ground");
     ros::param::param<std::string>(node_name + "/topic_point_no_ground", topic_point_no_ground_, "filtered_points_no_ground");
+
+    // setnew define
+    ros::param::param<float>(node_name + "/clip_height", clip_height_, 0.2);
+    ros::param::param<float>(node_name + "/min_distance", min_distance_, 0.1);
+    ros::param::param<float>(node_name + "/radial_divider_angle", radial_divider_angle_, 0.18);
+    ros::param::param<float>(node_name + "/sensor_height", sensor_height_, 0.19);
+    ros::param::param<float>(node_name + "/concentric_div_dist", concentric_div_dist_, 0.1);
+    ros::param::param<float>(node_name + "/threshold_min_heigh", threshold_min_heigh_, 0.05);
+    ros::param::param<int>(node_name + "/slope_local_max", slope_local_max_, 8);
+    ros::param::param<int>(node_name + "/slope_general_max", slope_general_max_, 5);
+    ros::param::param<float>(node_name + "/reclass_distance_threshold", threshold_reclass_distance_, 0.2);
+
+    #define CLIP_HEIGHT clip_height_
+    #define MIN_DISTANCE min_distance_
+    #define RADIAL_DIVIDER_ANGLE radial_divider_angle_
+    #define SENSOR_HEIGHT sensor_height_
+
+    #define concentric_divider_distance_ concentric_div_dist_
+    #define min_height_threshold_ threshold_min_heigh_
+    #define local_max_slope_ slope_local_max_
+    #define general_max_slope_ slope_general_max_
+    #define reclass_distance_threshold_ threshold_reclass_distance_
 
     // create topic
     sub_point_cloud_ = nh.subscribe(topic_sub_point_cloud_, 5, &PclCore::point_cb, this);

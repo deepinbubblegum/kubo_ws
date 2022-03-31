@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan" output="screen">
-        <remap from="cloud_in" to="rs_points/filtered_points_no_ground"/>
-        <remap from="scan" to="laser/scan"/>
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan_back" output="screen">
+        <remap from="cloud_in" to="steer_bot/rslidar_back/filtered_points_no_ground"/>
+        <remap from="scan" to="laser/back"/>
         <rosparam>
-            target_frame: robosense # Leave disabled to output scan in pointcloud frame
+            target_frame: rslidar_back # Leave disabled to output scan in pointcloud frame
             transform_tolerance: 0.01
-            min_height: 0.0
+            min_height: -2.0
             max_height: 2.0
 
             angle_min: -3.1416 # -M_PI/2
