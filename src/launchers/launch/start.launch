@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
+    <!-- static_tf2_broadcast -->
+    <include file="$(find static_tf2_broadcast)/launch/ackermann_static_broadcast.launch"/>
     <!-- main_control -->
     <include file="$(find main_control)/launch/start_control.launch"/>
+    <!-- Ublox gps front -->
+    <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_front.launch"/>
+    <!-- <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_rear.launch"/> -->
+    <!-- rslidar -->
+    <include file="$(find rslidar_sdk)/launch/start.launch"/>
+    <!-- ray ground rslidar -->
+    <include file="$(find launchers)/node/ray_ground_rslidar_front.xml"/>
+    <include file="$(find launchers)/node/ray_ground_rslidar_front.xml"/>
+    <!-- Map_server -->
+    <include file="$(find launchers)/node/map_server.xml"/>
+    <!-- amcl -->
+    <include file="$(find amcl)/launch/amcl_diff.launch"/>
 
-    <!-- static_tf2_broadcast -->
-    
 
 </launch>
