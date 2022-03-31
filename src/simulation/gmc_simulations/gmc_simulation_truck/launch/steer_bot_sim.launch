@@ -57,6 +57,9 @@
     <include file="$(find ray_filter_ground)/launch/rslidar_front.launch"/>
     <include file="$(find ray_filter_ground)/launch/rslidar_back.launch"/>
 
+    <!-- point 2 laser -->
+    <include file="$(find point_preprocess)/launch/point_preprocess.launch"/>
+
     <!--launch rviz-->
     <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find gmc_simulation_truck)/rviz/gmc_simulation_truck.rviz"/>
 </launch>
