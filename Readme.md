@@ -22,3 +22,6 @@ cd build
 cmake ..
 make
 sudo make install
+
+sudo add-apt-repository ppa:joseluisblancoc/mrpt-stable
+sudo apt-get install ros-noetic-csm ros-noetic-libpointmatcher ros-indigo-scan-tools 
