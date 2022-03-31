@@ -60,6 +60,9 @@
     <!-- point 2 laser -->
     <include file="$(find point_preprocess)/launch/point_preprocess.launch"/>
 
+    <!-- merger laser -->
+    <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch"/>
+
     <!--launch rviz-->
     <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find gmc_simulation_truck)/rviz/gmc_simulation_truck.rviz"/>
 </launch>
