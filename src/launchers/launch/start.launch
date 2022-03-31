@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <!-- main_control -->
+    <include file="$(find main_control)/launch/start_control.launch"/>
+
+    <!-- static_tf2_broadcast -->
+    
+
+</launch>
