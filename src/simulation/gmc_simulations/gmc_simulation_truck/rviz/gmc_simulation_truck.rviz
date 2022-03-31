@@ -8,7 +8,6 @@ Panels:
         - /RobotModel1/Links1
         - /sensor1
         - /sensor1/rslidar_back_raw1/Autocompute Value Bounds1
-        - /sensor1/MultiLaserScan1
       Splitter Ratio: 0.36033058166503906
     Tree Height: 746
   - Class: rviz/Selection
@@ -482,7 +481,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.695789337158203
+      Distance: 10.62074089050293
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -490,17 +489,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -5.0242204666137695
-        Y: 3.1100826263427734
-        Z: 0.9330092668533325
+        X: 1.2480050325393677
+        Y: 0.5065794587135315
+        Z: 4.300642490386963
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.1247966289520264
+      Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
-      Yaw: 3.8185198307037354
+      Yaw: 1.2585184574127197
     Saved: ~
 Window Geometry:
   Displays:
