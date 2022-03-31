@@ -8,6 +8,7 @@ Panels:
         - /RobotModel1/Links1
         - /sensor1
         - /sensor1/rslidar_back_raw1/Autocompute Value Bounds1
+        - /sensor1/LaserScan_back1
       Splitter Ratio: 0.36033058166503906
     Tree Height: 746
   - Class: rviz/Selection
@@ -202,8 +203,8 @@ Visualization Manager:
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 0.5303166508674622
-            Min Value: -0.5073539018630981
+            Max Value: 0.5325109362602234
+            Min Value: -0.507251501083374
             Value: true
           Axis: Z
           Channel Name: intensity
@@ -211,7 +212,7 @@ Visualization Manager:
           Color: 255; 255; 255
           Color Transformer: AxisColor
           Decay Time: 0
-          Enabled: true
+          Enabled: false
           Invert Rainbow: false
           Max Color: 255; 255; 255
           Min Color: 0; 0; 0
@@ -226,7 +227,7 @@ Visualization Manager:
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
-          Value: true
+          Value: false
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
@@ -239,7 +240,7 @@ Visualization Manager:
           Color: 255; 255; 255
           Color Transformer: AxisColor
           Decay Time: 0
-          Enabled: true
+          Enabled: false
           Invert Rainbow: false
           Max Color: 255; 255; 255
           Min Color: 0; 0; 0
@@ -254,7 +255,7 @@ Visualization Manager:
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
-          Value: true
+          Value: false
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
@@ -314,8 +315,8 @@ Visualization Manager:
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 0.5293569564819336
-            Min Value: -0.40433692932128906
+            Max Value: 0.530674159526825
+            Min Value: -0.447513222694397
             Value: true
           Axis: Z
           Channel Name: intensity
@@ -323,7 +324,7 @@ Visualization Manager:
           Color: 255; 255; 255
           Color Transformer: AxisColor
           Decay Time: 0
-          Enabled: false
+          Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
           Min Color: 0; 0; 0
@@ -338,12 +339,12 @@ Visualization Manager:
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
-          Value: false
+          Value: true
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 0.5041851997375488
-            Min Value: -0.259555459022522
+            Max Value: 0.5019275546073914
+            Min Value: -0.3880366086959839
             Value: true
           Axis: Z
           Channel Name: intensity
@@ -351,7 +352,7 @@ Visualization Manager:
           Color: 255; 255; 255
           Color Transformer: AxisColor
           Decay Time: 0
-          Enabled: false
+          Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
           Min Color: 0; 0; 0
@@ -366,7 +367,7 @@ Visualization Manager:
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
-          Value: false
+          Value: true
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
@@ -379,7 +380,7 @@ Visualization Manager:
           Color: 255; 255; 255
           Color Transformer: Intensity
           Decay Time: 0
-          Enabled: false
+          Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
           Min Color: 0; 0; 0
@@ -390,11 +391,11 @@ Visualization Manager:
           Size (Pixels): 3
           Size (m): 0.05000000074505806
           Style: Flat Squares
-          Topic: /laser/front
+          Topic: /scan/front
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
-          Value: false
+          Value: true
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
@@ -407,7 +408,7 @@ Visualization Manager:
           Color: 255; 255; 255
           Color Transformer: Intensity
           Decay Time: 0
-          Enabled: false
+          Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
           Min Color: 0; 0; 0
@@ -418,11 +419,11 @@ Visualization Manager:
           Size (Pixels): 3
           Size (m): 0.05000000074505806
           Style: Flat Squares
-          Topic: /laser/back
+          Topic: /scan/back
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
-          Value: false
+          Value: true
       Enabled: true
       Name: sensor
   Enabled: true
@@ -453,7 +454,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 19.058134078979492
+      Distance: 23.946475982666016
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -461,17 +462,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -2.681802272796631
-        Y: -5.448630332946777
-        Z: 1.7701098918914795
+        X: -3.032003402709961
+        Y: -0.5830719470977783
+        Z: 2.4647305011749268
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7047955393791199
+      Pitch: 0.6147972345352173
       Target Frame: <Fixed Frame>
-      Yaw: 2.005798816680908
+      Yaw: 3.038517475128174
     Saved: ~
 Window Geometry:
   Displays:

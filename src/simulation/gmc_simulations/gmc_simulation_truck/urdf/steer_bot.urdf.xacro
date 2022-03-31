@@ -159,7 +159,7 @@
 
   <xacro:include filename="$(find robosense_description)/urdf/RS-16.urdf.xacro"/>
   <xacro:RS-16 parent="base_link" name="rslidar_back" topic="rslidar_back" hz="20" samples="900" gpu="${gpu}">
-    <origin xyz="-3.2 -1.345 1.0" rpy="0.0 0 0" />
+    <origin xyz="-3.2 -1.345 1.0" rpy="0.0 0 3.14159" />
   </xacro:RS-16>
 
 
