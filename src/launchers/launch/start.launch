@@ -11,11 +11,13 @@
     <include file="$(find rslidar_sdk)/launch/start.launch"/>
     <!-- ray ground rslidar -->
     <include file="$(find launchers)/node/ray_ground_rslidar_front.xml"/>
-    <include file="$(find launchers)/node/ray_ground_rslidar_front.xml"/>
+    <include file="$(find launchers)/node/ray_ground_rslidar_back.xml"/>
     <!-- Map_server -->
     <include file="$(find launchers)/node/map_server.xml"/>
     <!-- amcl -->
     <include file="$(find amcl)/launch/amcl_diff.launch"/>
+    <!-- robot_localization -->
+    <include file="$(find robot_localization)/launch/dual_ekf_navsat_outdoor.launch"/>
 
 
 </launch>

@@ -66,7 +66,7 @@
     <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch"/>
 
     <!-- rf2o front scan -->
-    <include file="$(find rf2o_laser_odometry)/launch/rf2o_laser_odometry.launch"/>
+    <!-- <include file="$(find rf2o_laser_odometry)/launch/rf2o_laser_odometry.launch"/> -->
 
 
     <!--launch rviz-->
