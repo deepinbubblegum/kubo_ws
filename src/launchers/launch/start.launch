@@ -10,14 +10,17 @@
     <!-- rslidar -->
     <include file="$(find rslidar_sdk)/launch/start.launch"/>
     <!-- ray ground rslidar -->
-    <include file="$(find launchers)/node/ray_ground_rslidar_front.xml"/>
-    <include file="$(find launchers)/node/ray_ground_rslidar_back.xml"/>
+    <include file="$(find launchers)/node/ray_ground_rslidar/ray_ground_rslidar_front.xml"/>
+    <include file="$(find launchers)/node/ray_ground_rslidar/ray_ground_rslidar_back.xml"/>
+    <!-- pointcloud 2 laserscan -->
+    <include file="$(find launchers)/node/pointcloud_to_laserscan/pointcloud_to_laserscan_front.xml"/>
+    <include file="$(find launchers)/node/pointcloud_to_laserscan/pointcloud_to_laserscan_back.xml"/>
+    <!-- merger laser -->
+    <include file="$(find launchers)/node/laserscan_multi_merger/laserscan_multi_merger.xml"/>
     <!-- Map_server -->
-    <include file="$(find launchers)/node/map_server.xml"/>
+    <include file="$(find launchers)/node/map_server/map_server.xml"/>
     <!-- amcl -->
-    <include file="$(find amcl)/launch/amcl_diff.launch"/>
+    <include file="$(find launchers)/node/amcl/amcl_diff.xml"/>
     <!-- robot_localization -->
-    <include file="$(find robot_localization)/launch/dual_ekf_navsat_outdoor.launch"/>
-
-
+    <include file="$(find launchers)/node/robot_localization/dual_ekf_navsat_outdoor.launch"/>
 </launch>
