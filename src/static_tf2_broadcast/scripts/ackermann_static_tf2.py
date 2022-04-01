@@ -40,7 +40,7 @@ class ackermann_static_tf2:
         gps_front_to_base_link.child_frame_id = "gps_front"
         gps_front_to_base_link.transform.translation.x = 5.26 #3.165 base at center
         gps_front_to_base_link.transform.translation.y = 1.345
-        gps_front_to_base_link.transform.translation.z = 0.6975
+        gps_front_to_base_link.transform.translation.z = 1.0
         gps_front_to_base_link.transform.rotation.w = 1.0
         gps_front_to_base_link.transform.rotation.x = 0.0
         gps_front_to_base_link.transform.rotation.y = 0.0
@@ -53,8 +53,8 @@ class ackermann_static_tf2:
         rslidar_front_to_base_link.transform.translation.x = 5.26 #3.165 base at center
         rslidar_front_to_base_link.transform.translation.y = 1.345
         rslidar_front_to_base_link.transform.translation.z = 1.0 #0.6125
-        rslidar_front_to_base_link.transform.rotation.w = 0.0
-        rslidar_front_to_base_link.transform.rotation.x = -1.0
+        rslidar_front_to_base_link.transform.rotation.w = 1.0
+        rslidar_front_to_base_link.transform.rotation.x = 0.0
         rslidar_front_to_base_link.transform.rotation.y = 0.0
         rslidar_front_to_base_link.transform.rotation.z = 0.0
 
@@ -91,8 +91,8 @@ class ackermann_static_tf2:
         rslidar_back_to_base_link.transform.translation.z = 1.0 #0.6125
         rslidar_back_to_base_link.transform.rotation.w = 0.0
         rslidar_back_to_base_link.transform.rotation.x = 0.0
-        rslidar_back_to_base_link.transform.rotation.y = -1.0
-        rslidar_back_to_base_link.transform.rotation.z = 0.0
+        rslidar_back_to_base_link.transform.rotation.y = 0.0
+        rslidar_back_to_base_link.transform.rotation.z = 1.0
 
         return [
                 odom_to_map,
