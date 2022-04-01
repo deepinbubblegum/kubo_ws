@@ -41,7 +41,10 @@ class TwistToAckermann:
         # reference https://github.com/rst-tu-dortmund/teb_local_planner/blob/melodic-devel/scripts/cmd_vel_to_ackermann_drive.py
         v = twist_msg.linear.x
         if self.cmd_angle_instead_rotvel:
-            steering = self.tiwst_convert_to_steering(v, twist_msg.angular.z)
+            if v < 0 and twist_msg.angular.z != 0:
+                steering = self.tiwst_convert_to_steering(v, (twist_msg.angular.z * -1))
+            else:
+                steering = self.tiwst_convert_to_steering(v, twist_msg.angular.z)
         else:
             steering = twist_msg.angular.z
         if self._remote is False:
