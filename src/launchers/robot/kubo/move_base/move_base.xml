@@ -11,11 +11,11 @@
 
         <param name="clearing_rotation_allowed" value="true" /> <!-- Our carlike robot is not able to rotate in place -->
 
-        <rosparam file="$(find kubo_launcher)/move_base/sbpl/costmap_common_params.yaml" command="load" ns="global_costmap" />
-        <rosparam file="$(find kubo_launcher)/move_base/sbpl/costmap_common_params.yaml" command="load" ns="local_costmap" />
-        <rosparam file="$(find kubo_launcher)/move_base/sbpl/local_costmap_params_close.yaml" command="load" />
-        <rosparam file="$(find kubo_launcher)/move_base/sbpl/global_costmap_params.yaml" command="load" />
-        <rosparam file="$(find kubo_launcher)/move_base/sbpl/sbpl_global_params.yaml" command="load" />
-        <rosparam file="$(find kubo_launcher)/move_base/sbpl/mpc_local_planner_params.yaml" command="load" />
+        <rosparam file="$(find launchers)/robot/kubo/sbpl/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find launchers)/robot/kubo/sbpl/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find launchers)/robot/kubo/sbpl/local_costmap_params_close.yaml" command="load" />
+        <rosparam file="$(find launchers)/robot/kubo/sbpl/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find launchers)/robot/kubo/sbpl/sbpl_global_params.yaml" command="load" />
+        <rosparam file="$(find launchers)/robot/kubo/sbpl/mpc_local_planner_params.yaml" command="load" />
     </node>
 </launch>
