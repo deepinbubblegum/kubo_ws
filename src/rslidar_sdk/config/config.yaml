@@ -28,13 +28,13 @@ lidar:
       x: 0.0
       y: 0.0
       z: 0.0
-      roll: 3.14
-      pitch: 3.14
-      yaw: -1.57                               
+      roll: 0.0
+      pitch: 0.0
+      yaw: 0.0                               
     ros:
       ros_recv_packet_topic: /front/rslidar_packets          #Topic used to receive lidar packets from ROS
       ros_send_packet_topic: /front/rslidar_packets          #Topic used to send lidar packets through ROS
-      ros_send_point_cloud_topic: /front/rslidar_points      #Topic used to send point cloud through ROS
+      ros_send_point_cloud_topic: /rslidar_points/front      #Topic used to send point cloud through ROS
     proto:
       point_cloud_recv_port: 60021                     #Port number used for receiving point cloud 
       point_cloud_send_port: 60021                     #Port number which the point cloud will be send to
@@ -60,13 +60,13 @@ lidar:
       x: 0.0
       y: 0.0
       z: 0.0
-      roll: 3.14
-      pitch: 3.14
-      yaw: -1.57                                      
+      roll: 0.0
+      pitch: 0.0
+      yaw: 0.0                                     
     ros:
       ros_recv_packet_topic: /back/rslidar_packets          #Topic used to receive lidar packets from ROS
       ros_send_packet_topic: /back/rslidar_packets          #Topic used to send lidar packets through ROS
-      ros_send_point_cloud_topic: /back/rslidar_points      #Topic used to send point cloud through ROS
+      ros_send_point_cloud_topic: /rslidar_points/back      #Topic used to send point cloud through ROS
     proto:
       point_cloud_recv_port: 60024                     #Port number used for receiving point cloud 
       point_cloud_send_port: 60024                     #Port number which the point cloud will be send to

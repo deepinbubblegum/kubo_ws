@@ -14,7 +14,7 @@ option(COMPILE_TOOLS "Build point cloud visualization tool" OFF)
 #=============================
 #  Compile Demos&Tools
 #=============================
-option(ENABLE_TRANSFORM "Enable transform functions" OFF)
+option(ENABLE_TRANSFORM "Enable transform functions" ON)
 
 #========================
 #  Project setup

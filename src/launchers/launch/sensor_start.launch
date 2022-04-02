@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <!-- static_tf2_broadcast -->
+    <include file="$(find static_tf2_broadcast)/launch/ackermann_static_broadcast.launch" />
+    <!-- rslidar -->
+    <include file="$(find rslidar_sdk)/launch/start.launch"/>
+
+    <!--launch rviz-->
+    <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find launchers)/rviz/config.rviz"/>
+</launch>
