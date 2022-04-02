@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <arg name="topic_sub_point_cloud" default="back/rslidar_points"/>
+    <arg name="topic_sub_point_cloud" default="rslidar_points/back"/>
     <arg name="topic_point_ground" default="filtered_points_ground/rear"/>
     <arg name="topic_point_no_ground" default="filtered_points_no_ground/rear"/>
     <arg name="clip_height" default="0.2"/>
