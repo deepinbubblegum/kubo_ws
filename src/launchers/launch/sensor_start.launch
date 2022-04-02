@@ -5,6 +5,10 @@
     <!-- rslidar -->
     <include file="$(find rslidar_sdk)/launch/start.launch"/>
 
+    <!-- ray ground rslidar -->
+    <!-- <include file="$(find launchers)/robot/kubo/ray_ground_rslidar/ray_ground_rslidar_front.xml"/> -->
+    <include file="$(find launchers)/robot/kubo/ray_ground_rslidar/ray_ground_rslidar_back.xml"/>
+
     <!--launch rviz-->
     <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find launchers)/rviz/config.rviz"/>
 </launch>

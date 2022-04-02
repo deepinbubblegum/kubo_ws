@@ -255,7 +255,7 @@ void PclCore::publish_cloud(const ros::Publisher &in_publisher,
     // set input to cloud
     voxelGrid.setInputCloud(in_cloud_to_publish_ptr);
     // set the leaf size (x, y, z)
-    voxelGrid.setLeafSize(0.04f, 0.04f, 0.04f);
+    voxelGrid.setLeafSize(0.05f, 0.05f, 0.05f);
     // apply the filter to dereferenced cloudVoxel
     voxelGrid.filter(*cloud_filtered);
 
