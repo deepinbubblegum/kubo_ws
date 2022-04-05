@@ -8,6 +8,9 @@ Panels:
         - /Status1
         - /PointCloud1/front_raw1/Autocompute Value Bounds1
         - /Odom1
+        - /Odom1/odom_rf2o_front1
+        - /Odom1/odom_rf2o_rear1
+        - /Odom1/Odometry_filtered1
       Splitter Ratio: 0.48235294222831726
     Tree Height: 719
   - Class: rviz/Selection
@@ -69,8 +72,6 @@ Visualization Manager:
           Marker Topic: /constraint_list
           Name: MarkerArray
           Namespaces:
-            Inter constraints, same trajectory: true
-            Inter residuals, same trajectory: true
             Intra constraints: true
             Intra residuals: true
           Queue Size: 100
@@ -454,7 +455,7 @@ Visualization Manager:
               Value: true
             Value: false
           Enabled: true
-          Keep: 100
+          Keep: 10
           Name: odom_rf2o_front
           Position Tolerance: 0.10000000149011612
           Queue Size: 10
@@ -489,7 +490,7 @@ Visualization Manager:
               Value: true
             Value: false
           Enabled: true
-          Keep: 100
+          Keep: 10
           Name: odom_rf2o_rear
           Position Tolerance: 0.10000000149011612
           Queue Size: 10
@@ -524,7 +525,7 @@ Visualization Manager:
               Value: true
             Value: false
           Enabled: true
-          Keep: 100
+          Keep: 10
           Name: Odometry_filtered
           Position Tolerance: 0.10000000149011612
           Queue Size: 10
@@ -614,7 +615,7 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 71.07765197753906
+      Scale: 111.8420639038086
       Target Frame: base_link
       X: 0.4128647446632385
       Y: 2.760213613510132

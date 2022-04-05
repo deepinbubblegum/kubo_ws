@@ -37,7 +37,7 @@
     <include file="$(find launchers)/robot/kubo/robot_localization/dual_ekf_navsat_outdoor.xml"/>
     
     <!-- cartographer_ros -->
-    <include file="$(find cartographer_ros)/launch/kubo_robot.launch"/>
+    <!-- <include file="$(find cartographer_ros)/launch/kubo_robot.launch"/> -->
 
     <!--launch rviz-->
     <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find launchers)/rviz/config_sensor.rviz"/>
