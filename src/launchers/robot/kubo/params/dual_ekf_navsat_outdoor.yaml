@@ -51,12 +51,13 @@ ekf_se_odom:
                  false, false, false,
                  false,  false,  false,
                 false,  false,  false]
-  pose1: initialpose
-  pose1_config: [true, true, false,
-                 false,  false,  false,
-                 false, false, false,
-                 false,  false,  false,
-                false,  false,  false]  
+
+  # pose1: initialpose
+  # pose1_config: [true, true, false,
+  #                false,  false,  false,
+  #                false, false, false,
+  #                false,  false,  false,
+  #               false,  false,  false]  
 
 
   use_control: false
@@ -155,12 +156,13 @@ ekf_se_map:
                  false, false, false,
                  false,  false,  false,
                 false,  false,  false]
-  pose1: initialpose
-  pose1_config: [true, true, false,
-                 false,  false,  false,
-                 false, false, false,
-                 false,  false,  false,
-                false,  false,  false] 
+                
+  # pose1: initialpose
+  # pose1_config: [true, true, false,
+  #                false,  false,  false,
+  #                false, false, false,
+  #                false,  false,  false,
+  #               false,  false,  false] 
 
   use_control: false
 
