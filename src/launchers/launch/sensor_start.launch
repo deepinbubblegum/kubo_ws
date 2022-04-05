@@ -6,9 +6,26 @@
     <include file="$(find rslidar_sdk)/launch/start.launch"/>
 
     <!-- ray ground rslidar -->
-    <!-- <include file="$(find launchers)/robot/kubo/ray_ground_rslidar/ray_ground_rslidar_front.xml"/> -->
+    <include file="$(find launchers)/robot/kubo/ray_ground_rslidar/ray_ground_rslidar_front.xml"/>
     <include file="$(find launchers)/robot/kubo/ray_ground_rslidar/ray_ground_rslidar_back.xml"/>
 
+    <!-- pointcloud 2 laserscan -->
+    <include file="$(find launchers)/robot/kubo/pointcloud_to_laserscan/pointcloud_to_laserscan_front.xml"/>
+    <include file="$(find launchers)/robot/kubo/pointcloud_to_laserscan/pointcloud_to_laserscan_back.xml"/>
+    
+    <!-- merger laser -->
+    <include file="$(find launchers)/robot/kubo/laserscan_multi_merger/laserscan_multi_merger.xml"/>
+
+    <!-- rf2o -->
+    <include file="$(find launchers)/robot/kubo/rf2o/rf2o_laser_odometry_front.xml"/>
+    <include file="$(find launchers)/robot/kubo/rf2o/rf2o_laser_odometry_rear.xml"/>
+
+    <!-- imu tools -->
+    <include file="$(find launchers)/robot/kubo/imu_tool/imu_filter_madgwick.xml"/>
+    
+    <!-- scan_matcher -->
+    <include file="$(find launchers)/robot/kubo/laser_scan_matcher/laser_scan_matcher.xml"/>
+    
     <!--launch rviz-->
-    <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find launchers)/rviz/config.rviz"/>
+    <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find launchers)/rviz/config_sensor.rviz"/>
 </launch>

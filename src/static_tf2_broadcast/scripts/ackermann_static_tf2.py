@@ -76,7 +76,7 @@ class ackermann_static_tf2:
         laser_to_base_link.child_frame_id = "laser"
         laser_to_base_link.transform.translation.x = 0.0
         laser_to_base_link.transform.translation.y = 0.0
-        laser_to_base_link.transform.translation.z = 0.0 #0.6125
+        laser_to_base_link.transform.translation.z = 1.25 #0.6125
         laser_to_base_link.transform.rotation.w = 1.0
         laser_to_base_link.transform.rotation.x = 0.0
         laser_to_base_link.transform.rotation.y = 0.0
