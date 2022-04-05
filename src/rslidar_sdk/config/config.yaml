@@ -19,8 +19,8 @@ lidar:
       frame_id: rslidar_front           #Frame id of message
       msop_port: 9966              #Msop port of lidar
       difop_port: 8877             #Difop port of lidar
-      start_angle: 270             #Start angle of point cloud
-      end_angle: 180               #End angle of point cloud 
+      start_angle: 272.5             #Start angle of point cloud
+      end_angle: 173               #End angle of point cloud 
       min_distance: 0.2            #Minimum distance of point cloud
       max_distance: 150            #Maximum distance of point cloud
       use_lidar_clock: false       #True--Use the lidar clock as the message timestamp
@@ -52,8 +52,8 @@ lidar:
       frame_id: rslidar_back       #Frame id of message
       msop_port: 6699              #Msop port of lidar
       difop_port: 7788             #Difop port of lidar
-      start_angle: 270             #Start angle of point cloud
-      end_angle: 180               #End angle of point cloud 
+      start_angle: 272.5             #Start angle of point cloud
+      end_angle: 174               #End angle of point cloud 
       min_distance: 0.2            #Minimum distance of point cloud
       max_distance: 150            #Maximum distance of point cloud
       use_lidar_clock: false       #True--Use the lidar clock as the message timestamp

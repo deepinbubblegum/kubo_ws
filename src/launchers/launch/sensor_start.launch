@@ -2,6 +2,10 @@
 <launch>
     <!-- static_tf2_broadcast -->
     <include file="$(find static_tf2_broadcast)/launch/ackermann_static_broadcast.launch" />
+    
+    <!-- Ublox gps front -->
+    <include file="$(find ublox_gps)/launch/ublox_gps_zed_f9p_front.launch"/>
+
     <!-- rslidar -->
     <include file="$(find rslidar_sdk)/launch/start.launch"/>
 
@@ -26,6 +30,15 @@
     <!-- scan_matcher -->
     <include file="$(find launchers)/robot/kubo/laser_scan_matcher/laser_scan_matcher.xml"/>
     
+    <!-- main_control -->
+    <include file="$(find main_control)/launch/start_control.launch"/>
+    
+    <!-- robot_localization -->
+    <include file="$(find launchers)/robot/kubo/robot_localization/dual_ekf_navsat_outdoor.xml"/>
+    
+    <!-- cartographer_ros -->
+    <include file="$(find cartographer_ros)/launch/kubo_robot.launch"/>
+
     <!--launch rviz-->
     <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find launchers)/rviz/config_sensor.rviz"/>
 </launch>
