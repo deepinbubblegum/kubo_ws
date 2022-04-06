@@ -35,6 +35,7 @@ options = {
   lookup_transform_timeout_sec = 0.2,
   submap_publish_period_sec = 0.3,
   pose_publish_period_sec = 5e-3,
+  -- publish_to_tf = true,
   trajectory_publish_period_sec = 30e-3,
   rangefinder_sampling_ratio = 1.,
   odometry_sampling_ratio = 1.,
