@@ -1,0 +1,51 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${workspaceFolder}/.vscode/browse.vc.db",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/bubble/kubo_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/bubble/kubo_ws/src/navigation/amcl/include/**",
+        "/home/bubble/kubo_ws/src/navigation_experimental/assisted_teleop/include/**",
+        "/home/bubble/kubo_ws/src/navigation/base_local_planner/include/**",
+        "/home/bubble/kubo_ws/src/navigation/carrot_planner/include/**",
+        "/home/bubble/kubo_ws/src/navigation/clear_costmap_recovery/include/**",
+        "/home/bubble/kubo_ws/src/navigation/costmap_2d/include/**",
+        "/home/bubble/kubo_ws/src/costmap_converter/include/**",
+        "/home/bubble/kubo_ws/src/navigation/dwa_local_planner/include/**",
+        "/home/bubble/kubo_ws/src/navigation/global_planner/include/**",
+        "/home/bubble/kubo_ws/src/navigation_experimental/goal_passer/include/**",
+        "/home/bubble/kubo_ws/src/navigation/map_server/include/**",
+        "/home/bubble/kubo_ws/src/navigation/move_base/include/**",
+        "/home/bubble/kubo_ws/src/navigation/move_slow_and_clear/include/**",
+        "/home/bubble/kubo_ws/src/mpc_local_planner/mpc_local_planner/include/**",
+        "/home/bubble/kubo_ws/src/navigation/nav_core/include/**",
+        "/home/bubble/kubo_ws/src/navigation/navfn/include/**",
+        "/home/bubble/kubo_ws/src/navigation_experimental/pose_base_controller/include/**",
+        "/home/bubble/kubo_ws/src/navigation_experimental/pose_follower/include/**",
+        "/home/bubble/kubo_ws/src/robot_localization/include/**",
+        "/home/bubble/kubo_ws/src/navigation/rotate_recovery/include/**",
+        "/home/bubble/kubo_ws/src/navigation_experimental/sbpl_lattice_planner/include/**",
+        "/home/bubble/kubo_ws/src/navigation_experimental/sbpl_recovery/include/**",
+        "/home/bubble/kubo_ws/src/teb_local_planner/include/**",
+        "/home/bubble/kubo_ws/src/main_control_system/twist_mux/include/**",
+        "/home/bubble/kubo_ws/src/navigation_experimental/twist_recovery/include/**",
+        "/home/bubble/kubo_ws/src/ublox/ublox_gps/include/**",
+        "/home/bubble/kubo_ws/src/ublox/ublox_msg_filters/include/**",
+        "/home/bubble/kubo_ws/src/ublox/ublox_msgs/include/**",
+        "/home/bubble/kubo_ws/src/ublox/ublox_serialization/include/**",
+        "/home/bubble/kubo_ws/src/navigation/voxel_grid/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

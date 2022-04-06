@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcorbo_observers.a  CMakeFiles/corbo_observers.dir/src/dummy.cpp.o
+/usr/bin/ranlib libcorbo_observers.a

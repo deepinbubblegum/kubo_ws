@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find point_preprocess)/node_launch/pointcloud_to_laserscan_front.xml"/>
+    <include file="$(find point_preprocess)/node_launch/pointcloud_to_laserscan_back.xml"/>
+</launch>

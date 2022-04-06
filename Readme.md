@@ -14,3 +14,14 @@ catkin build
 
 
 rosrun map_server map_saver -f mapname
+
+
+cd some_folder/control_box_rst
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+
+sudo add-apt-repository ppa:joseluisblancoc/mrpt-stable
+sudo apt-get install ros-noetic-csm ros-noetic-libpointmatcher ros-noetic-scan-tools 

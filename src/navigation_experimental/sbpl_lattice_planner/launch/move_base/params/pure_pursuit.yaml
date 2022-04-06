@@ -1,0 +1,7 @@
+# PurePursuitPlanner:
+#   ld_gain: 0.4
+#   min_ld: 2.0
+#   car_wheel_base: 4.19
+#   controller_freq: 10
+#   map_frame: 'map'
+#   base_frame: 'base_link'

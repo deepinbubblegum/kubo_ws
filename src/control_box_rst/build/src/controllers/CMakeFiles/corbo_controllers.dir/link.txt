@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcorbo_controllers.a  CMakeFiles/corbo_controllers.dir/src/controller_interface.cpp.o CMakeFiles/corbo_controllers.dir/src/pid_controller.cpp.o CMakeFiles/corbo_controllers.dir/src/lqr_controller.cpp.o CMakeFiles/corbo_controllers.dir/src/simple_state_controller.cpp.o CMakeFiles/corbo_controllers.dir/src/predictive_controller.cpp.o CMakeFiles/corbo_controllers.dir/src/dual_mode_controller.cpp.o
+/usr/bin/ranlib libcorbo_controllers.a

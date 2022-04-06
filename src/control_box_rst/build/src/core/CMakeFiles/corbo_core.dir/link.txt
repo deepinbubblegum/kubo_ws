@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcorbo_core.a  CMakeFiles/corbo_core.dir/src/global.cpp.o CMakeFiles/corbo_core.dir/src/time.cpp.o CMakeFiles/corbo_core.dir/src/reference_trajectory.cpp.o CMakeFiles/corbo_core.dir/src/time_series.cpp.o CMakeFiles/corbo_core.dir/src/signals.cpp.o CMakeFiles/corbo_core.dir/src/common_signal_target.cpp.o CMakeFiles/corbo_core.dir/src/data_exporter_interface.cpp.o CMakeFiles/corbo_core.dir/src/yaml_export.cpp.o CMakeFiles/corbo_core.dir/src/tsv_export.cpp.o
+/usr/bin/ranlib libcorbo_core.a
