@@ -249,15 +249,15 @@ void PclCore::publish_cloud(const ros::Publisher &in_publisher,
                                 const std_msgs::Header &in_header)
 {
 
-    // pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZI>);
-    // // define a voxelgrid
-    // pcl::VoxelGrid<pcl::PointXYZI> voxelGrid;
-    // // set input to cloud
-    // voxelGrid.setInputCloud(in_cloud_to_publish_ptr);
-    // // set the leaf size (x, y, z)
-    // voxelGrid.setLeafSize(0.05f, 0.05f, 0.05f);
-    // // apply the filter to dereferenced cloudVoxel
-    // voxelGrid.filter(*cloud_filtered);
+    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZI>);
+    // define a voxelgrid
+    pcl::VoxelGrid<pcl::PointXYZI> voxelGrid;
+    // set input to cloud
+    voxelGrid.setInputCloud(in_cloud_to_publish_ptr);
+    // set the leaf size (x, y, z)
+    voxelGrid.setLeafSize(0.05f, 0.05f, 0.05f);
+    // apply the filter to dereferenced cloudVoxel
+    voxelGrid.filter(*cloud_filtered);
 
     sensor_msgs::PointCloud2 cloud_msg;
     pcl::toROSMsg(*in_cloud_to_publish_ptr, cloud_msg);
