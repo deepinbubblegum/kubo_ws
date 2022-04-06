@@ -71,10 +71,10 @@ class Odometry_ackermann:
             self.distanc = self.ticker - self.prev_ticker
             elapsed = (self.current_time - self.last_time).to_sec()
             self.current_linear_velocity = self.distanc / elapsed # m/s
-            self.current_angular_velocity = self.current_linear_velocity * tan(self.steer_position) / self.wheelbase
+            self.current_angular_velocity = (self.current_linear_velocity * self.steer_position) / self.wheelbase
             # propigate odometry
-            self.x += self.current_linear_velocity * cos(self.theta + (self.current_angular_velocity * elapsed) / 2)
-            self.y += self.current_linear_velocity * sin(self.theta + (self.current_angular_velocity * elapsed) / 2)
+            self.x += self.current_linear_velocity * elapsed * cos(self.theta + (self.current_angular_velocity * elapsed) / 2)
+            self.y += self.current_linear_velocity * elapsed * sin(self.theta + (self.current_angular_velocity * elapsed) / 2)
             self.theta += self.current_angular_velocity * elapsed
 
             q = quaternion_from_euler(0, 0, self.theta)
