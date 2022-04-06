@@ -33,32 +33,11 @@ ekf_se_odom:
                 false, false,  false,
                 true,  false,  true]
 
-  # imu0_config: [false, false, false,
-  #               false, false, false,
-  #               false, false, false,
-  #               false, false, false,
-  #               true, true, true]  
-
   imu0_nodelay: false
   imu0_differential: true
   imu0_relative: false
   imu0_queue_size: 10
   imu0_remove_gravitational_acceleration: false
-
-  # pose0: amcl_pose 
-  # pose0_config: [true, true, false,
-  #                false,  false,  false,
-  #                false, false, false,
-  #                false,  false,  false,
-  #               false,  false,  false]
-
-  # pose1: initialpose
-  # pose1_config: [true, true, false,
-  #                false,  false,  false,
-  #                false, false, false,
-  #                false,  false,  false,
-  #               false,  false,  false]  
-
 
   use_control: false
 
@@ -109,19 +88,8 @@ ekf_se_map:
   base_link_frame: base_link
   world_frame: map
 
-  # odom0: odometry/wheel
-  # odom0_config: [false, false, false,
-  #                false, false, false,
-  #                true,  true,  true,
-  #                false, false, true,
-  #                false, false, false]
-  # odom0_queue_size: 10
-  # odom0_nodelay: true
-  # odom0_differential: true
-  # odom0_relative: false
-
   odom0: odometry/gps
-  odom0_config: [true,  true,  false,
+  odom0_config: [true,  true,  true,
                  false, false, false,
                  false, false, false,
                  false, false, false,
@@ -145,24 +113,6 @@ ekf_se_map:
                 false, false, false,
                 true, true, true]
 
-  # imu0: imu/data
-  # imu0_config: [false, false, false,
-  #               true,  true,  false,
-  #               false, false, false,
-  #               true,  true,  true,
-  #               true,  true,  true]
-
-  # imu0_config: [false, false, false,
-  #               false, false, false,
-  #               false, false, false,
-  #               false, false, false,
-  #               true, true, true]  
-              
-  # imu0_nodelay: true
-  # imu0_differential: true
-  # imu0_relative: false
-  # imu0_queue_size: 10
-  # imu0_remove_gravitational_acceleration: false
   twist0: ublox_gps/fix_velocity
   twist0_config: [false, false, false, #<!-- x, y, z position -->
                  false, false, false, #<!-- roll, pitch, yaw angles-->
@@ -183,14 +133,6 @@ ekf_se_map:
                  false, false, false,
                  false,  false,  false,
                  false,  false,  false]
-                
-  # pose1: initialpose
-  # pose1_config: [true, true, false,
-  #                false,  false,  false,
-  #                false, false, false,
-  #                false,  false,  false,
-  #               false,  false,  false] 
-
 
   use_control: false
 
@@ -234,5 +176,5 @@ navsat_transform:
   zero_altitude: true
   broadcast_cartesian_transform: true
   publish_filtered_gps: true
-  use_odometry_yaw: false
+  use_odometry_yaw: true
   wait_for_datum: false
