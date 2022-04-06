@@ -136,6 +136,13 @@ class velocity_control_system:
             if gear_ready == True:
                 self.last_sp_speed = self.sp_speed
                 
+            self.current_setpoint_time = self.current_pvpoint_time = rospy.Time.now()
+            setpoint_time_distanc = (self.current_setpoint_time - self.last_setpoint_time).to_sec() #setpoint is not ready
+            pvpoint_time_distanc = (self.current_pvpoint_time - self.last_pvpoint_time).to_sec() #odom is not ready
+            if setpoint_time_distanc >= 2.5 or pvpoint_time_distanc >= 2.5:
+                self.sp_speed = 0.0
+                self.previous_error = 0.0
+                self.integral = 0.0
                 
             if self.drive_ready_state is False or gear_ready is False: # mcu 1 topic is not ready
                 self.sp_speed = 0.0
@@ -155,13 +162,11 @@ class velocity_control_system:
 
         self.last_time = self.current_time
         self.pub_velocity_control.publish(velocity_msg) # publish topic
-        setpoint_time_distanc = (self.current_setpoint_time - self.last_setpoint_time).to_sec()
-        if setpoint_time_distanc >= 2.5:
-            self.sp_speed = 0.0
 
     def callback_odometry_velocity(self, odom_msg):
         self.pv_speed = odom_msg.twist.twist.linear.x
-        # self.current_time = odom_msg.header.stamp
+        self.current_pvpoint_time = rospy.Time.now()
+        self.last_pvpoint_time = self.current_pvpoint_time
 
     def callback_ackermann_vel(self, ackermann_msg):
         self.sp_speed = ackermann_msg.drive.speed
@@ -187,7 +192,9 @@ class velocity_control_system:
         # timeout variable init
         self.last_setpoint_time = rospy.Time.now()
         self.current_setpoint_time = rospy.Time.now()
-         
+        self.last_pvpoint_time = rospy.Time.now()
+        self.current_pvpoint_time = rospy.Time.now()
+
         # pid init variable
         self.previous_error = 0.0
         self.integral = 0.0
