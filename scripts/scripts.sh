@@ -1,0 +1,2 @@
+#!/bin/bash
+rosbag filter 2022-04-07-16-29-10.bag FilteredBag.bag "topic == '/bno055/imu' or topic == '/bno055/imu_raw' or topic == '/bno055/mag' or topic == '/bno055/temp' or topic == '/front_encoder' or topic == '/rslidar_points/front_raw' or topic == '/rslidar_points/back_raw' or topic == '/ublox_gps/fix' or topic == '/ublox_gps/fix_velocity' or topic == '/odometry/wheel'"
