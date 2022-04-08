@@ -1,7 +1,7 @@
 # For parameter descriptions, please refer to the template parameter files for each node.
 
 ekf_se_odom:
-  frequency: 30.0
+  frequency: 100.0
   sensor_timeout: 0.1
   two_d_mode: true
   transform_time_offset: 0.1
@@ -16,7 +16,7 @@ ekf_se_odom:
   world_frame: odom
 
   odom0: odometry/wheel
-  odom0_config: [false, false, false, #<!-- x, y, z position -->
+  odom0_config: [true,  true, false, #<!-- x, y, z position -->
                  false, false, true, #<!-- roll, pitch, yaw angles-->
                  true,  false, false, #<!-- x/y/z velocity -->
                  false, false, true, #<!-- roll/pitch/yaw velocity -->
@@ -81,7 +81,7 @@ ekf_se_map:
   transform_timeout: 0.0
   print_diagnostics: true
   debug: false
-  publish_tf: false
+  publish_tf: true
 
   map_frame: map
   odom_frame: odom
@@ -96,7 +96,7 @@ ekf_se_map:
                  false, false, false]
   odom0_queue_size: 10
   odom0_nodelay: true
-  odom0_differential: false
+  odom0_differential: true
   odom0_relative: false
 
   odom1: odom_rf2o/front
@@ -105,6 +105,10 @@ ekf_se_map:
                 true, true, true,
                 false, false, false,
                 true, true, true]
+  odom1_queue_size: 10
+  odom1_nodelay: true
+  odom1_differential: true
+  odom1_relative: false
 
   odom2: odom_rf2o/rear
   odom2_config: [true,  true,  false,
@@ -112,6 +116,11 @@ ekf_se_map:
                 true, true, true,
                 false, false, false,
                 true, true, true]
+
+  odom2_queue_size: 10
+  odom2_nodelay: true
+  odom2_differential: true
+  odom2_relative: false
 
   twist0: ublox_gps/fix_velocity
   twist0_config: [false, false, false, #<!-- x, y, z position -->

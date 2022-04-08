@@ -4,9 +4,9 @@
     <arg name="topic_point_ground" default="filtered_points_ground/front"/>
     <arg name="topic_point_no_ground" default="filtered_points_no_ground/front"/>
     <arg name="clip_height" default="0.2"/>
-    <arg name="min_distance" default="0.1"/>
+    <arg name="min_distance" default="0.0"/>
     <arg name="radial_divider_angle" default="0.18"/>
-    <arg name="sensor_height" default="1.2"/>
+    <arg name="sensor_height" default="1.25"/>
     <arg name="concentric_div_dist" default="0.1"/>
     <arg name="threshold_min_heigh" default="0.05"/>
     <arg name="slope_local_max" default="8"/>

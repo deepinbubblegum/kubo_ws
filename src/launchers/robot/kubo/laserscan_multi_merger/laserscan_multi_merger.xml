@@ -8,9 +8,9 @@
 	<param name="laserscan_topics" value ="/scan/front /scan/back" /> <!-- LIST OF THE LASER SCAN TOPICS TO SUBSCRIBE -->
 	<param name="angle_min" value="-3.14159"/>
 	<param name="angle_max" value="3.14159"/>
-	<!-- <param name="angle_increment" value="0.0058"/>
-	<param name="scan_time" value="0.0333333"/> -->
-	<param name="range_min" value="0.10"/>
+	<param name="angle_increment" value="0.0058"/>
+	<param name="scan_time" value="0.0333333"/>
+	<param name="range_min" value="0.0"/>
 	<param name="range_max" value="150.0"/>
 	</node>
 </launch>

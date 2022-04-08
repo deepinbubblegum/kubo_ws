@@ -22,6 +22,17 @@ class ackermann_static_tf2:
         odom_to_map.transform.rotation.y = 0.0
         odom_to_map.transform.rotation.z = 0.0
         
+        odom_to_base_link = TransformStamped()
+        odom_to_base_link.header.frame_id = "odom"
+        odom_to_base_link.child_frame_id = "base_link"
+        odom_to_base_link.transform.translation.x = 0.0
+        odom_to_base_link.transform.translation.y = 0.0
+        odom_to_base_link.transform.translation.z = 0.0
+        odom_to_base_link.transform.rotation.w = 1.0
+        odom_to_base_link.transform.rotation.x = 0.0
+        odom_to_base_link.transform.rotation.y = 0.0
+        odom_to_base_link.transform.rotation.z = 0.0
+        
         imu_link_to_base_link = TransformStamped()
         imu_link_to_base_link.header.stamp = rospy.Time.now()
         imu_link_to_base_link.header.frame_id = "base_link"
@@ -120,6 +131,7 @@ class ackermann_static_tf2:
 
         return [
                 odom_to_map,
+                odom_to_base_link,
                 imu_link_to_base_link,
                 gps_front_to_base_link,
                 rslidar_front_to_base_link,
