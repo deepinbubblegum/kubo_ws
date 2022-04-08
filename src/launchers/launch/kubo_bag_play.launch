@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <!-- static_tf2_broadcast -->
+    <include file="$(find static_tf2_broadcast)/launch/ackermann_static_broadcast.launch" />
+
+    <node 
+        pkg="rosbag" 
+        type="play" 
+        name="player" 
+        args="--clock $(find launchers)/robot/kubo/bag/FilteredBag.bag" 
+        output="screen"
+    />
+
+    <!-- ray ground rslidar -->
+    <include file="$(find launchers)/robot/kubo/ray_ground_rslidar/ray_ground_rslidar_front.xml"/>
+    <include file="$(find launchers)/robot/kubo/ray_ground_rslidar/ray_ground_rslidar_back.xml"/>
+
+    <!-- pointcloud 2 laserscan -->
+    <include file="$(find launchers)/robot/kubo/pointcloud_to_laserscan/pointcloud_to_laserscan_front.xml"/>
+    <include file="$(find launchers)/robot/kubo/pointcloud_to_laserscan/pointcloud_to_laserscan_back.xml"/>
+
+    <!-- merger laser -->
+    <include file="$(find launchers)/robot/kubo/laserscan_multi_merger/laserscan_multi_merger.xml"/>
+
+    <!-- rf2o -->
+    <include file="$(find launchers)/robot/kubo/rf2o/rf2o_laser_odometry_front.xml"/>
+    <include file="$(find launchers)/robot/kubo/rf2o/rf2o_laser_odometry_rear.xml"/>
+
+    <!-- imu tools -->
+    <include file="$(find launchers)/robot/kubo/imu_tool/imu_filter_madgwick.xml"/>
+    
+    <!-- robot_localization -->
+    <include file="$(find launchers)/robot/kubo/robot_localization/dual_ekf_navsat_outdoor.xml"/>
+
+    <!-- cartographer_ros -->
+    <!-- <include file="$(find cartographer_ros)/launch/kubo_robot.launch"/> -->
+
+    <!--launch rviz-->
+    <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find launchers)/rviz/config_bag_sensor.rviz"/>
+</launch>
