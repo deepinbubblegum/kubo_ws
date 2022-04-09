@@ -260,7 +260,7 @@ void PclCore::publish_cloud(const ros::Publisher &in_publisher,
     voxelGrid.filter(*cloud_filtered);
 
     sensor_msgs::PointCloud2 cloud_msg;
-    pcl::toROSMsg(*cloud_filtered, cloud_msg);
+    pcl::toROSMsg(*in_cloud_to_publish_ptr, cloud_msg);
     cloud_msg.header = in_header;
     in_publisher.publish(cloud_msg);
 }

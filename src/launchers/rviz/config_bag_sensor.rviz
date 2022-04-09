@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Cartographer1
         - /PointCloud1/front_raw1/Autocompute Value Bounds1
         - /Odom1
       Splitter Ratio: 0.5852941274642944
@@ -68,7 +67,7 @@ Visualization Manager:
           Queue Size: 10
           Selectable: true
           Size (Pixels): 3
-          Size (m): 0.009999999776482582
+          Size (m): 0.029999999329447746
           Style: Flat Squares
           Topic: /scan_matched_points2
           Unreliable: false
@@ -87,8 +86,8 @@ Visualization Manager:
             All: true
             All Submap Pose Markers: true
             Trajectory 0:
-              0.6: true
-              1.3: true
+              0.104: true
+              1.14: true
               Submap Pose Markers: true
               Value: true
           Topic: /submap_list
@@ -292,8 +291,8 @@ Visualization Manager:
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 1.4495984315872192
-            Min Value: -0.17684423923492432
+            Max Value: 1.4494452476501465
+            Min Value: -0.027794599533081055
             Value: true
           Axis: Z
           Channel Name: intensity
@@ -320,8 +319,8 @@ Visualization Manager:
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 1.4497852325439453
-            Min Value: -0.5841206312179565
+            Max Value: 1.4499180316925049
+            Min Value: -0.12805426120758057
             Value: true
           Axis: Z
           Channel Name: intensity
@@ -615,10 +614,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 58.80238342285156
+      Scale: 38.09555435180664
       Target Frame: <Fixed Frame>
-      X: -2.2993266582489014
-      Y: 0.7743306159973145
+      X: -7.589943885803223
+      Y: 4.375795364379883
     Saved: ~
 Window Geometry:
   Displays:

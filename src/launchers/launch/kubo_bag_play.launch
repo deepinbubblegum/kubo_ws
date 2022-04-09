@@ -22,24 +22,22 @@
     <!-- merger laser -->
     <include file="$(find launchers)/robot/kubo/laserscan_multi_merger/laserscan_multi_merger.xml"/>
 
+    <!-- matcher -->
     <include file="$(find launchers)/robot/kubo/laser_scan_matcher/laser_scan_matcher.xml"/>
     
     <!-- rf2o -->
     <include file="$(find launchers)/robot/kubo/rf2o/rf2o_laser_odometry_front.xml"/>
     <include file="$(find launchers)/robot/kubo/rf2o/rf2o_laser_odometry_rear.xml"/>
 
-
     <!-- imu tools -->
     <include file="$(find launchers)/robot/kubo/imu_tool/imu_filter_madgwick.xml"/>
    
-
-
     <!-- robot_localization -->
     <include file="$(find launchers)/robot/kubo/robot_localization/dual_ekf_navsat_outdoor.xml"/>
 
     <!-- cartographer_ros -->
     <include file="$(find cartographer_ros)/launch/kubo_robot.launch"/>
-
+    
     <!-- amcl -->
     <!-- <include file="$(find launchers)/robot/kubo/amcl/amcl_diff.xml"/> -->
 
