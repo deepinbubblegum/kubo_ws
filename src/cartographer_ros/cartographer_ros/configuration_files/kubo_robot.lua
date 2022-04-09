@@ -53,8 +53,8 @@ TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 1e3
 -- TRAJECTORY_BUILDER.pure_localization = true
 
 POSE_GRAPH.optimize_every_n_nodes = 0
-POSE_GRAPH.constraint_builder.min_score = 0.64
-POSE_GRAPH.constraint_builder.global_localization_min_score = 0.7
+POSE_GRAPH.constraint_builder.min_score = 0.75
+POSE_GRAPH.constraint_builder.global_localization_min_score = 0.8
 -- POSE_GRAPH.overlapping_submaps_trimmer_2d = {
 --   fresh_submaps_count = 1,
 --   min_covered_area = 2,

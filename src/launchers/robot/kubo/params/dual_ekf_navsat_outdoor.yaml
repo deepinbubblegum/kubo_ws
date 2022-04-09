@@ -100,11 +100,11 @@ ekf_se_map:
   odom0_relative: false
 
   odom1: odom_rf2o/front
-  odom1_config: [true,  true,  false,
+  odom1_config: [true, true,  false,
                 false, false, true,
-                true, true, true,
+                true,  true,  true,
                 false, false, false,
-                true, true, true]
+                true,  true,  true]
   odom1_queue_size: 10
   odom1_nodelay: true
   odom1_differential: true
