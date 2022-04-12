@@ -7,7 +7,7 @@
         pkg="rosbag" 
         type="play" 
         name="player" 
-        args="-k -s 120 --clock $(find launchers)/robot/kubo/bag/FilteredTopic.bag" 
+        args="-k -s 120 --clock $(find launchers)/robot/kubo/bag/kubo_filter.bag" 
         output="screen"
     />
 
@@ -28,6 +28,9 @@
     <!-- rf2o -->
     <include file="$(find launchers)/robot/kubo/rf2o/rf2o_laser_odometry_front.xml"/>
     <include file="$(find launchers)/robot/kubo/rf2o/rf2o_laser_odometry_rear.xml"/>
+
+    <!-- wheel odom -->
+    <include file="$(find odometry_steering)/launch/odometry_steering.launch"/>
 
     <!-- imu tools -->
     <include file="$(find launchers)/robot/kubo/imu_tool/imu_filter_madgwick.xml"/>

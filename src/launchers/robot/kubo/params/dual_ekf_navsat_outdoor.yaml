@@ -16,7 +16,7 @@ ekf_se_odom:
   world_frame: odom
 
   odom0: odometry/wheel
-  odom0_config: [true,  true,  false, #<!-- x, y, z position -->
+  odom0_config: [false, false,  false, #<!-- x, y, z position -->
                  false, false, true, #<!-- roll, pitch, yaw angles-->
                  true,  true, false, #<!-- x/y/z velocity -->
                  false, false, true, #<!-- roll/pitch/yaw velocity -->
