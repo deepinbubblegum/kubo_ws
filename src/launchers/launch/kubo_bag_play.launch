@@ -7,7 +7,7 @@
         pkg="rosbag" 
         type="play" 
         name="player" 
-        args="-k -s 120 --clock $(find launchers)/robot/kubo/bag/kubo_filter.bag" 
+        args="-k -s 130 --clock $(find launchers)/robot/kubo/bag/kubo_filter.bag" 
         output="screen"
     />
 

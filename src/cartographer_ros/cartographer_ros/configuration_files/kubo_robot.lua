@@ -23,7 +23,7 @@ options = {
   provide_odom_frame = true,
   publish_frame_projected_to_2d = true,
   use_odometry = true,
-  use_nav_sat = false,
+  use_nav_sat = true,
   use_landmarks = false,
   num_laser_scans = 1,
   num_multi_echo_laser_scans = 0,
@@ -42,19 +42,19 @@ options = {
 }
 
 MAP_BUILDER.use_trajectory_builder_2d = true
-MAP_BUILDER.num_background_threads = 8
+MAP_BUILDER.num_background_threads = 24
 
 TRAJECTORY_BUILDER_2D.use_imu_data = false
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
-TRAJECTORY_BUILDER_2D.max_range = 150.0
--- TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(0.1)
-TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 1e3
+TRAJECTORY_BUILDER_2D.max_range = 100.0
+TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(0.2)
+-- TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 1e3
 -- TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 4e2
 -- TRAJECTORY_BUILDER.pure_localization = true
 
-POSE_GRAPH.optimize_every_n_nodes = 0
-POSE_GRAPH.constraint_builder.min_score = 0.75
-POSE_GRAPH.constraint_builder.global_localization_min_score = 0.8
+POSE_GRAPH.optimize_every_n_nodes = 10
+POSE_GRAPH.constraint_builder.min_score = 0.85
+POSE_GRAPH.constraint_builder.global_localization_min_score = 0.9
 -- POSE_GRAPH.overlapping_submaps_trimmer_2d = {
 --   fresh_submaps_count = 1,
 --   min_covered_area = 2,
