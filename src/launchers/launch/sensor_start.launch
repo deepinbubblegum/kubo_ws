@@ -25,7 +25,8 @@
     <include file="$(find launchers)/robot/kubo/rf2o/rf2o_laser_odometry_rear.xml"/>
 
     <!-- imu tools -->
-    <include file="$(find launchers)/robot/kubo/imu_tool/imu_filter_madgwick.xml"/>
+    <!-- <include file="$(find launchers)/robot/kubo/imu_tool/imu_filter_madgwick.xml"/> -->
+    <include file="$(find launchers)/robot/kubo/imu_tool/complementary_filter.xml"/>
     
     <!-- scan_matcher -->
     <include file="$(find launchers)/robot/kubo/laser_scan_matcher/laser_scan_matcher.xml"/>
@@ -36,9 +37,15 @@
     <!-- robot_localization -->
     <include file="$(find launchers)/robot/kubo/robot_localization/dual_ekf_navsat_outdoor.xml"/>
     
-    <!-- cartographer_ros -->
-    <!-- <include file="$(find cartographer_ros)/launch/kubo_robot.launch"/> -->
+    <!-- Map_server -->
+    <include file="$(find launchers)/robot/kubo/map_server/map_server.xml"/>
+  
+    <!-- amcl -->
+    <include file="$(find launchers)/robot/kubo/amcl/amcl_diff.xml"/>
 
+    <!-- Move_Base -->
+    <include file="$(find launchers)/robot/kubo/move_base/move_base.xml"/>
+    
     <!--launch rviz-->
     <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find launchers)/rviz/config_sensor.rviz"/>
 </launch>
