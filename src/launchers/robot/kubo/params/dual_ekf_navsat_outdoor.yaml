@@ -23,9 +23,9 @@ ekf_se_odom:
                  false, false, false] #<!-- Acceleration -->
   odom0_queue_size: 10
   odom0_nodelay: true
-  odom0_differential: false
-  odom0_relative: true
-
+  odom0_differential: true
+  odom0_relative: false
+  
   odom1: odom_rf2o/front
   odom1_config: [true, true,  false,
                 false, false, true,
@@ -119,8 +119,8 @@ ekf_se_map:
                  false, false, false] #<!-- Acceleration -->
   odom0_queue_size: 10
   odom0_nodelay: true
-  odom0_differential: false
-  odom0_relative: true
+  odom0_differential: true
+  odom0_relative: false
 
   odom1: odometry/gps
   odom1_config: [true,  true,  true,
