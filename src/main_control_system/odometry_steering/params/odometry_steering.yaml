@@ -4,5 +4,5 @@ tf: false
 wheelbase: 4.19
 ticks_min: -2147483648.0
 ticks_max: 2147483648.0
-ticks_meter: 5590
+ticks_meter: 5550
 # 5542

@@ -20,18 +20,18 @@ ekf_se_odom:
                  false, false, true, #<!-- roll, pitch, yaw angles-->
                  true,  true,  false, #<!-- x/y/z velocity -->
                  false, false, true, #<!-- roll/pitch/yaw velocity -->
-                 false, false, false] #<!-- Acceleration -->
+                 true,  true,  true] #<!-- Acceleration -->
   odom0_queue_size: 10
   odom0_nodelay: true
   odom0_differential: true
   odom0_relative: false
-  
+
   odom1: odom_rf2o/front
-  odom1_config: [true, true,  false,
-                false, false, true,
-                true,  true,  true,
-                false, false, false,
-                true,  true,  true]
+  odom1_config: [true,  true,  false,
+                 false, false, true,
+                 true,  true,  true,
+                 false, false, false,
+                 true,  true,  true]
   odom1_queue_size: 10
   odom1_nodelay: true
   odom1_differential: true
@@ -49,18 +49,29 @@ ekf_se_odom:
   odom2_differential: true
   odom2_relative: false
 
-  imu0: imu/data
-  imu0_config: [false, false, false,
-                true,  true,  true,
-                true,  true,  true,
-                true,  true, true,
-                true,  true,  true]
+  pose0: scan_laser_matcher_pose
+  pose0_config: [true,  true,   false,
+                 false, false,  true,
+                 false, false,  false,
+                 false, false,  false,
+                 false, false,  false]
+  pose0_queue_size: 10
+  pose0_nodelay: true
+  pose0_differential: true
+  pose0_relative: false
 
-  imu0_nodelay: true
-  imu0_differential: true
-  imu0_relative: false
-  imu0_queue_size: 10
-  imu0_remove_gravitational_acceleration: false
+  # imu0: imu/data
+  # imu0_config: [false, false, false,
+  #               true,  true,  true,
+  #               true,  true,  true,
+  #               true,  true, true,
+  #               true,  true,  true]
+
+  # imu0_nodelay: true
+  # imu0_differential: true
+  # imu0_relative: false
+  # imu0_queue_size: 10
+  # imu0_remove_gravitational_acceleration: false
 
   use_control: false
 
@@ -116,14 +127,14 @@ ekf_se_map:
                  false, false, true, #<!-- roll, pitch, yaw angles-->
                  true,  true,  false, #<!-- x/y/z velocity -->
                  false, false, true, #<!-- roll/pitch/yaw velocity -->
-                 false, false, false] #<!-- Acceleration -->
+                 true,  true,  true] #<!-- Acceleration -->
   odom0_queue_size: 10
   odom0_nodelay: true
   odom0_differential: true
   odom0_relative: false
 
   odom1: odometry/gps
-  odom1_config: [true,  true,  true,
+  odom1_config: [true,  true,  false,
                  false, false, false,
                  false, false, false,
                  false, false, false,
@@ -134,11 +145,11 @@ ekf_se_map:
   odom1_relative: false
 
   odom2: odom_rf2o/front
-  odom2_config: [true, true,  false,
-                false, false, true,
-                true,  true,  true,
-                false, false, false,
-                true,  true,  true]
+  odom2_config: [true,  true,  false,
+                 false, false, true,
+                 true,  true,  true,
+                 false, false, false,
+                 true,  true,  true]
   odom2_queue_size: 10
   odom2_nodelay: true
   odom2_differential: true
@@ -156,19 +167,6 @@ ekf_se_map:
   odom3_differential: true
   odom3_relative: false
 
-  imu0: imu/data
-  imu0_config: [false, false, false,
-                true,  true,  true,
-                true,  true,  true,
-                true,  true, true,
-                true,  true,  true]
-
-  imu0_nodelay: true
-  imu0_differential: true
-  imu0_relative: false
-  imu0_queue_size: 10
-  imu0_remove_gravitational_acceleration: false
-
   twist0: ublox_gps/fix_velocity
   twist0_config: [false, false, false, #<!-- x, y, z position -->
                   false, false, false, #<!-- roll, pitch, yaw angles-->
@@ -180,16 +178,30 @@ ekf_se_map:
   twist0_differential: true
   twist0_relative: false
 
-  pose0: scan_matcher_pose_stamped
-  pose0_config: [false, false,  false,
+  pose0: scan_laser_matcher_pose
+  pose0_config: [true,  true,   false,
                  false, false,  true,
                  false, false,  false,
-                 true,  true,   true,
+                 false, false,  false,
                  false, false,  false]
   pose0_queue_size: 10
   pose0_nodelay: true
   pose0_differential: true
   pose0_relative: false
+
+  # imu0: imu/data
+  # imu0_config: [false, false, false,
+  #               true,  true,  true,
+  #               true,  true,  true,
+  #               true,  true, true,
+  #               true,  true,  true]
+
+  # imu0_nodelay: true
+  # imu0_differential: true
+  # imu0_relative: false
+  # imu0_queue_size: 10
+  # imu0_remove_gravitational_acceleration: false
+
 
   # pose1: amcl_pose 
   # pose1_config: [true,  true,   false,

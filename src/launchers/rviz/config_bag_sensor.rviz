@@ -6,7 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Grid1
+        - /Cartographer1
         - /PointCloud1/front_raw1/Autocompute Value Bounds1
         - /Odom1
       Splitter Ratio: 0.5852941274642944
@@ -50,14 +50,14 @@ Visualization Manager:
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 10
-            Min Value: -10
+            Max Value: 1.25
+            Min Value: 1.25
             Value: true
           Axis: Z
           Channel Name: intensity
           Class: rviz/PointCloud2
-          Color: 255; 255; 255
-          Color Transformer: Intensity
+          Color: 245; 121; 0
+          Color Transformer: FlatColor
           Decay Time: 0
           Enabled: true
           Invert Rainbow: false
@@ -68,7 +68,7 @@ Visualization Manager:
           Queue Size: 10
           Selectable: true
           Size (Pixels): 3
-          Size (m): 0.029999999329447746
+          Size (m): 0.07999999821186066
           Style: Flat Squares
           Topic: /scan_matched_points2
           Unreliable: false
@@ -87,7 +87,16 @@ Visualization Manager:
             All: true
             All Submap Pose Markers: true
             Trajectory 0:
-              0.10: true
+              0.180: true
+              1.180: true
+              2.180: true
+              3.180: true
+              4.180: true
+              5.180: true
+              6.180: true
+              7.180: true
+              8.101: true
+              9.11: true
               Submap Pose Markers: true
               Value: true
           Topic: /submap_list
@@ -287,8 +296,8 @@ Visualization Manager:
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 1.4499447345733643
-            Min Value: -0.09283101558685303
+            Max Value: 1.4499058723449707
+            Min Value: -0.30681824684143066
             Value: true
           Axis: Z
           Channel Name: intensity
@@ -315,8 +324,8 @@ Visualization Manager:
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 1.4499127864837646
-            Min Value: -0.44823217391967773
+            Max Value: 1.3909932374954224
+            Min Value: -2.066337823867798
             Value: true
           Axis: Z
           Channel Name: intensity
@@ -340,7 +349,7 @@ Visualization Manager:
           Use Fixed Frame: true
           Use rainbow: true
           Value: true
-      Enabled: true
+      Enabled: false
       Name: PointCloud
     - Class: rviz/Group
       Displays:
@@ -589,7 +598,7 @@ Visualization Manager:
               Scale: 1
               Value: true
             Value: false
-          Enabled: true
+          Enabled: false
           Keep: 100
           Name: Odometry_gps
           Position Tolerance: 0.10000000149011612
@@ -606,7 +615,7 @@ Visualization Manager:
             Value: Arrow
           Topic: /odometry/gps
           Unreliable: false
-          Value: true
+          Value: false
       Enabled: true
       Name: Odom
     - Class: rviz/Group
@@ -671,7 +680,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 19.184310913085938
+      Distance: 500.0597229003906
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -679,17 +688,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -1.5510574579238892
-        Y: 0.3425343632698059
-        Z: 0.7348480224609375
+        X: -7.704772472381592
+        Y: 0.6010750532150269
+        Z: -0.059722900390625
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.2597966194152832
+      Pitch: 1.5697963237762451
       Target Frame: base_link
-      Yaw: 2.4931859970092773
+      Yaw: 0
     Saved: ~
 Window Geometry:
   Displays:

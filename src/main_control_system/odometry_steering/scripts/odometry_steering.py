@@ -55,7 +55,7 @@ class Odometry_ackermann:
         self.frist_loop = True
 
     def callback_front_encoder(self, enc_msg):
-        self.steer_position = self._encoder_wheel_steering(enc_msg.sensor.position)
+        self.steer_position = self._encoder_wheel_steering(enc_msg.sensor.position) 
 
     def callback_distanc_enc(self, enc_msg):
         self.ticker = self.multi_counting(enc_msg.sensor.ticker) / self.ticks_meter
