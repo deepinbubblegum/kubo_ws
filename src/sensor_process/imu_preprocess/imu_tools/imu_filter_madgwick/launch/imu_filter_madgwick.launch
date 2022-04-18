@@ -12,7 +12,7 @@
     output="screen">
     <param name="world_frame" value="enu"/>
     <param name="publish_tf" value="false"/>
-    <param name="use_mag" value="true"/>
+    <param name="use_mag" value="false"/>
     <remap from="imu/data_raw" to="bno055/imu_raw"/>
     <remap from="imu/mag" to="bno055/mag"/>
   </node>

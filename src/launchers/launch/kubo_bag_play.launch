@@ -7,7 +7,7 @@
         pkg="rosbag" 
         type="play" 
         name="player" 
-        args="-k -s 130 --clock $(find launchers)/robot/kubo/bag/kubo_filter.bag" 
+        args="-k -s 5 --clock $(find launchers)/robot/kubo/bag/kubo_filter.bag" 
         output="screen"
     />
 
@@ -33,7 +33,9 @@
     <include file="$(find odometry_steering)/launch/odometry_steering.launch"/>
 
     <!-- imu tools -->
-    <include file="$(find launchers)/robot/kubo/imu_tool/imu_filter_madgwick.xml"/>
+    <!-- <include file="$(find launchers)/robot/kubo/imu_tool/imu_filter_madgwick.xml"/> -->
+    <include file="$(find launchers)/robot/kubo/imu_tool/complementary_filter.xml"/>
+
    
     <!-- robot_localization -->
     <include file="$(find launchers)/robot/kubo/robot_localization/dual_ekf_navsat_outdoor.xml"/>

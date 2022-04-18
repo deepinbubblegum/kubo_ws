@@ -42,7 +42,7 @@ class ackermann_static_tf2:
         imu_link_to_base_link.transform.translation.z = 0.585
         imu_link_to_base_link.transform.rotation.w = 1.0
         imu_link_to_base_link.transform.rotation.x = 0.0
-        imu_link_to_base_link.transform.rotation.y = 0.0 
+        imu_link_to_base_link.transform.rotation.y = 0.0
         imu_link_to_base_link.transform.rotation.z = 0.0
 
         gps_front_to_base_link = TransformStamped()
