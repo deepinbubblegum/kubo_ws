@@ -19,8 +19,8 @@ if(${ENABLE_TRANSFORM})
   add_definitions("-DENABLE_TRANSFORM")
 endif(${ENABLE_TRANSFORM})
 
-set(rs_driver_INCLUDE_DIRS "/home/bubble/kubo_ws/src/rslidar_sdk/src/rs_driver/src;/usr/local/rslidar_sdk/include")
-set(RS_DRIVER_INCLUDE_DIRS "/home/bubble/kubo_ws/src/rslidar_sdk/src/rs_driver/src;/usr/local/rslidar_sdk/include")
+set(rs_driver_INCLUDE_DIRS "/home/icgame/sbpl_ws/kubo_ws/src/rslidar_sdk/src/rs_driver/src;/usr/local/rslidar_sdk/include")
+set(RS_DRIVER_INCLUDE_DIRS "/home/icgame/sbpl_ws/kubo_ws/src/rslidar_sdk/src/rs_driver/src;/usr/local/rslidar_sdk/include")
 
 set(rs_driver_LIBRARIES "/usr/lib/x86_64-linux-gnu/libboost_system.so;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;/usr/lib/x86_64-linux-gnu/libboost_regex.so;pcap")
 set(RS_DRIVER_LIBRARIES "/usr/lib/x86_64-linux-gnu/libboost_system.so;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;/usr/lib/x86_64-linux-gnu/libboost_regex.so;pcap")
