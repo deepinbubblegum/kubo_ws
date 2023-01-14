@@ -31,6 +31,8 @@ class event_command_system:
         self.PalletBackward = False
         self.PalletCloseDoor = False
         self.PalletOpenDoor = False
+        self.UpDump = False
+        self.DownDump = False
         self.Brake = False
 
     def create_ros_topic(self):
@@ -99,6 +101,18 @@ class event_command_system:
             Bool,
             self.callback_PalletOpenDoor_topic,
             queue_size=1)
+        
+        self.sub_UpDump = rospy.Subscriber(
+            self.UpDump_topic,
+            Bool,
+            self.callback_UpDump_topic,
+            queue_size=1)
+        
+        self.sub_DownDump = rospy.Subscriber(
+            self.DownDump_topic,
+            Bool,
+            self.callback_DownDump_topic,
+            queue_size=1)
 
         self.sub_brake = rospy.Subscriber(
             self.Brake_topic,
@@ -126,6 +140,8 @@ class event_command_system:
         self.PalletBackward_topic = rospy.get_param(self.node_name + '/PalletBackward_topic', 'pallet_backward')
         self.PalletCloseDoor_topic = rospy.get_param(self.node_name + '/PalletCloseDoor_topic', 'pallet_close_door')
         self.PalletOpenDoor_topic = rospy.get_param(self.node_name + '/PalletOpenDoor_topic', 'pallet_open_door')
+        self.UpDump_topic = rospy.get_param(self.node_name + '/UpDump_topic', 'up_dump')
+        self.DownDump_topic = rospy.get_param(self.node_name + '/DownDump_topic', 'down_dump')
         self.Brake_topic = rospy.get_param(self.node_name + '/Brake_topic', 'brake_topic')
 
     # callback funtion
@@ -180,6 +196,14 @@ class event_command_system:
     def callback_PalletOpenDoor_topic(self, msg):
             self.PalletOpenDoor = msg.data
             self.update()
+            
+    def callback_UpDump_topic(self, msg):
+        self.UpDump = msg.data
+        self.update()
+        
+    def callback_DownDump_topic(self, msg):
+        self.DownDump = msg.data
+        self.update()
 
     def callback_brake_topic(self, msg):
         self.Brake = msg.data
@@ -225,6 +249,16 @@ class event_command_system:
         elif self.PalletForward == False and self.PalletBackward == False and self.PalletCloseDoor == False and self.PalletOpenDoor == True:
             pallet = 0x04 # (CloseDoor)
         return pallet
+    
+    def dump_event(self):
+        dump = 0
+        if self.UpDump == True and self.DownDump == False:
+            dump = 1
+        elif self.UpDump == False and self.DownDump == True:
+            dump = -1
+        else:
+            dump = 0
+        return dump
 
     def brake_event(self):
         Brake = 0
@@ -241,6 +275,7 @@ class event_command_system:
         msg.Pallet = self.pallet_event()# 0x00(Stop), 0x01(PalletForward), 
                                         # 0x02(PalletBackward), 0x03(CloseDoor), 
                                         # 0x04(OpenDoor)
+        msg.Dump = self.dump_event() # 0(Stop), 1(UpDump), -1(DownBackward)
         msg.PercentBrake = self.brake_event()
         self.pub_event_cmd.publish(msg)
 

@@ -14,6 +14,8 @@ class PLC:
         # Get ros params
         self.get_ros_params()
         
+        self.Dump = 0
+        
         # variable package data for send to server ctl
         self.ctl_custom_package = [
             0x00, 0x00, #[0] lift not use
@@ -96,6 +98,18 @@ class PLC:
         self.ctl_custom_package[20] = control_msg.PLC.Parking
         self.ctl_custom_package[22] = control_msg.PLC.Mode
         self.ctl_custom_package[24] = control_msg.PLC.Pallet
+        self.Dump = control_msg.PLC.Dump
+        self.Dumper_control()
+
+    def Dumper_control(self):
+        if self.Dump == 1:
+            self.ctl_custom_package[2] &= 0b11110011
+            self.ctl_custom_package[2] |= 0b00001000
+        elif self.Dump == -1:
+            self.ctl_custom_package[2] &= 0b11110011
+            self.ctl_custom_package[2] |= 0b00000100
+        else:
+            self.ctl_custom_package[2] &= 0b11110011
 
     def update(self):
         self.send(self.ctl_custom_package)

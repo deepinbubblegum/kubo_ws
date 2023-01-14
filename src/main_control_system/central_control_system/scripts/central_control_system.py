@@ -60,6 +60,7 @@ class central_control_system:
         self.Pallet = 0x00 # 0x00(Stop), 0x01(PalletForward), 
                             # 0x02(PalletBackward), 0x03(CloseDoor), 
                             # 0x04(OpenDoor)
+        self.Dump = 0 # 0(Stop), 1(UpDump), -1(DownDump)
         self.brake = 0x00
         self._MBrake = 0
 
@@ -80,6 +81,7 @@ class central_control_system:
         self.Parking = event_cmd_msg.Parking
         self.UpDown = event_cmd_msg.UpDown
         self.Pallet = event_cmd_msg.Pallet
+        self.Dump = event_cmd_msg.Dump
         self._MBrake = event_cmd_msg.PercentBrake
         self.update_plc()
 
@@ -111,6 +113,7 @@ class central_control_system:
         msg.PLC.Parking = self.Parking
         msg.PLC.UpDown = self.UpDown
         msg.PLC.Pallet = self.Pallet
+        msg.PLC.Dump = self.Dump
         msg.PLC.WheelAngleLR = self.steer_control
         if self._MBrake > 0:
             msg.PLC.PercentBrake = self._MBrake
